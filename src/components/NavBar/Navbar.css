@@ -1,0 +1,14 @@
+.nav {
+  background-color: #1da1f2;
+  height: 70px;
+  border: none;
+  box-shadow: 0 3px 5px #000;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.nav > #logo {
+  font-size: 25px;
+  margin-left: 35px;
+  align-self: center;
+}

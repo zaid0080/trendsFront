@@ -1,0 +1,13 @@
+#content {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  margin: 30px auto;
+}
+
+#graph-container {
+  width: 70%;
+  height: 60vh;
+  background-color: #1da1f2;
+  border-radius: 10px;
+}
