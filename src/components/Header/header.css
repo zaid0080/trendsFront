@@ -1,7 +1,7 @@
 #container {
   width: 65%;
   height: 45vh;
-  background-color: #bcb9ed;
+  background-color: #ccf8fc;
   display: flex;
   flex-direction: column;
   margin: 50px auto;
@@ -14,8 +14,8 @@
   font-size: 20px;
 }
 
-.drop-down {
+/* .drop-down {
   border: none;
   border-radius: 2px;
   font-size: 1.2em;
-}
+} */

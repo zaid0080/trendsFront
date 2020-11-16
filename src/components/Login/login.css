@@ -1,0 +1,31 @@
+.login {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
+}
+
+.tag-line {
+  font-weight: 450;
+}
+
+.button {
+  height: 45px;
+  border-radius: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 15px;
+  left: 25px;
+  background-color: #1da1f2;
+  width: 120px;
+  color: #000;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+.icons {
+  position: relative;
+  top: 5px;
+  margin-left: 8px;
+}

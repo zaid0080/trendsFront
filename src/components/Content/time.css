@@ -3,12 +3,10 @@
   min-height: 60vh;
   background-color: #1da1f2;
   border-radius: 10px;
-  /* display: flex; */
-  /* flex-direction: column; */
   overflow: auto;
 }
 
-.list-items {
+.list-item {
   font-size: 1.8vw;
   display: flex;
   flex-direction: column;
@@ -18,13 +16,13 @@
   padding: 0;
 }
 
-.list-items > li {
+.list-item > li {
   list-style-type: none;
   cursor: pointer;
   padding: 10px;
   text-align: center;
 }
 
-.list-items > li:hover {
-  background-color: #bcb9ed;
+.list-item > li:hover {
+  background-color: #ccf8fc;
 }

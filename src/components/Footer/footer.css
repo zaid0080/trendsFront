@@ -1,0 +1,15 @@
+#foot-container {
+  display: flex;
+  justify-content: space-evenly;
+  height: 70px;
+  background-color: #3a3a3a;
+  color: #f1f1f1;
+  align-items: center;
+  margin-top: 25px;
+}
+
+div > p {
+  padding: 20px;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
