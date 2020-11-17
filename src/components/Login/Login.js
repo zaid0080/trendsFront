@@ -1,7 +1,6 @@
 import React from 'react';
 import { RiTwitterLine } from 'react-icons/ri';
 import { BsArrowRight } from 'react-icons/bs';
-import './login.css';
 import { IconContext } from 'react-icons';
 
 function Login() {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './Navbar.css';
 import { IoIosArrowDropdown } from 'react-icons/io'; 
 
 const data  = require('../Header/country.json');

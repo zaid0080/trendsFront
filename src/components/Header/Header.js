@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaTwitter } from 'react-icons/fa';
-import './header.css';
+
 //const data  = require('./country.json');
 
 // function logger(e){
