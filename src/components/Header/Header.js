@@ -10,7 +10,8 @@ import { FaTwitter } from 'react-icons/fa';
 function Header() {
     return (
         <div id='container'>
-            <h3><span><FaTwitter /></span>The latest twitter trends in one place</h3>
+            <h3><span><FaTwitter /></span>The latest twitter trends in one place</h3>]
+      
             {/* <select className='drop-down' onClick={e => {
                 return console.log(e.target.value)
             }}>
