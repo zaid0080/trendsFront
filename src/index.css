@@ -1,3 +1,15 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Open+Sans+Condensed:wght@300&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
 #content {
   display: flex;
   justify-content: space-between;
@@ -73,16 +85,10 @@
   font-size: 20px;
 }
 
-/* .drop-down {
-    border: none;
-    border-radius: 2px;
-    font-size: 1.2em;
-  } */
-
 .login {
   display: flex;
   justify-content: center;
-  margin: 25px 0;
+  margin: 45px 0;
 }
 
 .tag-line {
@@ -96,7 +102,6 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  top: 15px;
   left: 25px;
   background-color: #1da1f2;
   width: 120px;
