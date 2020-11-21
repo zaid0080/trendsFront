@@ -5,11 +5,11 @@ import Footer from './components/Footer/Footer.js'
 
 function App() {
   return (
-    <>
+    <div id='body-container'>
       <Navbar />
       <LandingPage />
       <Footer />
-    </>
+    </div >
   );
 }
 
