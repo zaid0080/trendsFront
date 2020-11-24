@@ -3,7 +3,7 @@ import { FaTwitter } from 'react-icons/fa';
 
 function Header() {
     return (
-        <div id='container'>
+        <div id='header-container'>
             <h3><span><FaTwitter /></span>The latest twitter trends in one place</h3>
         </div>
     )

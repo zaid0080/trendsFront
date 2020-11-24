@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { BiSearchAlt } from "react-icons/bi";
-// import useOnClickOutside from "./useOnClickOutside";
+import useOnClickOutside from "./useOnClickOutside";
 
 const data = require("../Header/country.json");
 
@@ -11,13 +11,20 @@ function Navbar() {
   const [countryInput, setCountryInput] = useState("");
   const [filterCountries, setFilterCountries] = useState([]);
   // const [filterCities, setFilterCities] = useState([]);
-  const inputRef = useRef(null);              //reference for input box
-  const ref = useRef(null);                       //reference for onclick outside
+  const inputRef = useRef(null); //reference for input box
+  const ref = useRef(null); //reference for onclick outside
 
   const dropClass = dropdown ? "list" : "nolist";
   const iconClass = icon ? "rotateicon" : "norotate";
 
-  // useOnClickOutside(ref, ()=> setDropdown(false));
+  useOnClickOutside(ref, () => {
+    //using a custom hook to capture the click outside the component using useRef
+    if (dropdown) {
+      setDropdown(false);
+      setIcon(false);
+    }
+  });
+
   console.log(dropdown);
   const clickHandler = () => {
     setDropdown(!dropdown);
@@ -53,8 +60,6 @@ function Navbar() {
   // filterCities.map(c=>{
   //     return console.log(c.name)
   // })
-
-  
 
   return (
     <nav className="nav">
