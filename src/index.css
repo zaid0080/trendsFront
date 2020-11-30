@@ -23,13 +23,6 @@ body {
   /* min-height: 100vh; */
 }
 
-#content {
-  display: flex;
-  justify-content: space-between;
-  width: 85%;
-  margin: 30px auto;
-}
-
 #header-container {
   width: 55%;
   height: 30vh;
@@ -43,30 +36,74 @@ body {
   font-size: 1.3rem;
 }
 
-#graph-container {
-  width: 70%;
-  height: 60vh;
-  background-color: #2f3640;
-  border-radius: 50px;
+#content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "time time time"
+    "graph graph trends";
 }
 
 #time-container {
-  width: 20%;
-  color: #fff;
-  min-height: 60vh;
-  background-color: #2f3640;
-  border-radius: 40px;
+  grid-area: time;
+  /* width: 100vw; */
+  color: #000;
+  /* min-height: 60vh; */
+  background-color: #fff;
   overflow: auto;
+  margin: 20px 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 -10px 20px rgba(0, 0, 0, 0.3);
 }
 
-.list-item {
-  font-size: 1.8vw;
+#time-container > .list-item {
+  font-size: 1.5em;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  flex-grow: 1;
-  width: 100%;
-  padding: 0;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* flex-grow: 1; */
+  /* width: 100%; */
+  white-space: nowrap;
+  overflow-x: auto;
+  padding: 0 10px;
+}
+
+#time-container > ul::-webkit-scrollbar {
+  height: 12px;
+}
+
+#time-container > ul::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f1f1f1;
+}
+
+#time-container > .scroll-icon {
+  /* position: relative; */
+  float: right;
+  margin: 11px;
+  cursor: pointer;
+  /* vertical-align: middle; */
+  font-size: 1.8em;
+  /* top: -10px; */
+}
+
+#Trends-container {
+  grid-area: trends;
+  border: 2px solid black;
+  height: 60vh;
+  width: 27vw;
+  justify-self: start;
+  /* margin: 0 20px; */
+}
+
+#graph-container {
+  height: 60vh;
+  grid-area: graph;
+  background-color: #2f3640;
+  border-radius: 50px;
+  margin: 0 35px;
 }
 
 .list-item > li {
@@ -97,11 +134,7 @@ body {
 #foot-container > p {
   padding: 20px;
   cursor: pointer;
-  font-size: 1.5rem;
-  /* z-index: 2; */
-  /* position: sticky;
-  left: 0;
-  bottom: 0; */
+  font-size: 1rem;
 }
 
 #container > p {
@@ -147,12 +180,14 @@ body {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: space-between;
+  letter-spacing: 2px;
 }
 
 .nav > #logo {
   font-size: 25px;
   margin-left: 35px;
   align-self: center;
+  cursor: pointer;
 }
 
 h4:hover {
@@ -160,29 +195,24 @@ h4:hover {
 }
 
 .list {
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: flex-end; */
-  /* float: right; */
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-areas: "header header";
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "header header header";
   list-style-type: none;
   position: absolute;
   top: 70px;
   right: 0;
   background-color: #2f3640;
   z-index: 1;
-  width: 50%;
-  /* width: 20%; */
+  width: 50vw;
   /* transform: translateX(0); */
   transition: width 0.5s ease-in;
 }
 
 .nolist {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-areas: "header header";
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "header header header";
   position: absolute;
   top: 70px;
   background-color: #2f3640;
@@ -209,17 +239,17 @@ ul > .list-items:hover {
 #icondrop {
   position: relative;
   top: 5px;
-  margin-left: 5px;
+  margin-left: 2px;
 }
 
 .rotateicon {
-  transform: rotate(180deg);
-  transition: transform 0.5s;
+  transform: rotate(90deg);
+  transition: transform 0.3s;
 }
 
 .norotate {
   transform: rotate(0);
-  transition: transform 0.5s;
+  transition: transform 0.3s;
 }
 
 .country {

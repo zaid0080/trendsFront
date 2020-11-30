@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
-import { IoIosArrowDropdown } from "react-icons/io";
+import { IoMdArrowDropright } from "react-icons/io";
 import { BiSearchAlt } from "react-icons/bi";
 import useOnClickOutside from "./useOnClickOutside";
 
-const data = require("../Header/country.json");
+const data = require("../Header/countrys.json");
 
 function Navbar() {
   const [dropdown, setDropdown] = useState(false);
   const [icon, setIcon] = useState(false);
   const [countryInput, setCountryInput] = useState("");
   const [filterCountries, setFilterCountries] = useState([]);
+  const [countryName, setCountryName] = useState("Worldwide");
   // const [filterCities, setFilterCities] = useState([]);
   const inputRef = useRef(null); //reference for input box
   const ref = useRef(null); //reference for onclick outside
@@ -32,11 +33,17 @@ function Navbar() {
     inputRef.current.focus();
   };
 
+  const listItemHandler = (e) => {
+    setCountryName(e.target.innerText);
+  };
+
   useEffect(() => {
     setFilterCountries(
       data
         .filter((d) => {
-          return d.placeType.name === "Country";
+          return (
+            d.placeType.name === "Country" || d.placeType.name === "Supername"
+          );
         })
         .filter((da) => {
           return da.name.toLowerCase().includes(countryInput.toLowerCase());
@@ -63,11 +70,11 @@ function Navbar() {
 
   return (
     <nav className="nav">
-      <h1 id="logo">LOGO</h1>
+      <h1 id="logo">alldaytrends</h1>
       <h1 onClick={clickHandler} className="country">
-        Select Country
+        {countryName}
         <span>
-          <IoIosArrowDropdown id="icondrop" className={iconClass} />
+          <IoMdArrowDropright id="icondrop" className={iconClass} />
         </span>
       </h1>
       <ul
@@ -90,7 +97,12 @@ function Navbar() {
         </div>
         {filterCountries.map((d) => {
           return (
-            <li className="list-items" key={d.woeid} value={d.woeid}>
+            <li
+              className="list-items"
+              key={d.woeid}
+              value={d.woeid}
+              onClick={listItemHandler}
+            >
               {d.name}
             </li>
           );
