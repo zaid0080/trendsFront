@@ -101,9 +101,13 @@ body {
 #graph-container {
   height: 60vh;
   grid-area: graph;
-  background-color: #2f3640;
+  background-color: #f1f1f1;
   border-radius: 50px;
   margin: 0 35px;
+}
+
+#graph-container > .barchart {
+  margin: 30px 40px;
 }
 
 .list-item > li {
