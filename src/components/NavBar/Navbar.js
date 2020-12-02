@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { IoMdArrowDropright } from "react-icons/io";
 import { BiSearchAlt } from "react-icons/bi";
 import useOnClickOutside from "./useOnClickOutside";
+import { GlobalContext } from '../../global'
 
-const data = require("../Header/countrys.json");
+const woeidList = require("../Header/countrys.json");
 
 function Navbar() {
   const [dropdown, setDropdown] = useState(false);
@@ -18,15 +19,17 @@ function Navbar() {
   const dropClass = dropdown ? "list" : "nolist";
   const iconClass = icon ? "rotateicon" : "norotate";
 
+  const [,setWoeid,,] = useContext(GlobalContext);
+
+  //using a custom hook to capture the click outside the component using useRef
   useOnClickOutside(ref, () => {
-    //using a custom hook to capture the click outside the component using useRef
     if (dropdown) {
       setDropdown(false);
       setIcon(false);
     }
   });
 
-  console.log(dropdown);
+
   const clickHandler = () => {
     setDropdown(!dropdown);
     setIcon(!icon);
@@ -35,55 +38,38 @@ function Navbar() {
 
   const listItemHandler = (e) => {
     setCountryName(e.target.innerText);
+    setDropdown(!dropdown);
+    // console.log(countryName);
   };
+
+
 
   useEffect(() => {
     setFilterCountries(
-      data
-        .filter((d) => {
-          return (
-            d.placeType.name === "Country" || d.placeType.name === "Supername"
-          );
-        })
-        .filter((da) => {
-          return da.name.toLowerCase().includes(countryInput.toLowerCase());
-        })
-        .sort((a, b) => {
-          if (a.name === b.name) {
-            return 0;
-          }
-          return a.name > b.name ? 1 : -1;
-        })
-    );
-    // setFilterCities(
-    //     data.filter((d)=>{
-    //         return d.placeType.code = 7;
-    //     })
-    // )
+      woeidList
+        .filter(d => d.placeType.name === "Country" || d.placeType.name === "Supername")
+        .filter(d => d.name.toLowerCase().includes( countryInput.toLowerCase() ) ) 
+        .sort())
   }, [countryInput]);
-  // console.log(filterCountries);
-  // console.log('---------')
-  // console.log(filterCities);
-  // filterCities.map(c=>{
-  //     return console.log(c.name)
-  // })
+
+  
 
   return (
     <nav className="nav">
+      
       <h1 id="logo">alldaytrends</h1>
-      <h1 onClick={clickHandler} className="country">
-        {countryName}
+      
+      <h1 onClick={clickHandler} className="country"> {countryName}
         <span>
           <IoMdArrowDropright id="icondrop" className={iconClass} />
         </span>
       </h1>
-      <ul
-        className={dropClass}
-        onClick={(e) => {
-          return console.log(e.target.value);
+      
+      <ul className={dropClass} onClick={(e) => {
+          setWoeid(e.target.value);
         }}
-        ref={ref}
-      >
+        ref={ref}>
+
         <div className="searchContainer">
           <BiSearchAlt className="searchIcon" />
           <input

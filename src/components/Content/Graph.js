@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, {useEffect, useContext,  } from "react";
 import {
   BarChart,
   Bar,
@@ -9,24 +8,24 @@ import {
   Tooltip,
   LabelList,
 } from "recharts";
+import { GlobalContext } from '../../global'
+
 
 function Graph() {
-  const [data, setData] = useState([]);
-  let date = Date.now();
-  console.log(date);
+  const [,,data,,selectedTime,,selectedData,setSelectedData] = useContext(GlobalContext);
+
   useEffect(() => {
-    axios
-      .get(`https://trendsend.herokuapp.com/trend/1?Ttime=1606751164127`)
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
-  }, []);
-  console.log(data);
-  return (
+    const x = data.find((d) => d.as_of === selectedTime)
+    setSelectedData(x);
+  }, [selectedTime]);
+
+  if(selectedData){
+  return (  
     <div id="graph-container">
-      <BarChart
+            <BarChart
         width={650}
         height={350}
-        data={data.trends}
+        data={selectedData.trends} 
         margin={{
           top: 30,
           right: 30,
@@ -47,7 +46,10 @@ function Graph() {
         <LabelList dataKey="name" position="Top" angle="90" />
       </BarChart>
     </div>
-  );
+  );}else {
+    return(<div>Hello</div>)
+  }
 }
+
 
 export default Graph;
