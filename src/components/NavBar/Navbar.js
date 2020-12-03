@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { IoMdArrowDropright } from "react-icons/io";
 import { BiSearchAlt } from "react-icons/bi";
 import useOnClickOutside from "./useOnClickOutside";
-import { GlobalContext } from '../../global'
+import { GlobalContext } from "../../global";
 
-const woeidList = require("../Header/countrys.json");
+const woeidList = require("../Header/country.json");
 
 function Navbar() {
   const [dropdown, setDropdown] = useState(false);
@@ -19,7 +19,7 @@ function Navbar() {
   const dropClass = dropdown ? "list" : "nolist";
   const iconClass = icon ? "rotateicon" : "norotate";
 
-  const [,setWoeid,,] = useContext(GlobalContext);
+  const [, setWoeid, ,] = useContext(GlobalContext);
 
   //using a custom hook to capture the click outside the component using useRef
   useOnClickOutside(ref, () => {
@@ -28,7 +28,6 @@ function Navbar() {
       setIcon(false);
     }
   });
-
 
   const clickHandler = () => {
     setDropdown(!dropdown);
@@ -42,34 +41,39 @@ function Navbar() {
     // console.log(countryName);
   };
 
-
-
   useEffect(() => {
     setFilterCountries(
       woeidList
-        .filter(d => d.placeType.name === "Country" || d.placeType.name === "Supername")
-        .filter(d => d.name.toLowerCase().includes( countryInput.toLowerCase() ) ) 
-        .sort())
+        .filter(
+          (d) =>
+            d.placeType.name === "Country" || d.placeType.name === "Supername"
+        )
+        .filter((d) =>
+          d.name.toLowerCase().includes(countryInput.toLowerCase())
+        )
+        .sort()
+    );
   }, [countryInput]);
-
-  
 
   return (
     <nav className="nav">
-      
       <h1 id="logo">alldaytrends</h1>
-      
-      <h1 onClick={clickHandler} className="country"> {countryName}
+
+      <h1 onClick={clickHandler} className="country">
+        {" "}
+        {countryName}
         <span>
           <IoMdArrowDropright id="icondrop" className={iconClass} />
         </span>
       </h1>
-      
-      <ul className={dropClass} onClick={(e) => {
+
+      <ul
+        className={dropClass}
+        onClick={(e) => {
           setWoeid(e.target.value);
         }}
-        ref={ref}>
-
+        ref={ref}
+      >
         <div className="searchContainer">
           <BiSearchAlt className="searchIcon" />
           <input

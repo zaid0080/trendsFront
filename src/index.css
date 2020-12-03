@@ -121,6 +121,30 @@ body {
   background-color: #ccf8fc;
 }
 
+.loading {
+  text-align: center;
+  height: 60vh;
+  position: relative;
+  width: 68vw;
+}
+
+.loading > .loading-icon {
+  font-size: 2.3em;
+  position: absolute;
+  top: 50%;
+  vertical-align: middle;
+  animation: rotation 2.5s infinite ease-out;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 #foot-container {
   display: flex;
   justify-content: space-evenly;
