@@ -70,7 +70,10 @@ function Navbar() {
       <ul
         className={dropClass}
         onClick={(e) => {
-          setWoeid(e.target.value);
+          const woeidValue = e.target.value;
+          if(woeidValue){
+            setWoeid(woeidValue);
+          }
           setIcon(false);
         }}
         ref={ref}
