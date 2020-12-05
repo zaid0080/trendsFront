@@ -24,7 +24,7 @@ body {
 }
 
 #header-container {
-  width: 55%;
+  width: 55vw;
   height: 30vh;
   background-color: #ccf8fc;
   display: flex;
@@ -91,11 +91,50 @@ body {
 
 #Trends-container {
   grid-area: trends;
-  border: 2px solid black;
+  border: 1px solid black;
   height: 60vh;
-  width: 27vw;
-  justify-self: start;
-  /* margin: 0 20px; */
+  border-radius: 10px;
+  width: 25vw;
+  position: relative;
+  overflow: auto;
+}
+
+#Trends-container > .heading {
+  text-align: center;
+  border-bottom: 1px solid #2f3640;
+  padding: 10px;
+}
+
+#Trends-container > .ol-list {
+  padding: 0;
+  /* list-style-type: none; */
+}
+
+#Trends-container > .ol-list > li {
+  padding: 5px;
+  border-bottom: 1px solid #2f3640;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  counter-increment: tc1;
+}
+
+#Trends-container > .ol-list > li:last-child {
+  border-bottom: none;
+}
+
+#Trends-container > .ol-list > li:nth-child(even) {
+  background-color: #03fcc2;
+}
+
+#Trends-container > .ol-list > li::before {
+  content: counter(tc1);
+  margin-right: 1em;
+  font-size: 0.8em;
+  width: 1.6em;
+  margin-left: 0.6em;
+  display: inline-block;
+  font-weight: 200;
 }
 
 #graph-container {
@@ -125,15 +164,22 @@ body {
   text-align: center;
   height: 60vh;
   position: relative;
-  width: 68vw;
+  grid-area: graph;
 }
 
-.loading > .loading-icon {
+.loading-icon {
   font-size: 2.3em;
   position: absolute;
   top: 50%;
   vertical-align: middle;
   animation: rotation 2.5s infinite ease-out;
+}
+
+.loadings {
+  text-align: center;
+  height: 60vh;
+  position: relative;
+  grid-area: trends;
 }
 
 @keyframes rotation {

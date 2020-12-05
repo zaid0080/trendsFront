@@ -71,6 +71,7 @@ function Navbar() {
         className={dropClass}
         onClick={(e) => {
           setWoeid(e.target.value);
+          setIcon(false);
         }}
         ref={ref}
       >

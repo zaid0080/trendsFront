@@ -5,6 +5,7 @@ import {
   Bar,
   XAxis,
   YAxis,
+  Label,
   CartesianGrid,
   Tooltip,
   LabelList,
@@ -47,10 +48,12 @@ function Graph() {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
+          <Label dataKey={selectedTime} />
           <Bar
             dataKey="tweet_volume"
             fill="#2f3640"
             background={{ fill: "#03fcc2" }}
+            minPointSize={25}
           />
           <LabelList dataKey="name" position="Top" angle="90" />
         </BarChart>
