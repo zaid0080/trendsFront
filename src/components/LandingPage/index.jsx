@@ -6,8 +6,8 @@ export default function landingpage() {
     return (
         <div>
          <Header />
-      <Content />
-      <Login />
+         <Content />
+      {/* <Login /> */}
         </div>
     )
 }

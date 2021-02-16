@@ -22,8 +22,8 @@ function Content() {
   return (
     <div id="content">
       <Time />
-      <Graph />
       <TopTrends />
+      <Graph />
     </div>
   );
 }

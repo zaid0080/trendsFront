@@ -1,38 +1,64 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { IoMdArrowDropright } from "react-icons/io";
+import { MdSearch } from "react-icons/md";
 import { BiSearchAlt } from "react-icons/bi";
 import useOnClickOutside from "./useOnClickOutside";
 import { GlobalContext } from "../../global";
+import SideContainer from "./SideContainer";
+import Hamburger from "./Hamburger";
 
 const woeidList = require("../Header/country.json");
 
 function Navbar() {
   const [dropdown, setDropdown] = useState(false);
   const [icon, setIcon] = useState(false);
+  const [searchIcon, setSearchIcon] = useState(false);
   const [countryInput, setCountryInput] = useState("");
   const [filterCountries, setFilterCountries] = useState([]);
   const [countryName, setCountryName] = useState("Worldwide");
   // const [filterCities, setFilterCities] = useState([]);
   const inputRef = useRef(null); //reference for input box
-  const ref = useRef(null); //reference for onclick outside
+  const dropRef = useRef(null); //reference for onclick outside
+  const sideRef = useRef(null);
+  const inputBoxRef = useRef(null);
 
   const dropClass = dropdown ? "list" : "nolist";
   const iconClass = icon ? "rotateicon" : "norotate";
+  const searchClass = searchIcon ? "showSearch" : "noSearch";
+  const placeHold = searchIcon ? "Search Country..." : " ";
+  const iconColor = searchIcon ? "black" : "white";
 
   const [, setWoeid, ,] = useContext(GlobalContext);
 
   //using a custom hook to capture the click outside the component using useRef
-  useOnClickOutside(ref, () => {
+  useOnClickOutside(dropRef, () => {
     if (dropdown) {
       setDropdown(false);
       setIcon(false);
     }
   });
 
+  useOnClickOutside(inputRef, () => {
+    if (searchIcon) {
+      setSearchIcon(false);
+    }
+  });
+
   const clickHandler = () => {
     setDropdown(!dropdown);
     setIcon(!icon);
-    inputRef.current.focus();
+    //inputRef.current.focus();
+  };
+
+  const searchHandler = () => {
+    setSearchIcon(!searchIcon);
+    setDropdown(!dropdown);
+    inputBoxRef.current.focus();
+  };
+
+  const menuHandler = () => {
+    sideRef.current.showMenu();
+    console.log("it's working");
   };
 
   const listItemHandler = (e) => {
@@ -57,18 +83,33 @@ function Navbar() {
 
   return (
     <nav className="nav">
+      <Hamburger clickMe={menuHandler} />
+      <SideContainer ref={sideRef} />
       <h1 id="logo">alldaytrends</h1>
-
       <h1 onClick={clickHandler} className="country">
-        {" "}
-        {countryName}
-        <span>
+        <span className="countryName">
+          {" "}
+          {countryName}
           <IoMdArrowDropright id="icondrop" className={iconClass} />
         </span>
       </h1>
+      <div className="search-container">
+        <input
+          ref={inputBoxRef}
+          type="text"
+          className={searchClass}
+          onChange = {(e) => setCountryInput(e.target.value)}
+          placeholder={placeHold}
+        />
+        <MdSearch
+          id="searchIcon"
+          className={iconColor}
+          onClick={searchHandler}
+        />
+      </div>
 
       <ul
-        className={dropClass}
+        className={`ul-list-items ${dropClass}`}
         onClick={(e) => {
           const woeidValue = e.target.value;
           if(woeidValue){
@@ -76,9 +117,9 @@ function Navbar() {
           }
           setIcon(false);
         }}
-        ref={ref}
+        ref={dropRef}
       >
-        <div className="searchContainer">
+        {/* <div className="searchContainer">
           <BiSearchAlt className="searchIcon" />
           <input
             ref={inputRef}
@@ -88,7 +129,7 @@ function Navbar() {
             className="searchBox"
             placeholder="Search Country..."
           />
-        </div>
+        </div> */}
         {filterCountries.map((d) => {
           return (
             <li
