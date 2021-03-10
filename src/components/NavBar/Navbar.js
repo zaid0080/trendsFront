@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { IoMdArrowDropright } from "react-icons/io";
 import { MdSearch } from "react-icons/md";
 import { BiSearchAlt } from "react-icons/bi";
-import useOnClickOutside from "./useOnClickOutside";
+import useOnClickOutside from "../useClickOutside/useOnClickOutside";
 import { GlobalContext } from "../../global";
 import SideContainer from "./SideContainer";
 import Hamburger from "./Hamburger";
@@ -31,18 +31,18 @@ function Navbar() {
   const [, setWoeid, ,] = useContext(GlobalContext);
 
   //using a custom hook to capture the click outside the component using useRef
-  useOnClickOutside(dropRef, () => {
-    if (dropdown) {
-      setDropdown(false);
-      setIcon(false);
-    }
-  });
+  // useOnClickOutside(dropRef, () => {
+  //   if (dropdown) {
+  //     setDropdown(false);
+  //     setIcon(false);
+  //   }
+  // });
 
-  useOnClickOutside(inputRef, () => {
-    if (searchIcon) {
-      setSearchIcon(false);
-    }
-  });
+  // useOnClickOutside(inputRef, () => {
+  //   if (searchIcon) {
+  //     setSearchIcon(false);
+  //   }
+  // });
 
   const clickHandler = () => {
     setDropdown(!dropdown);
@@ -86,6 +86,10 @@ function Navbar() {
       <Hamburger clickMe={menuHandler} />
       <SideContainer ref={sideRef} />
       <h1 id="logo">alldaytrends</h1>
+      <span></span>
+      <h3 className='links'>Login</h3>
+      <h3 className='links'>About Us</h3>
+      <h3 className='links'>Contact Us</h3>
       <h1 onClick={clickHandler} className="country">
         <span className="countryName">
           {" "}
@@ -119,17 +123,6 @@ function Navbar() {
         }}
         ref={dropRef}
       >
-        {/* <div className="searchContainer">
-          <BiSearchAlt className="searchIcon" />
-          <input
-            ref={inputRef}
-            type="text"
-            value={countryInput}
-            onChange={(e) => setCountryInput(e.target.value)}
-            className="searchBox"
-            placeholder="Search Country..."
-          />
-        </div> */}
         {filterCountries.map((d) => {
           return (
             <li
@@ -143,6 +136,17 @@ function Navbar() {
           );
         })}
       </ul>
+      {/* <div className="searchContainer">
+          <BiSearchAlt className="searchIcon" />
+          <input
+            ref={inputRef}
+            type="text"
+            value={countryInput}
+            onChange={(e) => setCountryInput(e.target.value)}
+            className="searchBox"
+            placeholder="Search Country..."
+          />
+        </div> */}
     </nav>
   );
 }

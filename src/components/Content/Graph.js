@@ -6,9 +6,9 @@ import {
   XAxis,
   YAxis,
   Label,
-  CartesianGrid,
   Tooltip,
   LabelList,
+  ResponsiveContainer,
 } from "recharts";
 import { GlobalContext } from "../../global";
 
@@ -32,31 +32,34 @@ function Graph() {
   if (selectedData) {
     return (
       <div id="graph-container">
-        <BarChart
-          width={650}
-          height={350}
-          data={selectedData.trends}
-          margin={{
-            top: 30,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-          className="barchart"
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Label dataKey={selectedTime} />
-          <Bar
-            dataKey="tweet_volume"
-            fill="#2f3640"
-            background={{ fill: "#03fcc2" }}
-            minPointSize={25}
-          />
-          <LabelList dataKey="name" position="Top" angle="90" />
-        </BarChart>
+        <ResponsiveContainer width="95%" height="99%">
+          <BarChart
+            data={selectedData.trends}
+            margin={{
+              top: 30,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+            className="barchart"
+          >
+            <XAxis
+              dataKey="name"
+              padding={{ left: 20, right: 20 }}
+              hide={true}
+            />
+            <YAxis hide={true} />
+            <Tooltip />
+            <Label dataKey={selectedTime} />
+            <Bar
+              dataKey="tweet_volume"
+              fill="#2f3640"
+              background={{ fill: "#03fcc2" }}
+              minPointSize={20}
+            />
+            <LabelList dataKey="name" position="Top" angle="90" />
+          </BarChart>
+        </ResponsiveContainer>
       </div>
     );
   } else {
