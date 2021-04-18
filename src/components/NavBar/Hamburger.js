@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./Hamburger.css";
-import useOnClickOutside from "./useOnClickOutside";
+import useClickOutside from "../useClickOutside/useClickOutside";
 
 function Hamburger(props) {
   const [hamb, setHamb] = useState(false);
@@ -11,7 +11,7 @@ function Hamburger(props) {
     props.clickMe();
   };
 
-  useOnClickOutside(hambRef, () => {
+  useClickOutside(hambRef, () => {
     if (hamb) {
       setHamb(false);
     }

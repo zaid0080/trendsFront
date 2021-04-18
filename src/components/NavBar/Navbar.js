@@ -7,7 +7,7 @@ import { GlobalContext } from "../../global";
 import SideContainer from "./SideContainer";
 import Hamburger from "./Hamburger";
 
-const woeidList = require("../Header/country.json");
+const woeidList = require("../Header/countrys.json");
 
 function Navbar() {
   const [dropdown, setDropdown] = useState(false);
@@ -29,6 +29,9 @@ function Navbar() {
   const iconColor = searchIcon ? "black" : "white";
 
   const [, setWoeid, ,] = useContext(GlobalContext);
+
+  // let arr =  woeidList.filter( d => d.placeType.name === "Country" && d.parentid === 1)
+  // console.log(arr)
 
   //using a custom hook to capture the click outside the component using useRef
   // useOnClickOutside(dropRef, () => {
@@ -72,12 +75,13 @@ function Navbar() {
       woeidList
         .filter(
           (d) =>
-            d.placeType.name === "Country" || d.placeType.name === "Supername"
+            d.placeType.name === "Country" || d.placeType.name === "Supername" || d.placeType.name === "Town"
         )
         .filter((d) =>
           d.name.toLowerCase().includes(countryInput.toLowerCase())
         )
         .sort()
+
     );
   }, [countryInput]);
 
@@ -131,7 +135,9 @@ function Navbar() {
               value={d.woeid}
               onClick={listItemHandler}
             >
-              {d.name}
+              <ul>
+                <li>{d.name}</li>
+              </ul>
             </li>
           );
         })}
