@@ -367,3 +367,6 @@ span .line-icon {
   position: relative;
   left: 5px;
 }
+.cities{
+  display:block;
+}

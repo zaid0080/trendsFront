@@ -3,7 +3,7 @@ import React, { useState, createContext } from "react";
 export const GlobalContext = createContext();
 
 export const GlobalProvider =  props => {
-    const [woeid,setWoeid] = useState(1);
+    const [woeid,setWoeid] = useState(727232);
     const [data,setData] = useState([]);
     const [selectedTime,setSelectedTime] = useState();
     const [selectedData,setSelectedData] = useState();

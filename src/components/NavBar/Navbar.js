@@ -4,13 +4,28 @@ import { BiSearchAlt } from "react-icons/bi";
 import useOnClickOutside from "./useOnClickOutside";
 import { GlobalContext } from "../../global";
 
-const woeidList = require("../Header/country.json");
+const woeidList = require("../Header/countrys.json");
+
+
+const woeidListTree = {};
+
+woeidList.forEach((d)=>{
+  if(woeidListTree[d.country] === undefined){
+    woeidListTree[d.country] = [];
+  }else {
+      if(d.placeType.name === 'Town'){
+        woeidListTree[d.country].push(d);
+      }
+  }
+})
+
+window.t = woeidListTree;
 
 function Navbar() {
   const [dropdown, setDropdown] = useState(false);
   const [icon, setIcon] = useState(false);
   const [countryInput, setCountryInput] = useState("");
-  const [filterCountries, setFilterCountries] = useState([]);
+  const [filterCountries, setFilterCountries] = useState({});
   const [countryName, setCountryName] = useState("Worldwide");
   // const [filterCities, setFilterCities] = useState([]);
   const inputRef = useRef(null); //reference for input box
@@ -42,17 +57,7 @@ function Navbar() {
   };
 
   useEffect(() => {
-    setFilterCountries(
-      woeidList
-        .filter(
-          (d) =>
-            d.placeType.name === "Country" || d.placeType.name === "Supername"
-        )
-        .filter((d) =>
-          d.name.toLowerCase().includes(countryInput.toLowerCase())
-        )
-        .sort()
-    );
+    setFilterCountries( woeidListTree);
   }, [countryInput]);
 
   return (
@@ -89,18 +94,23 @@ function Navbar() {
             placeholder="Search Country..."
           />
         </div>
-        {filterCountries.map((d) => {
-          return (
-            <li
-              className="list-items"
-              key={d.woeid}
-              value={d.woeid}
-              onClick={listItemHandler}
-            >
-              {d.name}
-            </li>
-          );
-        })}
+        {
+          // console.log(Object.keys(woeidListTree))
+          Object.keys(woeidListTree).map((d) =>{
+            return (
+              <div className="cities">
+              <h5 >{d}</h5>
+              <ul>
+              {
+                woeidListTree[d].map((l) => {
+                  return <li>{l.name}</li>
+                })
+              }
+              </ul>
+              </div>
+            )
+          })
+        }
       </ul>
     </nav>
   );
