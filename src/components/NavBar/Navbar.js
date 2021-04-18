@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { IoMdArrowDropright } from "react-icons/io";
 import { MdSearch } from "react-icons/md";
-import { BiSearchAlt } from "react-icons/bi";
-import useOnClickOutside from "../useClickOutside/useOnClickOutside";
+//import { BiSearchAlt } from "react-icons/bi";
+//import useOnClickOutside from "../useClickOutside/useOnClickOutside";
 import { GlobalContext } from "../../global";
 import SideContainer from "./SideContainer";
 import Hamburger from "./Hamburger";
@@ -89,7 +89,6 @@ function Navbar() {
     setFilterCountries( woeidListTree );
   }, [countryInput]);
 
-  console.log(woeidListTree);
   return (
     <nav className="nav">
       <Hamburger clickMe={menuHandler} />
