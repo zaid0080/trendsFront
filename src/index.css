@@ -858,3 +858,6 @@ h1 span::before{
     left: 5px;
   }   */
 }
+.cities{
+  display:block;
+}

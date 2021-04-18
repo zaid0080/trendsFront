@@ -8,13 +8,31 @@ import SideContainer from "./SideContainer";
 import Hamburger from "./Hamburger";
 
 const woeidList = require("../Header/countrys.json");
+<<<<<<< HEAD
+=======
+
+
+const woeidListTree = {};
+
+woeidList.forEach((d)=>{
+  if(woeidListTree[d.country] === undefined){
+    woeidListTree[d.country] = [];
+  }else {
+      if(d.placeType.name === 'Town'){
+        woeidListTree[d.country].push(d);
+      }
+  }
+})
+
+window.t = woeidListTree;
+>>>>>>> a7c20371fcade671cb8feb74e79c949b2a9f2591
 
 function Navbar() {
   const [dropdown, setDropdown] = useState(false);
   const [icon, setIcon] = useState(false);
   const [searchIcon, setSearchIcon] = useState(false);
   const [countryInput, setCountryInput] = useState("");
-  const [filterCountries, setFilterCountries] = useState([]);
+  const [filterCountries, setFilterCountries] = useState({});
   const [countryName, setCountryName] = useState("Worldwide");
   // const [filterCities, setFilterCities] = useState([]);
   const inputRef = useRef(null); //reference for input box
@@ -71,6 +89,7 @@ function Navbar() {
   };
 
   useEffect(() => {
+<<<<<<< HEAD
     setFilterCountries(
       woeidList
         .filter(
@@ -83,6 +102,9 @@ function Navbar() {
         .sort()
 
     );
+=======
+    setFilterCountries( woeidListTree);
+>>>>>>> a7c20371fcade671cb8feb74e79c949b2a9f2591
   }, [countryInput]);
 
   return (
@@ -127,6 +149,7 @@ function Navbar() {
         }}
         ref={dropRef}
       >
+<<<<<<< HEAD
         {filterCountries.map((d) => {
           return (
             <li
@@ -141,6 +164,36 @@ function Navbar() {
             </li>
           );
         })}
+=======
+        <div className="searchContainer">
+          <BiSearchAlt className="searchIcon" />
+          <input
+            ref={inputRef}
+            type="text"
+            value={countryInput}
+            onChange={(e) => setCountryInput(e.target.value)}
+            className="searchBox"
+            placeholder="Search Country..."
+          />
+        </div>
+        {
+          // console.log(Object.keys(woeidListTree))
+          Object.keys(woeidListTree).map((d) =>{
+            return (
+              <div className="cities">
+              <h5 >{d}</h5>
+              <ul>
+              {
+                woeidListTree[d].map((l) => {
+                  return <li>{l.name}</li>
+                })
+              }
+              </ul>
+              </div>
+            )
+          })
+        }
+>>>>>>> a7c20371fcade671cb8feb74e79c949b2a9f2591
       </ul>
       {/* <div className="searchContainer">
           <BiSearchAlt className="searchIcon" />
