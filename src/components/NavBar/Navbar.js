@@ -89,6 +89,7 @@ function Navbar() {
     setFilterCountries( woeidListTree );
   }, [countryInput]);
 
+  console.log(woeidListTree);
   return (
     <nav className="nav">
       <Hamburger clickMe={menuHandler} />
@@ -145,10 +146,11 @@ function Navbar() {
         </div> */}
         {
           //console.log(Object.keys(woeidListTree))
-          Object.keys(woeidListTree).map((d) =>{
+          Object.keys(woeidListTree).sort().map((d) =>{
             return (
               <div className="cities">
               <h2 className='countriesNames'>{d}</h2>
+              {/* <span></span> */}
               <hr />
               <ul className = "citiesNames">
               {
