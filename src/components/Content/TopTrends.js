@@ -8,11 +8,11 @@ function TopTrends() {
   if (selectedData) {
     return (
       <div id="Trends-container">
-        <h2 className="heading">Top Trends</h2>
+        {/* <h2 className="heading">Top Trends</h2> */}
         <ol className="ol-list">
           {[selectedData].map((trend) =>
             trend.trends.map((t) => {
-              return <li key={t.index}>{t.name}</li>;
+              return <li key={t.index}>{t.name} <span>{t.tweet_volume}</span></li>;
             })
           )}
         </ol>

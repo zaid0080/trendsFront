@@ -1,10 +1,12 @@
 import React from 'react';
-import { FaTwitter } from 'react-icons/fa';
+//import { FaTwitter } from 'react-icons/fa';
+import Social from './Social.svg';
 
 function Header() {
     return (
         <div id='header-container'>
-            <h3><span><FaTwitter /></span>The latest twitter trends in one place</h3>
+            <h1 className='tag-line'>Know<span>What's</span><span>Trending?</span></h1>
+            <img src={Social} alt='Social' className='head-image' />
         </div>
     )
 }

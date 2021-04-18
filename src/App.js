@@ -1,5 +1,5 @@
-import './App.css';
-import Navbar from './components/NavBar/Navbar.js';
+import "./App.css";
+import Navbar from "./components/NavBar/Navbar.js";
 import LandingPage from "./components/LandingPage/index";
 import Footer from './components/Footer/Footer.js'
 import { GlobalProvider } from './global';
@@ -13,7 +13,7 @@ function App() {
       <Footer />
     </div >
     </GlobalProvider>
-    )
+  );
 }
 
 export default App;
