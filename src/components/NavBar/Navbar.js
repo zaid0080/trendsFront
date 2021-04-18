@@ -9,13 +9,13 @@ const woeidList = require("../Header/countrys.json");
 
 const woeidListTree = {};
 
+
 woeidList.forEach((d)=>{
   if(woeidListTree[d.country] === undefined){
     woeidListTree[d.country] = [];
+    woeidListTree[d.country].push(d);
   }else {
-      if(d.placeType.name === 'Town'){
-        woeidListTree[d.country].push(d);
-      }
+    woeidListTree[d.country].push(d);
   }
 })
 
@@ -94,23 +94,24 @@ function Navbar() {
             placeholder="Search Country..."
           />
         </div>
-        {
-          // console.log(Object.keys(woeidListTree))
-          Object.keys(woeidListTree).map((d) =>{
-            return (
-              <div className="cities">
-              <h5 >{d}</h5>
-              <ul>
-              {
-                woeidListTree[d].map((l) => {
-                  return <li>{l.name}</li>
-                })
-              }
-              </ul>
-              </div>
-            )
-          })
-        }
+        <ul className="location_menu_country_list">
+          {  
+            Object.keys(woeidListTree).map((d) =>{ 
+              return (
+                <li>
+                  <h5>{d}</h5>
+                  <ul className="location_menu_city_list">
+                    {
+                      woeidListTree[d].map((l) => {
+                        return <li>{l.name}</li>
+                      })
+                    }
+                  </ul>
+                </li>
+              )
+            })
+          }
+        </ul>
       </ul>
     </nav>
   );

@@ -269,16 +269,13 @@ h4:hover {
 }
 
 .list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-areas: "header header header";
   list-style-type: none;
   position: absolute;
   top: 70px;
   right: 0;
   background-color: #2f3640;
   z-index: 1;
-  width: 50vw;
+  width: 100vw;
   /* transform: translateX(0); */
   transition: width 0.5s ease-in;
 }
@@ -367,6 +364,22 @@ span .line-icon {
   position: relative;
   left: 5px;
 }
-.cities{
-  display:block;
+.location_menu_country_list {
+  list-style-type: none;
+  padding:12px 24px;
+}
+.location_menu_country_list > li{
+  padding:10px;
+  overflow:hidden;
+  border-bottom: 1px solid #bdbdbd;
+}
+h5{
+  text-transform: uppercase;
+  font-size:.8rem;
+}
+
+.location_menu_city_list > li{
+  display: inline-block;
+  margin-right: 1rem;
+  line-height: 1.5em;
 }
