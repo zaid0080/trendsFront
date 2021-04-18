@@ -358,7 +358,7 @@ h1 span::before{
   background-color: #00a2f5;
 }
 
-@media all and (min-width : 768px){
+@media all and (min-width : 768px) {
   .nav {
     background-color: #00a2f5;
     grid-area: navbar;
@@ -516,11 +516,45 @@ h1 span::before{
     top: 70px;
     right: 0;
     list-style-type: none;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    /* display: grid; */
+    /* grid-template-columns: repeat(3, 1fr); */
     /* grid-template-areas: "list list list"; */
     width: 100vw;
     background-color: #00a2f5;
+  }
+
+  div.cities{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .countriesNames {
+    display: inline-block;
+    margin-left: 30px;
+    cursor: pointer;
+  }
+
+  ul.citiesNames {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 35px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .citiesNames>li{
+    margin: 5px;
+    cursor: pointer;
+  }
+
+  div>hr{
+    width: 80vw;
   }
 
   .list {
