@@ -9,20 +9,18 @@ import Hamburger from "./Hamburger";
 
 const woeidList = require("../Header/countrys.json");
 
-
 const woeidListTree = {};
 
-woeidList.forEach((d)=>{
-  if(woeidListTree[d.country] === undefined){
+woeidList.forEach((d) => {
+  if (woeidListTree[d.country] === undefined) {
     woeidListTree[d.country] = [];
-  }else {
-      if(d.placeType.name === 'Town'){
-        woeidListTree[d.country].push(d);
-      }
+    woeidListTree[d.country].push(d);
+  } else {
+    woeidListTree[d.country].push(d);
   }
-})
+});
 
-window.t = woeidListTree;
+
 
 function Navbar() {
   const [dropdown, setDropdown] = useState(false);
@@ -31,14 +29,12 @@ function Navbar() {
   const [countryInput, setCountryInput] = useState("");
   const [filterCountries, setFilterCountries] = useState({});
   const [countryName, setCountryName] = useState("Worldwide");
-  // const [filterCities, setFilterCities] = useState([]);
   const inputRef = useRef(null); //reference for input box
   const dropRef = useRef(null); //reference for onclick outside
   const sideRef = useRef(null);
-  const inputBoxRef = useRef(null);
+
 
   const dropClass = dropdown ? "list" : "nolist";
-  const iconClass = icon ? "rotateicon" : "norotate";
   const searchClass = searchIcon ? "showSearch" : "noSearch";
   const placeHold = searchIcon ? "Search Country..." : " ";
   const iconColor = searchIcon ? "black" : "white";
@@ -71,7 +67,7 @@ function Navbar() {
   const searchHandler = () => {
     setSearchIcon(!searchIcon);
     setDropdown(!dropdown);
-    inputBoxRef.current.focus();
+    // inputBoxRef.current.focus();
   };
 
   const menuHandler = () => {
@@ -79,14 +75,20 @@ function Navbar() {
     console.log("it's working");
   };
 
+  const handleChange = (e) => {
+    setCountryInput(e.target.value);
+    console.log(e.target.value);
+  }
+
   const listItemHandler = (e) => {
     setCountryName(e.target.innerText);
     setDropdown(!dropdown);
     // console.log(countryName);
-  };
+  }; 
 
   useEffect(() => {
-    setFilterCountries( woeidListTree );
+    setFilterCountries(woeidListTree);
+    // setFilterCountries(woeidListTree[d].filter((l) => l.name.toLowerCase().includes(countryInput.toLowerCase())  ));
   }, [countryInput]);
 
   return (
@@ -95,22 +97,16 @@ function Navbar() {
       <SideContainer ref={sideRef} />
       <h1 id="logo">alldaytrends</h1>
       <span></span>
-      <h3 className='links'>Login</h3>
-      <h3 className='links'>About Us</h3>
-      <h3 className='links'>Contact Us</h3>
-      <h1 onClick={clickHandler} className="country">
-        <span className="countryName">
-          {" "}
-          {countryName}
-          <IoMdArrowDropright id="icondrop" className={iconClass} />
-        </span>
-      </h1>
+      <h3 className="links">Login</h3>
+      <h3 className="links">About Us</h3>
+      <h3 className="links">Contact Us</h3>
       <div className="search-container">
         <input
-          ref={inputBoxRef}
+          ref={inputRef}
           type="text"
+          value={countryInput}
           className={searchClass}
-          onChange = {(e) => setCountryInput(e.target.value)}
+          onChange={handleChange}
           placeholder={placeHold}
         />
         <MdSearch
@@ -118,62 +114,51 @@ function Navbar() {
           className={iconColor}
           onClick={searchHandler}
         />
-      </div>
 
-      <ul
-        className={`ul-list-items ${dropClass}`}
-        onClick={(e) => {
-          console.log(e.target.value)
-          const woeidValue = e.target.value;
-          if(woeidValue){
-            setWoeid(woeidValue);
+        <ul
+          className={`ul-list-items ${dropClass}`}
+          onClick={(e) => {
+            console.log(e.target.value);
+            const woeidValue = e.target.value;
+            if (woeidValue) {
+              setWoeid(woeidValue);
+            }
+            setIcon(false);
+          }}
+          ref={dropRef}
+        >
+          {/* <div className="searchContainer">
+          <BiSearchAlt className="searchIcon" />
+          <input
+            ref={inputRef}
+            type="text"
+            value={countryInput}
+            onChange={(e) => setCountryInput(e.target.value)}
+            className="searchBox"
+            placeholder="Search Country..."
+          />
+        </div> */}
+          {
+            //console.log(Object.keys(woeidListTree))
+            Object.keys(woeidListTree)
+              .sort()
+              .map((d) => {
+                return (
+                  <div className="cities">
+                    <h2 className="countriesNames">{d}</h2>
+                    {/* <span></span> */}
+                    <hr />
+                    <ul className="citiesNames">
+                      {woeidListTree[d].map((l) => {
+                        return <li>{l.name}</li>;
+                      })}
+                    </ul>
+                  </div>
+                );
+              })
           }
-          setIcon(false);
-        }}
-        ref={dropRef}
-      >
-        {/* <div className="searchContainer">
-          <BiSearchAlt className="searchIcon" />
-          <input
-            ref={inputRef}
-            type="text"
-            value={countryInput}
-            onChange={(e) => setCountryInput(e.target.value)}
-            className="searchBox"
-            placeholder="Search Country..."
-          />
-        </div> */}
-        {
-          //console.log(Object.keys(woeidListTree))
-          Object.keys(woeidListTree).sort().map((d) =>{
-            return (
-              <div className="cities">
-              <h2 className='countriesNames'>{d}</h2>
-              {/* <span></span> */}
-              <hr />
-              <ul className = "citiesNames">
-              {
-                woeidListTree[d].map((l) => {
-                  return <li>{l.name}</li>
-                })
-              }
-              </ul>
-              </div>
-            )
-          })
-        }
-      </ul>
-      {/* <div className="searchContainer">
-          <BiSearchAlt className="searchIcon" />
-          <input
-            ref={inputRef}
-            type="text"
-            value={countryInput}
-            onChange={(e) => setCountryInput(e.target.value)}
-            className="searchBox"
-            placeholder="Search Country..."
-          />
-        </div> */}
+        </ul>
+      </div>
     </nav>
   );
 }

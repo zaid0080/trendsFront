@@ -15,6 +15,8 @@ body, html {
   /* height: 100%;
   width: 100%; */
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 #body-container{
@@ -26,6 +28,7 @@ body, html {
 
 #landing-page {
   flex: 1 0 auto;
+  min-height: 100vh;
 }
 
 #foot-container {
@@ -42,7 +45,7 @@ body, html {
 }
 
 nav > #logo {
-  transform: translateX(50%);
+  transform: translateX(45%);
 }
 
 h3.links{
@@ -131,7 +134,7 @@ div > .showSearch {
   display: block;
   border: 1px solid #000;
   height: 30px;
-  width: 200px;
+  width: 150px;
   margin-right: 8px;
   transition: width 0.5s;
   padding: 10px;
@@ -174,10 +177,10 @@ div > .noSearch {
 } */
 
 .showMenu {
-  height: 100vh;
+  height: 110vh;
   width: 100vw;
   z-index: 1;
-  transition: clip-path 1s ease-out;
+  transition: clip-path 0.5s ease-out;
   clip-path: circle(620px at 10% 10%);
   -webkit-clip-path: circle(620px at 10% 10%);
 }
@@ -186,7 +189,7 @@ div > .noSearch {
   left: -80px;
   height: 0;
   width: 0;
-  transition: all 1s ease-out;
+  transition: all 0.5s ease-out;
   clip-path: circle(100px at 10% 10%);
   -webkit-clip-path: circle(100px at 10% -10%);
 }
@@ -202,28 +205,66 @@ div > .noSearch {
 .ul-list-items {
   position: absolute;
   color: #fff;
+  overflow: hidden;
   top: 50px;
   right:0 ;
   list-style-type: none;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  /* grid-template-areas: "list list list"; */
+  display: flex;
+  flex-direction: column;
   width: 100vw;
   background-color: #00a2f5;
 }
 
-
 .list {
   z-index: 1;
-  transition: all 1s ease-out;
+  transition: all 0.4s ease-out;
 }
 
 .nolist {
   position: absolute;
   top: 50px;
   /* right: -50px; */
-  transition: width 0.5s ease-in-out;
+  transition: width 0.4s ease-in-out;
   width: 0;
+}
+
+div.cities{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+h2.countriesNames {
+  display: inline-block;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+h2.countriesNames:hover{
+  transform: scale(1.2);
+}
+ul.citiesNames {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 35px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.citiesNames>li{
+  margin: 8px;
+  cursor: pointer;
+}
+
+.citiesNames>li:hover{
+  transform: scale(1.2);
+}
+
+div>hr{
+  width: 80vw;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 -5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .list-items {
@@ -372,6 +413,10 @@ h1 span::before{
     letter-spacing: 1.8px;
   }
 
+  nav > #logo {
+    transform: translateX(70%);
+  }
+
   div> #searchIcon {
     margin-right : 6px; 
     margin-top: 3px;
@@ -383,6 +428,10 @@ h1 span::before{
     right: 10px;
   }
 
+  div > .showSearch {
+    width: 200px;
+  }
+
   .ul-list-items {
     top: 60px;
     width: 100vw;
@@ -390,12 +439,13 @@ h1 span::before{
 
   .list { 
     z-index: 1;
-    transition: all 1s ease-out;
+    transition: width 0.5s ease-out;
   }
 
   .nolist {
     top: 60px;
     width: 0;
+    transition: width 0.5s ease-out;
   }
 
   #header-container{
@@ -426,24 +476,13 @@ h1 span::before{
     font-family: "Raleway", sans-serif;
     font-family: "Roboto", sans-serif;
   }
-  
-  /* #body-container {
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas: "navbar navbar"
-                          "heading icon"
-                          "time time"
-                          "hash hash"
-                          "footer footer";
-  } */
 
-  /* #body-container{
+  #body-container{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-  } */
+  }
   
 
   .nav {
@@ -507,7 +546,6 @@ h1 span::before{
     height: 35px;
     outline: none;
     border-radius: 18px;
-    /* margin-right: 8px; */
   }
 
   .ul-list-items {
@@ -517,11 +555,7 @@ h1 span::before{
     right: 0;
     list-style-type: none;
     display: flex;
-    /* flex-wrap: wrap; */
     flex-direction: column;
-    /* display: grid; */
-    /* grid-template-columns: repeat(3, 1fr); */
-    /* grid-template-areas: "list list list"; */
     width: 100vw;
     background-color: #00a2f5;
   }
@@ -541,14 +575,7 @@ h1 span::before{
 
   h2.countriesNames:hover{
     transform: scale(1.2);
-    /* color: #000; */
   }
-  /* div>span{
-    border-bottom: 1px solid #fff;
-    width: 80vw;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 -5px 10px rgba(0, 0, 0, 0.1);
-  } */
-
   ul.citiesNames {
     list-style-type: none;
     display: flex;
@@ -565,7 +592,6 @@ h1 span::before{
 
   .citiesNames>li:hover{
     transform: scale(1.2);
-    /* color: #000; */
   }
 
   div>hr{
@@ -580,7 +606,7 @@ h1 span::before{
 
   .nolist {
     position: absolute;
-    top: 50px;
+    top: 70px;
     right: -50px;
     transition: width 0.5s ease-in-out;
     width: 0;
@@ -908,6 +934,22 @@ h1 span::before{
     left: 5px;
   }   */
 }
-.cities{
-  display:block;
+.location_menu_country_list {
+  list-style-type: none;
+  padding:12px 24px;
+}
+.location_menu_country_list > li{
+  padding:10px;
+  overflow:hidden;
+  border-bottom: 1px solid #bdbdbd;
+}
+h5{
+  text-transform: uppercase;
+  font-size:.8rem;
+}
+
+.location_menu_city_list > li{
+  display: inline-block;
+  margin-right: 1rem;
+  line-height: 1.5em;
 }
