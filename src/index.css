@@ -35,6 +35,12 @@ body, html {
   flex-shrink: 0;
 }
 
+#foot-container > .foot-links {
+  cursor: pointer;
+  text-decoration: none;
+  color: #f1f1f1;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -45,10 +51,14 @@ body, html {
 }
 
 nav > #logo {
-  transform: translateX(45%);
+  transform: translateX(25%);
+  text-decoration: none;
+  color: #f1f1f1;
+  font-size: 25px;
+  /* font-weight: 600; */
 }
 
-h3.links{
+.links{
   display: none;
 }
 
@@ -144,12 +154,12 @@ div > .showSearch {
 
 div > .noSearch {
   width: 0;
-  /* transition: width 0.5s; */
+  transition: width 0.5s;
   border: none;
   height: 30px;
   outline: none;
   border-radius: 15px;
-  margin-right: 22px; 
+  margin-right: 11px; 
   
 }
 
@@ -389,14 +399,13 @@ h1 span::before{
   transform: scale(1.1);
 }
 
-
 #foot-container{
   display: flex;
   justify-content: space-around;
   align-items: center;
   color: #fff;
   height: 50px;
-  background-color: #00a2f5;
+  background-color: #343a40;
 }
 
 @media all and (min-width : 768px) {
@@ -504,12 +513,21 @@ h1 span::before{
   
   .nav > #logo {
     font-size: 25px;
-    cursor: pointer;
+    color: #f1f1f1;
+    text-decoration: none;
+  }
+  
+  .links {
+    text-decoration: none;
+    margin: 0 50px;
+    display: block;
+    color: #f1f1f1;
   }
   
   h3.links{
     margin: 0 50px;
     display: block;
+    cursor: pointer;
   }
   
   .nav>span {
@@ -641,8 +659,12 @@ h1 span::before{
     align-items: center;
     color: #fff;
     height: 70px;
-    background-color: #00a2f5;
+    background-color: #343a40;
   }
+
+  /* #foot-container > p {
+    cursor: pointer;
+  } */
 
   /* #header-container {
     width: 55vw;

@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+
 
 function Footer() {
     return (
         <div id='foot-container'>
-            <p>About Us</p>    
-            <p>Contact Us</p>   
+            <Link to="/aboutus" className='foot-links'>About</Link>
+            <Link to="/contactus" className='foot-links'>Contact</Link>  
         </div>
     )
 }

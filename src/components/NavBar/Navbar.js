@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import { IoMdArrowDropright } from "react-icons/io";
 import { MdSearch } from "react-icons/md";
-//import { BiSearchAlt } from "react-icons/bi";
-//import useOnClickOutside from "../useClickOutside/useOnClickOutside";
+import useOnClickOutside from "../useClickOutside/useOnClickOutside";
 import { GlobalContext } from "../../global";
 import SideContainer from "./SideContainer";
 import Hamburger from "./Hamburger";
+import { Link } from 'react-router-dom';
 
 const woeidList = require("../Header/countrys.json");
 
@@ -20,19 +19,15 @@ woeidList.forEach((d) => {
   }
 });
 
-
-
 function Navbar() {
   const [dropdown, setDropdown] = useState(false);
-  const [icon, setIcon] = useState(false);
   const [searchIcon, setSearchIcon] = useState(false);
   const [countryInput, setCountryInput] = useState("");
   const [filterCountries, setFilterCountries] = useState({});
-  const [countryName, setCountryName] = useState("Worldwide");
+  // const [countryName, setCountryName] = useState("Worldwide");
   const inputRef = useRef(null); //reference for input box
   const dropRef = useRef(null); //reference for onclick outside
   const sideRef = useRef(null);
-
 
   const dropClass = dropdown ? "list" : "nolist";
   const searchClass = searchIcon ? "showSearch" : "noSearch";
@@ -52,22 +47,23 @@ function Navbar() {
   //   }
   // });
 
-  // useOnClickOutside(inputRef, () => {
-  //   if (searchIcon) {
-  //     setSearchIcon(false);
-  //   }
-  // });
+  useOnClickOutside(inputRef, () => {
+    if (searchIcon) {
+      setSearchIcon(false);
+      setDropdown(false);
+    }
+  });
 
-  const clickHandler = () => {
-    setDropdown(!dropdown);
-    setIcon(!icon);
-    //inputRef.current.focus();
-  };
+  // const clickHandler = () => {
+  //   setDropdown(!dropdown);
+  //   setIcon(!icon);
+  //   inputRef.current.focus();
+  // };
 
   const searchHandler = () => {
     setSearchIcon(!searchIcon);
     setDropdown(!dropdown);
-    // inputBoxRef.current.focus();
+    inputRef.current.focus();
   };
 
   const menuHandler = () => {
@@ -78,28 +74,25 @@ function Navbar() {
   const handleChange = (e) => {
     setCountryInput(e.target.value);
     console.log(e.target.value);
-  }
-
-  const listItemHandler = (e) => {
-    setCountryName(e.target.innerText);
-    setDropdown(!dropdown);
-    // console.log(countryName);
-  }; 
+  };
 
   useEffect(() => {
-    setFilterCountries(woeidListTree);
+    // setFilterCountries(woeidListTree);
     // setFilterCountries(woeidListTree[d].filter((l) => l.name.toLowerCase().includes(countryInput.toLowerCase())  ));
-  }, [countryInput]);
+  }, []);
 
   return (
     <nav className="nav">
       <Hamburger clickMe={menuHandler} />
       <SideContainer ref={sideRef} />
-      <h1 id="logo">alldaytrends</h1>
+      <Link to="/" id="logo">alldaytrends.</Link>
       <span></span>
-      <h3 className="links">Login</h3>
-      <h3 className="links">About Us</h3>
-      <h3 className="links">Contact Us</h3>
+      <Link to="/aboutus" className="links">About</Link>
+
+      <a href="https://twitter.com/login" target="_blank" rel="noopener noreferrer"  className="links">Login</a>
+
+      <Link to = "contactus" className="links">Contact</Link>
+
       <div className="search-container">
         <input
           ref={inputRef}
@@ -118,14 +111,13 @@ function Navbar() {
         <ul
           className={`ul-list-items ${dropClass}`}
           onClick={(e) => {
-            console.log(e.target.value);
             const woeidValue = e.target.value;
             if (woeidValue) {
               setWoeid(woeidValue);
             }
-            setIcon(false);
           }}
-          ref={dropRef}
+          // ref={dropRef}
+          ref = {inputRef}
         >
           {/* <div className="searchContainer">
           <BiSearchAlt className="searchIcon" />
