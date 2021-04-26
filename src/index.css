@@ -659,6 +659,19 @@ h1 span::before{
     width: 350px; 
   }
 
+  #time-container {
+    margin: 30px 15px;
+  }
+
+  #time-container>.list-item {
+    font-size: 1.4em;
+    padding: 0 10px;
+  }
+
+  #time-container > ul::-webkit-scrollbar {
+    height: 13px;
+  }
+
   #foot-container{
     display: flex;
     justify-content: space-around;

@@ -27,9 +27,7 @@ function Navbar() {
   const [searchIcon, setSearchIcon] = useState(false);
   const [countryInput, setCountryInput] = useState("");
   const [filterCountries, setFilterCountries] = useState(woeidList);
-  // const [countryName, setCountryName] = useState("Worldwide");
   const inputRef = useRef(null); //reference for input box
-  const dropRef = useRef(null); //reference for onclick outside
   const sideRef = useRef(null);
 
   const dropClass = dropdown ? "list" : "nolist";
@@ -39,29 +37,12 @@ function Navbar() {
 
   const [, setWoeid, ,] = useContext(GlobalContext);
 
-  // let arr =  woeidList.filter( d => d.placeType.name === "Country" && d.parentid === 1)
-  // console.log(arr)
-
-  //using a custom hook to capture the click outside the component using useRef
-  // useOnClickOutside(dropRef, () => {
-  //   if (dropdown) {
-  //     setDropdown(false);
-  //     setIcon(false);
-  //   }
-  // });
-
   useOnClickOutside(inputRef, () => {
     if (searchIcon) {
       setSearchIcon(false);
       setDropdown(false);
     }
   });
-
-  // const clickHandler = () => {
-  //   setDropdown(!dropdown);
-  //   setIcon(!icon);
-  //   inputRef.current.focus();
-  // };
 
   const searchHandler = () => {
     setSearchIcon(!searchIcon);
@@ -74,21 +55,19 @@ function Navbar() {
     console.log("it's working");
   };
 
-  const handleChange = (e) => {
-    if(e.target.value === ''){
-      setCountryInput('');
-    }
+
+  const handleChange =  e => {
     setCountryInput(e.target.value);
-    console.log(e.target.value);
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     setFilterCountries(
       woeidList
         .filter(d => d.name.toLowerCase().includes( countryInput.toLowerCase() ) ) 
         .sort())
-    createTree(filterCountries);
   }, [countryInput]);
+
+  createTree(filterCountries);
 
   return (
     <nav className="nav">
@@ -119,22 +98,9 @@ function Navbar() {
 
         <ul
           className={`ul-list-items ${dropClass}`}
-          // ref={dropRef}
-          //ref = {inputRef}
         >
-          {/* <div className="searchContainer">
-          <BiSearchAlt className="searchIcon" />
-          <input
-            ref={inputRef}
-            type="text"
-            value={countryInput}
-            onChange={(e) => setCountryInput(e.target.value)}
-            className="searchBox"
-            placeholder="Search Country..."
-          />
-        </div> */}
+  
           {
-            //console.log(Object.keys(woeidListTree))
             Object.keys(woeidListTree)
               .sort()
               .map((d) => {
