@@ -110,7 +110,7 @@ function Navbar() {
                     <hr />
                     <ul className="citiesNames">
                       {woeidListTree[d].map((l) => {
-                        return <li value={l.woeid} onClick={(e) => {
+                        return <li value={l.woeid} key={l.woeid} onClick={(e) => {
                           const woeidValue = e.target.value;
                           console.log(e.target.value)
                           if (woeidValue) {
