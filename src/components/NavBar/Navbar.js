@@ -8,22 +8,25 @@ import { Link } from 'react-router-dom';
 
 const woeidList = require("../Header/countrys.json");
 
-const woeidListTree = {};
+let woeidListTree = {};
 
-woeidList.forEach((d) => {
-  if (woeidListTree[d.country] === undefined) {
-    woeidListTree[d.country] = [];
-    woeidListTree[d.country].push(d);
-  } else {
-    woeidListTree[d.country].push(d);
-  }
-});
+function createTree(filterCountries){
+  woeidListTree = {};
+  filterCountries.forEach((d) => {
+    if (woeidListTree[d.country] === undefined) {
+      woeidListTree[d.country] = [];
+      woeidListTree[d.country].push(d);
+    } else {
+      woeidListTree[d.country].push(d);
+    }
+  });
+}
 
 function Navbar() {
   const [dropdown, setDropdown] = useState(false);
   const [searchIcon, setSearchIcon] = useState(false);
   const [countryInput, setCountryInput] = useState("");
-  const [filterCountries, setFilterCountries] = useState({});
+  const [filterCountries, setFilterCountries] = useState(woeidList);
   // const [countryName, setCountryName] = useState("Worldwide");
   const inputRef = useRef(null); //reference for input box
   const dropRef = useRef(null); //reference for onclick outside
@@ -72,14 +75,20 @@ function Navbar() {
   };
 
   const handleChange = (e) => {
+    if(e.target.value === ''){
+      setCountryInput('');
+    }
     setCountryInput(e.target.value);
     console.log(e.target.value);
   };
 
   useEffect(() => {
-    // setFilterCountries(woeidListTree);
-    // setFilterCountries(woeidListTree[d].filter((l) => l.name.toLowerCase().includes(countryInput.toLowerCase())  ));
-  }, []);
+    setFilterCountries(
+      woeidList
+        .filter(d => d.name.toLowerCase().includes( countryInput.toLowerCase() ) ) 
+        .sort())
+    createTree(filterCountries);
+  }, [countryInput]);
 
   return (
     <nav className="nav">
