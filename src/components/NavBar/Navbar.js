@@ -110,14 +110,8 @@ function Navbar() {
 
         <ul
           className={`ul-list-items ${dropClass}`}
-          onClick={(e) => {
-            const woeidValue = e.target.value;
-            if (woeidValue) {
-              setWoeid(woeidValue);
-            }
-          }}
           // ref={dropRef}
-          ref = {inputRef}
+          //ref = {inputRef}
         >
           {/* <div className="searchContainer">
           <BiSearchAlt className="searchIcon" />
@@ -138,11 +132,20 @@ function Navbar() {
                 return (
                   <div className="cities">
                     <h2 className="countriesNames">{d}</h2>
-                    {/* <span></span> */}
                     <hr />
                     <ul className="citiesNames">
                       {woeidListTree[d].map((l) => {
-                        return <li>{l.name}</li>;
+                        return <li value={l.woeid} onClick={(e) => {
+                          const woeidValue = e.target.value;
+                          console.log(e.target.value)
+                          if (woeidValue) {
+                            setWoeid(woeidValue);
+                          }
+                        }}>
+                          {/* <Link className='c-name' to={`${l.name}`}> */}
+                            {l.name}
+                            {/* </Link> */}
+                            </li>;
                       })}
                     </ul>
                   </div>

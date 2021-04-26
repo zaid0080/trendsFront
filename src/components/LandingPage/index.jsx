@@ -7,7 +7,7 @@ export default function landingpage() {
     return (
         <div id = 'landing-page'>
          <Header />
-         {/* <Content /> */}
+         <Content />
       {/* <Login /> */}
         </div>
     )
