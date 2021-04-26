@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import AboutUs from "./components/AboutUs/AboutUs";
 
 function App() {
+
   return (
     <GlobalProvider>
       <Router>
@@ -16,7 +17,7 @@ function App() {
             <Route path="/aboutus">
               <AboutUs />
             </Route>
-            <Route exact path="/">
+            <Route path="/">
               <LandingPage />
             </Route>
           </Switch>

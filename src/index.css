@@ -254,6 +254,7 @@ h2.countriesNames {
 h2.countriesNames:hover{
   transform: scale(1.2);
 }
+
 ul.citiesNames {
   list-style-type: none;
   display: flex;
@@ -265,7 +266,12 @@ ul.citiesNames {
 
 .citiesNames>li{
   margin: 8px;
-  cursor: pointer;
+}
+
+.c-name {
+  text-decoration: none;
+  color: #fff;
+  letter-spacing: 2.5px;
 }
 
 .citiesNames>li:hover{
