@@ -146,7 +146,7 @@ div > .showSearch {
   height: 30px;
   width: 150px;
   margin-right: 8px;
-  transition: width 0.5s;
+  transition: width 0.4s;
   padding: 10px;
   outline: none;
   border-radius: 15px;
@@ -154,7 +154,7 @@ div > .showSearch {
 
 div > .noSearch {
   width: 0;
-  transition: width 0.5s;
+  transition: width 0.4s;
   border: none;
   height: 30px;
   outline: none;
@@ -414,6 +414,57 @@ h1 span::before{
   background-color: #343a40;
 }
 
+@media all and (min-width : 320px) and (max-width:425px){
+  .nav{
+    height: 45px;
+  }
+
+  nav > #logo {
+    transform: translateX(14%);
+    font-size : 21px ;
+  }
+
+  div> #searchIcon {
+    top: 10px;
+  }
+
+  div> .showSearch {
+    width: 140px;
+    height: 27px;
+  }
+
+  div > .noSearch {
+    height: 27px;
+  }
+
+  .ul-list-items{
+    top: 40px;
+  }
+
+  #header-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 5px;
+  }
+
+  img.head-image{
+    height: 125px;
+    width: 125px;
+  }
+
+  .tag-line{
+    font-weight: 400;
+    font-size: 25px;
+    letter-spacing: 5px;
+  }
+
+  #Trends-container > .ol-list > li{
+    width: 275px;
+  }
+
+}
+
 @media all and (min-width : 768px) {
   .nav {
     background-color: #00a2f5;
@@ -660,16 +711,16 @@ h1 span::before{
   }
 
   #time-container {
-    margin: 30px 15px;
+    margin: 30px 20px;
   }
 
   #time-container>.list-item {
-    font-size: 1.4em;
-    padding: 0 10px;
+    font-size: 1.1em;
+    padding: 2px 15px;
   }
 
   #time-container > ul::-webkit-scrollbar {
-    height: 13px;
+    height: 12px;
   }
 
   #foot-container{

@@ -1,5 +1,6 @@
 import React, { forwardRef, useState, useImperativeHandle, useRef } from "react";
-import useClickOutside from "../useClickOutside/useClickOutside";
+import useOnClickOutside from "../useClickOutside/useOnClickOutside";
+import { Link } from 'react-router-dom';
 
 const sideContainer = forwardRef((props, ref) => {
   const [menu, setMenu] = useState(false);
@@ -8,7 +9,7 @@ const sideContainer = forwardRef((props, ref) => {
     setMenu(!menu);
   };
 
-  useClickOutside(Ref3, () => {
+  useOnClickOutside(Ref3, () => {
     if (menu) {
       setMenu(false);
     }
@@ -22,10 +23,10 @@ const sideContainer = forwardRef((props, ref) => {
 
   return (
     <>
-      <div className={`sideContainer ${menu ? 'showMenu' : 'hideMenu'}`} ref={Ref3}>
-        <li className='nav-links'>About us</li>
-        <li className='nav-links'>Contact Us</li>
-        <li className='nav-links'>Feedback</li>
+      <div className={`sideContainer ${menu ? 'showMenu' : 'hideMenu'}`} >
+        <li className='nav-links'><Link to='/'>Home</Link></li>
+        <li className='nav-links'><Link to='/aboutus'>About Us</Link></li>
+        <li className='nav-links'>Login</li>
       </div>
     </>
   );

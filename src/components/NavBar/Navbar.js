@@ -75,11 +75,12 @@ function Navbar() {
       <SideContainer ref={sideRef} />
       <Link to="/" id="logo">alldaytrends.</Link>
       <span></span>
+      <Link to = "/" className="links">Home</Link>
       <Link to="/aboutus" className="links">About</Link>
 
       <a href="https://twitter.com/login" target="_blank" rel="noopener noreferrer"  className="links">Login</a>
 
-      <Link to = "contactus" className="links">Contact</Link>
+     
 
       <div className="search-container">
         <input
