@@ -17,3 +17,9 @@
     font-size: 25px;
     line-height: 40px;
 }
+
+.about-img {
+    background-image: url('./Trends.svg');
+    height: 300px;
+    width: 600px;
+}

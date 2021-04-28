@@ -1,5 +1,4 @@
 import React from 'react';
-//import { FaTwitter } from 'react-icons/fa';
 import Social from './Social.svg';
 
 function Header() {

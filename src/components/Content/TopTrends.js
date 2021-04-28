@@ -4,7 +4,6 @@ import { VscLoading } from "react-icons/vsc";
 
 function TopTrends() {
   const [, , , , , , selectedData, ,] = useContext(GlobalContext);
-  console.log(selectedData);
   if (selectedData) {
     return (
       <div id="Trends-container">

@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { MdSearch } from "react-icons/md";
+import { IoMdHome } from 'react-icons/io';
+import { IoIosLogIn } from 'react-icons/io'
+import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import useOnClickOutside from "../useClickOutside/useOnClickOutside";
 import { GlobalContext } from "../../global";
 import SideContainer from "./SideContainer";
@@ -75,10 +78,10 @@ function Navbar() {
       <SideContainer ref={sideRef} />
       <Link to="/" id="logo">alldaytrends.</Link>
       <span></span>
-      <Link to = "/" className="links">Home</Link>
-      <Link to="/aboutus" className="links">About</Link>
+      <Link to = "/" className="links">Home<IoMdHome className='home-icon'/></Link>
+      <Link to="/aboutus" className="links">About<AiOutlineExclamationCircle className='home-icon' /></Link>
 
-      <a href="https://twitter.com/login" target="_blank" rel="noopener noreferrer"  className="links">Login</a>
+      <a href="https://twitter.com/login" target="_blank" rel="noopener noreferrer"  className="links last-link">Login<IoIosLogIn className='home-icon'/></a>
 
      
 

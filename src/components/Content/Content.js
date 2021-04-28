@@ -31,7 +31,7 @@ function Content() {
     <div id="content">
       <Time />
       <TopTrends />
-      <Graph  />
+      {/* <Graph  /> */}
     </div>
   );
 }
