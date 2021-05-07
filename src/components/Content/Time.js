@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../../global";
 
-function findDuration(date) {
+export function findDuration(date) {
   const now = Date.now();
   const minseconds = 1000 * 60;
   const then = +new Date(date);

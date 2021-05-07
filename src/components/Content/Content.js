@@ -9,7 +9,6 @@ const fetchAndSetData = async (woeid, setData, setTime) => {
   try{
     const res = await axios.get(`https://trendsend.herokuapp.com/trends/by-woeid?woeid=${woeid}`);
     const data = await res.data;
-    console.log(data)
     if(data){
       window.data = data.data;
       setData(data.data);
