@@ -1,9 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../../global";
 import { VscLoading } from "react-icons/vsc";
 
 function TopTrends() {
-  const [, , , , , , selectedData, ,] = useContext(GlobalContext);
+  const [, , data, , selectedTime, , selectedData, setSelectedData,] = useContext(GlobalContext);
+  
+  useEffect(() => {
+    const x = data.find((d) => d._id === selectedTime);
+    setSelectedData(x);
+  },[data, selectedTime, setSelectedData])
+  
   if (selectedData) {
     return (
       <div id="Trends-container">

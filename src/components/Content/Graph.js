@@ -25,7 +25,7 @@ function Graph() {
   ] = useContext(GlobalContext);
 
   useEffect(() => {
-    const x = data.find((d) => d.as_of === selectedTime);
+    const x = data.data.find((d) => d._id === selectedTime);
     setSelectedData(x);
   }, [data, selectedTime, setSelectedData]);
 

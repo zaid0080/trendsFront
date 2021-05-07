@@ -8,7 +8,7 @@ function findDuration(date) {
   const diff = now - then;
   const min = diff / minseconds;
   if (min > 60) {
-    return `${Math.floor(min / 60)} hrs ago`;
+    return `${Math.floor(min / 60)} hrs ${Math.floor(min % 60)} mins ago`;
   }
   if (min <= 5) {
     return `few min ago`;
@@ -32,8 +32,8 @@ function Time() {
       >
         {data.map((d, index) => {
           return (
-            <li key={index} data-time={d.as_of}>
-              {findDuration(d.as_of)}
+            <li key={index} data-time={d._id}>
+              {findDuration(d._id)}
             </li>
           );
         })}

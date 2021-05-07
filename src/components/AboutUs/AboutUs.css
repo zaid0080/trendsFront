@@ -19,7 +19,7 @@
 }
 
 .about-img {
-    background-image: url('./Trends.svg');
+    /* background-image: url('./Trends.svg'); */
     height: 300px;
     width: 600px;
 }
