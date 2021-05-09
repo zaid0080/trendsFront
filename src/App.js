@@ -5,6 +5,7 @@ import Footer from "./components/Footer/Footer.js";
 import { GlobalProvider } from "./global";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import AboutUs from "./components/AboutUs/AboutUs";
+import Hashtag from "./components/Hashtag/Hashtag";
 
 function App() {
 
@@ -16,6 +17,9 @@ function App() {
           <Switch>
             <Route path="/aboutus">
               <AboutUs />
+            </Route>
+            <Route path="/trend/:hashtag">
+              <Hashtag/>
             </Route>
             <Route path="/">
               <LandingPage />
