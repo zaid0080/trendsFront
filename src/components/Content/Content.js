@@ -4,6 +4,7 @@ import Time from "./Time.js";
 import TopTrends from "./TopTrends.js";
 import { GlobalContext } from "../../global";
 import axios from "axios";
+//import { useParams } from 'react-router-dom';
 
 const fetchAndSetData = async (woeid, setData, setTime) => {
   try{
@@ -22,6 +23,9 @@ const fetchAndSetData = async (woeid, setData, setTime) => {
 
 function Content() {
   const [woeid, , , setData, , setSelectedTime] = useContext(GlobalContext);
+
+  // const { country } = useParams();
+  // console.log(country);
 
   useEffect(() => {
     fetchAndSetData(woeid, setData, setSelectedTime);

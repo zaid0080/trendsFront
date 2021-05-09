@@ -7,7 +7,7 @@ import useOnClickOutside from "../useClickOutside/useOnClickOutside";
 import { GlobalContext } from "../../global";
 import SideContainer from "./SideContainer";
 import Hamburger from "./Hamburger";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const woeidList = require("../Header/countrys.json");
 
@@ -39,6 +39,8 @@ function Navbar() {
   const iconColor = searchIcon ? "black" : "white";
 
   const [, setWoeid, ,] = useContext(GlobalContext);
+
+  const { country } = useParams();
 
   useOnClickOutside(inputRef, () => {
     if (searchIcon) {

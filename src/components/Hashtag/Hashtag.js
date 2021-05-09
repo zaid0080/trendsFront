@@ -11,6 +11,7 @@ function parseTag(tag){
 }
 const Hashtag = () => {
     let {hashtag:tag} = useParams();
+    console.log(tag)
     tag = parseTag(tag);
     return (
         <div >

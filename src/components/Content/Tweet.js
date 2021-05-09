@@ -13,7 +13,6 @@ function changetoK(x){
 
 function Tweet() {
     const [, , data,] = useContext(GlobalContext);
-    console.log(data);
     
     return (
         <div className='trends-cont'>
