@@ -397,6 +397,10 @@ h1 span::before {
   transform: scale(1.1);
 }
 
+.trends-cont {
+  display: none;
+}
+
 
 #foots-container {
   display: grid;
@@ -561,6 +565,14 @@ h1 span::before {
     transition: width 0.5s ease-out;
   }
 
+  #time-container {
+    display: none;
+  }
+
+  #Trends-container {
+    display: none;
+  }
+
   #header-container {
     margin: 25px 0;
   }
@@ -682,6 +694,10 @@ h1 span::before {
     margin: 0 50px;
     display: block;
     cursor: pointer;
+  }
+
+  #Trends-container {
+    display: none;
   }
 
   .home-icon {
@@ -819,6 +835,7 @@ h1 span::before {
   }
 
   #time-container {
+    display: none;
     margin: 30px 20px;
   }
 

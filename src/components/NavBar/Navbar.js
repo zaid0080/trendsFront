@@ -55,7 +55,6 @@ function Navbar() {
 
   const menuHandler = () => {
     sideRef.current.showMenu();
-    console.log("it's working");
   };
 
 
@@ -116,9 +115,11 @@ function Navbar() {
                       {woeidListTree[d].map((l) => {
                         return <li value={l.woeid} key={l.woeid} onClick={(e) => {
                           const woeidValue = e.target.value;
-                          console.log(e.target.value)
                           if (woeidValue) {
                             setWoeid(woeidValue);
+                            setTimeout(() => {
+                              setCountryInput('');  
+                            }, 500);
                           }
                         }}>
                           {/* <Link className='c-name' to={`${l.name}`}> */}
