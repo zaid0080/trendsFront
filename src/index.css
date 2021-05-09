@@ -684,6 +684,10 @@ h1 span::before {
     cursor: pointer;
   }
 
+  #Trends-container {
+    display: none;
+  }
+
   .home-icon {
     position: relative;
     font-size: 0.9em;
@@ -819,6 +823,7 @@ h1 span::before {
   }
 
   #time-container {
+    display: none;
     margin: 30px 20px;
   }
 
