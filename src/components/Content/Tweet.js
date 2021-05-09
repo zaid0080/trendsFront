@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from "../../global";
 import { findDuration } from './Time';
+import { Link } from 'react-router-dom'
 import './tweet.css';
 
 function changetoK(x){
@@ -24,14 +25,9 @@ function Tweet() {
                         <ol className='tweets'>
                             {d.trends.map((t) => {
                                 if(t.tweet_volume > 0) {
-                                    return <li className='tweet-names' key={t.index}> <span className='index'>{t.index}</span> {t.name} <span id='content' className='tweet-volume'>{changetoK(t.tweet_volume)}</span> </li>
+                                    return <Link to = {`/trend/${t.name.replace(/#/g,'_')}`} className='tweet-names' key={t.index}> {t.name} <span className='tweet-volume'>{changetoK(t.tweet_volume)}</span> </Link>
                                 }
-                                return  (
-                                    <>
-                                        <li className='tweet-names' key={t.index}> {t.name} </li>
-                                        
-                                    </>
-                                )
+                                return  <Link to = {`/trend/${t.name.replace(/#/g,'_')}`} className='tweet-names' key={t.index}> {t.name} </Link>                                        
                             })}
                         </ol>
                         </div>
