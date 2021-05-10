@@ -37,9 +37,6 @@
         display: grid;
         grid-template-areas: "left top"
                             "left bottom";
-                            
-        /* flex-direction: column; */
-        /* margin: 0 5px; */
         padding: 9px;
         justify-content: flex-start;
         list-style: none;
@@ -47,6 +44,7 @@
         border-bottom: 1px solid #ddd;
         white-space: nowrap;
         color: #000;
+        position: relative;
         font-size: 1em;
     }
 
@@ -82,5 +80,22 @@
         padding-left: 2px;
         counter-increment: count;
         content: counter(count);
+    }
+
+    /* .tweet-names-1::after {
+        content: 'aaaaaa';
+        position: absolute;
+        right: 0;
+        top: 50;
+    } */
+
+    .tweet-names-1::before {
+        font-size: 1.6em;
+    }
+    .tweet-names-2::before {
+        font-size: 1.3em;
+    }
+    .tweet-names-3::before {
+        font-size: 1.2em;
     }
 }

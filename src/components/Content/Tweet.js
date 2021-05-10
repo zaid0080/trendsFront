@@ -24,9 +24,9 @@ function Tweet() {
                         <ol className='tweets'>
                             {d.trends.map((t) => {
                                 if(t.tweet_volume > 0) {
-                                    return <Link to = {`/trend/${t.name.replace(/#/g,'_')}`} className='tweet-names' key={t.index}> {t.name} <span className='tweet-volume'>{changetoK(t.tweet_volume)}</span> </Link>
+                                    return <Link to = {`/trend/${t.name.replace(/#/g,'_')}`} className={`tweet-names tweet-names-${t.index}`} key={t.index}> {t.name} <span className='tweet-volume'>{changetoK(t.tweet_volume)}</span> </Link>
                                 }
-                                return  <Link to = {`/trend/${t.name.replace(/#/g,'_')}`} className='tweet-names' key={t.index}> {t.name} </Link>                                        
+                                return  <Link to = {`/trend/${t.name.replace(/#/g,'_')}`} className={`tweet-names tweet-names-${t.index}`} key={t.index}> {t.name} </Link>                                        
                             })}
                         </ol>
                         </div>

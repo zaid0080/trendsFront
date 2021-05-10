@@ -5,7 +5,7 @@ import Footer from "./components/Footer/Footer.js";
 import { GlobalProvider } from "./global";
 import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import AboutUs from "./components/AboutUs/AboutUs";
-import Hashtag from "./components/Hashtag/Hashtag";
+import Hashtag from "./components/Hashtag/Hashtag"; 
 
 function App() {
 

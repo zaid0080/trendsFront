@@ -115,8 +115,10 @@ function Navbar() {
                     <hr />
                     <ul className="citiesNames">
                       {woeidListTree[d].map((l) => {
-                        return <li value={l.woeid} key={l.woeid} onClick={(e) => {
-                          const woeidValue = e.target.value;
+                        
+                        return <li value={l.name} key={l.woeid} onClick={(e) => {
+                          const woeidValue = e.target.innerText;
+                          console.log(e.target.innerText)
                           if (woeidValue) {
                             setWoeid(woeidValue);
                             setTimeout(() => {
@@ -124,9 +126,9 @@ function Navbar() {
                             }, 500);
                           }
                         }}>
-                          {/* <Link className='c-name' to={`${l.name}`}> */}
+                          <Link className='c-name' to={`${l.name}`}>
                             {l.name}
-                            {/* </Link> */}
+                            </Link>
                             </li>;
                       })}
                     </ul>
