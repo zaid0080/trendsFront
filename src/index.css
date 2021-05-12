@@ -227,6 +227,7 @@ div > .noSearch {
 .nolist {
   position: absolute;
   top: 50px;
+  z-index: 1;
   /* right: -50px; */
   transition: width 0.4s ease-in-out;
   width: 0;
@@ -242,12 +243,12 @@ div.cities {
 h2.countriesNames {
   display: inline-block;
   margin-left: 30px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
-h2.countriesNames:hover {
+/* h2.countriesNames:hover {
   transform: scale(1.2);
-}
+} */
 
 ul.citiesNames {
   list-style-type: none;
@@ -769,12 +770,12 @@ h1 span::before {
   h2.countriesNames {
     display: inline-block;
     margin-left: 30px;
-    cursor: pointer;
+    /* cursor: pointer; */
   }
 
-  h2.countriesNames:hover {
+  /* h2.countriesNames:hover {
     transform: scale(1.2);
-  }
+  } */
   ul.citiesNames {
     list-style-type: none;
     display: flex;

@@ -15,7 +15,7 @@ function App() {
         <div id="body-container">
           <Navbar />
           <Switch>
-            <Route path="/aboutus">
+            <Route exact path="/aboutus">
               <AboutUs />
             </Route>
             <Route path="/trend/:hashtag">
@@ -24,8 +24,8 @@ function App() {
             <Route path="/:country">
               <LandingPage />
             </Route>
-            <Route path="/">
-              <Redirect to="/WorldWide" />
+            <Route exact path="/">
+              <Redirect to="/Worldwide" />
             </Route>
           </Switch>
           <Footer />
