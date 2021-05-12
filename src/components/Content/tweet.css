@@ -14,14 +14,16 @@
         margin: 0 auto;
     }
 
-    .right-button {
-        font-size: 2.5em;
+    .right-button,
+    .left-button {
+        font-size: 2.7em;
         cursor: pointer;
+        color: #00a2f5;
     }
 
-    .left-button {
-        cursor: pointer;
-        font-size: 2.5em;
+    .right-button:active,
+    .left-button:active {
+        color: #0b6fb3;
     }
     
     div.card {
@@ -97,12 +99,18 @@
         content: counter(count);
     }
 
-    /* .tweet-names-1::after {
-        content: 'aaaaaa';
-        position: absolute;
-        right: 0;
-        top: 50;
-    } */
+    .close-11,
+    .close-12,
+    .close-13,
+    .close-14,
+    .close-15,
+    .close-16,
+    .close-17,
+    .close-18,
+    .close-19,
+    .close-20 {
+        display: none;
+    }
 
     .tweet-names-1::before {
         font-size: 1.7em;

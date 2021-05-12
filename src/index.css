@@ -770,12 +770,8 @@ h1 span::before {
   h2.countriesNames {
     display: inline-block;
     margin-left: 30px;
-    /* cursor: pointer; */
   }
 
-  /* h2.countriesNames:hover {
-    transform: scale(1.2);
-  } */
   ul.citiesNames {
     list-style-type: none;
     display: flex;
