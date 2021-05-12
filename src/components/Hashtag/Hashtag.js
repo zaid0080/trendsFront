@@ -40,33 +40,41 @@ const Hashtag = () => {
     let params = useParams();
     let tag = parseTag(params.hashtag);  
     
-    const [trendDetail, setTrendDetail] = useState([]);
+    const [trendDetail, setTrendDetail] = useState({firstSeen : '', trendingLocations: []});
 
     useEffect(() =>{
         fetchTrendData(tag,setTrendDetail);
     },[tag]);
+    if(trendDetail.trendingLocations.length > 1){
+        return (
+            <div >
+            <Helmet>
+                <title>{tag}</title>
+            </Helmet>
+            <h1>TrendName : {tag}</h1>
+            <p>Total trending in {trendDetail.trendingLocations.length} places</p>
+            <div class ="treding">
+                {trendDetail.trendingLocations.map(d => {
+                    return(
+                    <Card title={d.place} style={{ width: 300 }}>
+                        <p>Index : {d.index}</p>
+                        <p>Volume : {d.volume}</p>
+                        <p>Last seen : {d.as_of}</p>
+                    </Card>
+                    )
+                } )}
+            </div>
+            </div>
+        )
+    } else {
+        return (
+            <div >
+            <Helmet>
+                <title>Please Wait</title>
+            </Helmet>
+            </div>
+        )
+    }
 
-    console.log(trendDetail[0]?.trend?.trend);
-    return (
-        <div >
-        <Helmet>
-            <title>{tag}</title>
-        </Helmet>
-        <h1>TrendName : {tag}</h1>
-        <p>Total trending in {trendDetail.length} places</p>
-        <div class ="treding">
-            {trendDetail.map(d => {
-                return (
-                <Card title={d.trend.place} style={{ width: 300 }}>
-                    <p>Index : {d.trend.index}</p>
-                    <p>Volume : {d.trend.volume}</p>
-                    <p>Last seen : {d.trend.as_of}</p>
-                  </Card>
-                )
-            } )}
-        </div>
-        </div>
-    )
 }
-
 export default Hashtag;
