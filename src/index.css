@@ -13,6 +13,9 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway&family=Roboto&display=swap");
 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
 body,
 html {
   overflow-x: hidden;

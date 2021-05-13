@@ -44,6 +44,7 @@
         border-bottom: 1px solid #ddd;
         font-size: 1.1em;
         padding: 8px;
+        font-weight: 500;
     }
     
     .tweets {
@@ -74,6 +75,8 @@
 
     .tweet-names:hover {
         background-color: #f1f1f1;
+        color: #00a2f5;
+        transition: color 0.3s ease-out;
         cursor: pointer;
     }
 
@@ -112,6 +115,14 @@
         display: none;
     }
 
+    .hide {
+        content: 'Hide';
+    }
+
+    .show {
+        content: 'Show More';
+    }
+
     .tweet-names-1::before {
         font-size: 1.7em;
     }
@@ -120,5 +131,30 @@
     }
     .tweet-names-3::before {
         font-size: 1.3em;
+    }
+
+    .tweet-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70px;
+    }
+
+    .tweet-btn > .btn {
+        height: 34px;
+        outline: none;
+        border: none;
+        width: 100px;
+        color: #fff;
+        cursor: pointer;
+        background-color: #00a2f5;
+        border-radius: 10px;
+        box-shadow: 0 8px 6px -6px #000;
+        -webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+    }
+
+    .tweet-btn > .btn:active {
+        background-color: #0b6fb3;
     }
 }

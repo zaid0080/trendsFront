@@ -4,13 +4,11 @@ import Time from "./Time.js";
 import TopTrends from "./TopTrends.js";
 import { GlobalContext } from "../../global";
 import axios from "axios";
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 
 
 const fetchAndSetData = async (woeid, setData, setTime) => {
-
-  
   try{
     const res = await axios.get(`http://trendsend.herokuapp.com/trends/by-place?placeName=${woeid}`);
     const data = await res.data;
@@ -22,17 +20,19 @@ const fetchAndSetData = async (woeid, setData, setTime) => {
   }catch(error){
     console.error(error);
   }
-
 };
 
 
 
 function Content() {
-  const [woeid, , , setData, , setSelectedTime] = useContext(GlobalContext);
+  const [woeid, setWoeid , , setData, , setSelectedTime] = useContext(GlobalContext);
+
+  const { country } = useParams();
 
   useEffect(() => {
     fetchAndSetData(woeid, setData, setSelectedTime);
-  }, [woeid, setData, setSelectedTime]);
+    setWoeid(country);
+  }, [woeid, setData, setSelectedTime, setWoeid, country]);
 
   return (
     <div id="content">

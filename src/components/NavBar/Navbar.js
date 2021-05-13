@@ -102,6 +102,7 @@ function Navbar() {
         Login
         <IoIosLogIn className="home-icon" />
       </a>
+      {/* <h3>{woeid}</h3> */}
 
       <div className="search-container">
         <input

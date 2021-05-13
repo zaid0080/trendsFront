@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./tweet.css";
 //import { useParams } from "react-router-dom";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
+import { IoMdArrowDropdownCircle } from 'react-icons/io';
 
 function changetoK(x) {
   if (x > 1000) {
@@ -33,6 +34,7 @@ function Tweet() {
       <>
         <div className="scroll-buttons">
           <FaArrowCircleLeft onClick={scrollRight} className="left-button" />
+          <h3>Country Name</h3>
           <FaArrowCircleRight onClick={scrollLeft} className="right-button" />
         </div>
 
@@ -70,9 +72,13 @@ function Tweet() {
                         </Link>
                       );
                     })}
-                    <button onClick={() => setOpen(!open)}>Show More</button>
                   </ol>
+                  <div className='tweet-btn'>
+                  {/* <button className='btn' onClick={() => setOpen(!open)}>{open ? "Hide" : "Show More"}</button> */}
+                 <IoMdArrowDropdownCircle  onClick={() => setOpen(!open)}/>
+                  </div>
                 </div>
+               
               </>
             );
           })}
