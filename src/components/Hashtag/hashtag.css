@@ -1,1 +1,40 @@
 /* @import '~antd/dist/antd.css'; */
+
+
+.hashtag {
+    flex: 1;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: space-around;
+    /* min-height: 100vh; */
+}
+
+.hashtag-box {
+    width: 60%;
+    height: 500px;
+    background-color: #fff;
+    margin: 50px 0;
+    border-radius: 25px;
+    box-shadow: 5px 15px 15px rgba(0,0,0, 0.1);
+}
+
+.top-tweets-box {
+    width: 25%;
+    height: 500px;
+    margin: 50px 0;
+    border-radius: 22px;
+    background-color: #fff;
+    box-shadow: 5px 15px 15px rgba(0,0,0, 0.1);
+
+}
+
+.country-drop {
+    height: 30px;
+    border-radius: 25px;
+    outline: none;
+    margin-left: 20px;
+}
+
+#foot-container {
+    flex-shrink: 0;
+}

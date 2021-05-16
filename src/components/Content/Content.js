@@ -5,6 +5,7 @@ import TopTrends from "./TopTrends.js";
 import { GlobalContext } from "../../global";
 import axios from "axios";
 import { useParams } from 'react-router-dom';
+import Tweet from "./Tweet.js";
 
 
 
@@ -30,14 +31,15 @@ function Content() {
   const { country } = useParams();
 
   useEffect(() => {
-    fetchAndSetData(woeid, setData, setSelectedTime);
     setWoeid(country);
+    fetchAndSetData(woeid, setData, setSelectedTime);
   }, [woeid, setData, setSelectedTime, setWoeid, country]);
 
   return (
     <div id="content">
       <Time />
       <TopTrends />
+      <Tweet />
       {/* <Graph  /> */}
     </div>
   );

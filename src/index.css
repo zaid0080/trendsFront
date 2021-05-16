@@ -688,7 +688,7 @@ h1 span::before {
 
   .links {
     text-decoration: none;
-    margin: 0 50px;
+    margin: 0 40px;
     display: block;
     color: #f1f1f1;
     font-size: 1.1em;
@@ -712,7 +712,7 @@ h1 span::before {
   }
 
   .last-link {
-    margin-right: 60px;
+    padding-right: 40px;
   }
 
   .nav > span {

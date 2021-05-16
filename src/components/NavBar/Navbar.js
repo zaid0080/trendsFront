@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { MdSearch } from "react-icons/md";
-import { IoMdHome } from "react-icons/io";
-import { IoIosLogIn } from "react-icons/io";
-import { AiOutlineExclamationCircle } from "react-icons/ai";
 import useOnClickOutside from "../useClickOutside/useOnClickOutside";
 import { GlobalContext } from "../../global";
 import SideContainer from "./SideContainer";
@@ -38,7 +35,7 @@ function Navbar() {
   const placeHold = searchIcon ? "Search Country..." : " ";
   const iconColor = searchIcon ? "black" : "white";
 
-  const [, setWoeid, ,] = useContext(GlobalContext);
+  const [woeid, setWoeid, ,] = useContext(GlobalContext);
 
   // const { country } = useParams();
   // console.log(country);
@@ -86,22 +83,15 @@ function Navbar() {
       <span></span>
       <Link to="/" className="links">
         Home
-        <IoMdHome className="home-icon" />
       </Link>
       <Link to="/aboutus" className="links">
         About
-        <AiOutlineExclamationCircle className="home-icon" />
       </Link>
-
-      <a
-        href="https://twitter.com/login"
-        target="_blank"
-        rel="noopener noreferrer"
+      <p
         className="links last-link"
       >
-        Login
-        <IoIosLogIn className="home-icon" />
-      </a>
+        {woeid}
+      </p>
       {/* <h3>{woeid}</h3> */}
 
       <div className="search-container">

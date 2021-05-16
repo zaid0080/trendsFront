@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../Header/Header.js';
 import Content from '../Content/Content.js';
-import Tweet from '../Content/Tweet.js';
+//import Tweet from '../Content/Tweet.js';
 import Helmet from 'react-helmet';
 //import Login from '../Login/Login.js';
 
@@ -13,7 +13,7 @@ export default function landingpage() {
         </Helmet>
          <Header />
          <Content />
-         <Tweet />
+         {/* <Tweet /> */}
       {/* <Login /> */}
         </div>
     )

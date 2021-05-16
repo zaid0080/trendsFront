@@ -3,7 +3,6 @@ import { GlobalContext } from "../../global";
 import { findDuration } from "./Time";
 import { Link } from "react-router-dom";
 import "./tweet.css";
-//import { useParams } from "react-router-dom";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 import { IoMdArrowDropdownCircle } from 'react-icons/io';
 
@@ -26,15 +25,11 @@ function Tweet() {
     scrollRef.current.scrollLeft -= 400;
   };
 
-  // let { country } = useParams();
-  // console.log(country);
-
   if (data) {
     return (
       <>
         <div className="scroll-buttons">
           <FaArrowCircleLeft onClick={scrollRight} className="left-button" />
-          <h3>Country Name</h3>
           <FaArrowCircleRight onClick={scrollLeft} className="right-button" />
         </div>
 
