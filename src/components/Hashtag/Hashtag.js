@@ -1,3 +1,4 @@
+//import { Content } from 'antd/lib/layout/layout';
 import axios from 'axios';
 import { useEffect, useState, useContext, useLayoutEffect } from 'react';
 import Helmet from 'react-helmet';
@@ -5,7 +6,8 @@ import { useParams } from 'react-router';
 import urlencode from 'urlencode';
 import {GlobalContext} from '../../global'
 import './hashtag.css';
-
+import MapChart from './MapChart';
+import ReactTooltip from 'react-tooltip'
 
 // const openNotification = (msg,desc) => {
 //     notification.error({
@@ -39,7 +41,7 @@ const fetchTrendData = async(tag,setTrendDetail) => {
 const Hashtag = () => {
     let params = useParams();
     let tag = parseTag(params.hashtag);
-
+    const [mapContent, setMapContent] = useState('');
     const [woeid] = useContext(GlobalContext);
     const [city, setCity] = useState(woeid);
     
@@ -52,7 +54,6 @@ const Hashtag = () => {
     const countryHandler = (e) => {
         setCity(e.target.value);
     }
-
     const filterCity = trendDetail.trendingLocations.filter(d => d.place === city);
 
     useEffect(() =>{
@@ -62,10 +63,10 @@ const Hashtag = () => {
     if(trendDetail.trendingLocations.length > 1){
         return (
             <div className='hashtag'>
-            {/* <Helmet>
+            <Helmet>
                 <title>{tag}</title>
             </Helmet>
-            <h1>TrendName : {tag}</h1>
+            {/* <h1>TrendName : {tag}</h1>
             <p>Total trending in {trendDetail.trendingLocations.length} places</p>
             <div class ="treding">
                 {trendDetail.trendingLocations.map(d => {
@@ -80,28 +81,39 @@ const Hashtag = () => {
             </div> */}
             <div className='hashtag-box'>
                 <div>
-                    <h2>Trending at <span>#{filterCity[0].index}</span> in 
+                    <h2 className='hash-line'>Trending at <span className='hash-index'>#{filterCity[0].index}</span> in 
                         <select className='country-drop' onChange={countryHandler}>
                             {trendDetail.trendingLocations.map(t => {
                                 // console.log(trendDetail.trendingLocations)
                                 if(t.place=== woeid){
-                                    console.log(t.index)
                                     return (
                                         <>
                                         <option selected={true} >{t.place}</option>
                                         </>
                                     )
                                 }
-                                // console.log(t.index)
                                 return (
                                     <>
-                                        <option value={t.place}>{t.place}</option>
+                                        <option className='select-items' value={t.place}>{t.place}</option>
                                     </>
                                 )
                             })}
                         </select>
-                        {tag}
                     </h2>
+                    <div>
+                    <h1 className='hashtag-name'>{tag}</h1>
+                    </div>
+                    <div className='details'>
+                        <div><span className='details-1'>{filterCity[0].volume}</span> No. of Tweets</div>
+                        <div><span className='details-1'>#{filterCity[0].index}</span> Highest Rank</div>
+                    </div>
+                    <div className='tweet-location'>
+                        <p>Tweeted in <span>{trendDetail.trendingLocations.length}</span> other locations.</p>
+                    </div>
+                    <div>
+                        <MapChart setTooltipContent={setMapContent} />
+                        <ReactTooltip>{mapContent}</ReactTooltip>
+                    </div>
                 </div>
             </div>
             <div className='top-tweets-box'>
