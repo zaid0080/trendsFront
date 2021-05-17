@@ -133,7 +133,7 @@ function Navbar() {
                             }
                           }}
                         >
-                          <Link className="c-name" to={`${l.name}`}>
+                          <Link className="c-name" to={`${d}/${l.name}`}>
                             {l.name}
                           </Link>
                         </li>

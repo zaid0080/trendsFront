@@ -28,12 +28,19 @@ const fetchAndSetData = async (woeid, setData, setTime) => {
 function Content() {
   const [woeid, setWoeid , , setData, , setSelectedTime] = useContext(GlobalContext);
 
-  const { country } = useParams();
+  const { country, city } = useParams();
+  console.log(city)
+  console.log(country)
 
   useEffect(() => {
-    setWoeid(country);
+    if(city === '') {
+      setWoeid(country);
+    }
+    else {
+      setWoeid(city);
+    }
     fetchAndSetData(woeid, setData, setSelectedTime);
-  }, [woeid, setData, setSelectedTime, setWoeid, country]);
+  }, [woeid, setData, setSelectedTime, setWoeid, country, city]);
 
   return (
     <div id="content">
