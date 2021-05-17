@@ -11,7 +11,7 @@ import Tweet from "./Tweet.js";
 
 const fetchAndSetData = async (woeid, setData, setTime) => {
   try{
-    const res = await axios.get(`http://trendsend.herokuapp.com/trends/by-place?placeName=${woeid}`);
+    const res = await axios.get(`https://trendsend.herokuapp.com/trends/by-place?placeName=${woeid}`);
     const data = await res.data;
     if(data){
       window.data = data.data;
