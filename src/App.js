@@ -21,11 +21,11 @@ function App() {
             <Route path="/trend/:hashtag">
               <Hashtag/>
             </Route>
-            <Route path="/:country/:city">
+            <Route path="/:country/:city?">
               <LandingPage />
             </Route>
             <Route exact path="/">
-              <Redirect to="/Worldwide/"/>
+              <Redirect to="/Worldwide"/>
             </Route>
           </Switch>
           <Footer />

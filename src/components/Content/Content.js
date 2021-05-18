@@ -29,11 +29,10 @@ function Content() {
   const [woeid, setWoeid , , setData, , setSelectedTime] = useContext(GlobalContext);
 
   const { country, city } = useParams();
-  console.log(city)
-  console.log(country)
+  console.log(country, city)
 
   useEffect(() => {
-    if(city === '') {
+    if(city === undefined) {
       setWoeid(country);
     }
     else {
