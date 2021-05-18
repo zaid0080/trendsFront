@@ -7,7 +7,6 @@ import urlencode from 'urlencode';
 import {GlobalContext} from '../../global'
 import './hashtag.css';
 import MapChart from './MapChart';
-import ReactTooltip from 'react-tooltip'
 
 // const openNotification = (msg,desc) => {
 //     notification.error({
@@ -23,6 +22,8 @@ function parseTag(tag){
     }
     return tag;
 }
+
+
 
 const fetchTrendData = async(tag,setTrendDetail) => {
     try {
@@ -41,7 +42,6 @@ const fetchTrendData = async(tag,setTrendDetail) => {
 const Hashtag = () => {
     let params = useParams();
     let tag = parseTag(params.hashtag);
-    const [mapContent, setMapContent] = useState('');
     const [woeid] = useContext(GlobalContext);
     const [city, setCity] = useState(woeid);
     
@@ -111,8 +111,8 @@ const Hashtag = () => {
                         <p>Tweeted in <span>{trendDetail.trendingLocations.length}</span> other locations.</p>
                     </div>
                     <div>
-                        <MapChart setTooltipContent={setMapContent} />
-                        <ReactTooltip>{mapContent}</ReactTooltip>
+                        <MapChart data={trendDetail.trendingLocations}  />
+                        {/* <ReactTooltip>{mapContent}</ReactTooltip> */}
                     </div>
                 </div>
             </div>

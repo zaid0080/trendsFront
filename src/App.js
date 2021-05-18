@@ -18,11 +18,11 @@ function App() {
             <Route exact path="/aboutus">
               <AboutUs />
             </Route>
-            <Route path="/trend/:hashtag">
-              <Hashtag/>
-            </Route>
-            <Route path="/:country/:city?">
+            <Route exact path="/:country/:city?">
               <LandingPage />
+            </Route>
+            <Route path="/:country/:city?/trend/:hashtag">
+              <Hashtag/>
             </Route>
             <Route exact path="/">
               <Redirect to="/Worldwide"/>

@@ -1,7 +1,7 @@
 import React, { useState, useContext, useRef } from "react";
 import { GlobalContext } from "../../global";
 import { findDuration } from "./Time";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./tweet.css";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 import { IoMdArrowDropdownCircle } from 'react-icons/io';
@@ -17,6 +17,9 @@ function Tweet() {
   const [, , data] = useContext(GlobalContext);
   const [open, setOpen] = useState(false);
   const scrollRef = useRef(null);
+
+  const { country, city } = useParams();
+  console.log(country, city)
 
   const scrollLeft = () => {
     scrollRef.current.scrollLeft += 400;
@@ -44,7 +47,7 @@ function Tweet() {
                       if (t.tweet_volume > 0) {
                         return (
                           <Link
-                            to={`/trend/${t.name.replace(/#/g, "_")}`}
+                            to={`/${country}${city === undefined ? '' : '/'+city}/trend/${t.name.replace(/#/g, "_")}`}
                             className={`tweet-names tweet-names-${t.index} ${open ? `open` : `close-${t.index}`}`}
                             key={t.index}
                           >
@@ -58,7 +61,7 @@ function Tweet() {
                       }
                       return (
                         <Link
-                          to={`/trend/${t.name.replace(/#/g, "_")}`}
+                          to={`/${country}${city === undefined ? '' : '/'+city}/trend/${t.name.replace(/#/g, "_")}`}
                           className={`tweet-names tweet-names-${t.index} ${open ?  `open` : `close-${t.index}`}`}
                           key={t.index}
                         >

@@ -23,6 +23,24 @@ html {
   padding: 0;
 }
 
+#body-container > div.hashtag > div.hashtag-box > div > div:nth-child(5) > div.map-chart > div > div{
+  height: 70vh;
+}
+
+.map-chart {
+  margin-top: 25px;
+}
+
+.jvectormap-zoomin,
+.jvectormap-zoomout {
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.jvectormap-container>svg {
+  height: 500px;
+}
+
 #body-container {
   min-height: 100vh;
   display: flex;
