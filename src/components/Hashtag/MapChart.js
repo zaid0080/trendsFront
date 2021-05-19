@@ -7,11 +7,11 @@ const { getCode } = require("country-list");
 
 const CodeMap = (data, {setTooltipContent}) => {
   if(data){
-    const countryCode = data.data.filter((d) => getCode(d.place) !== undefined);
+    const countryCode = data.data.filter((d) => getCode(d.name) !== undefined);
     var toShow = {};
     countryCode.forEach(d => {
-      const cCode = getCode(d.place);
-      toShow[cCode] = d.volume;
+      const cCode = getCode(d.name);
+      toShow[cCode] = d.trend.tweet_volume;
     })
   }
   return (

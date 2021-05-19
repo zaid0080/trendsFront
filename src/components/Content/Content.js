@@ -30,12 +30,13 @@ function Content() {
 
   const { country, city } = useParams();
   // console.log(country, city)
-
   useEffect(() => {
     if(city === undefined) {
+      setData([])
       setWoeid(country);
     }
     else {
+      setData([])
       setWoeid(city);
     }
     fetchAndSetData(woeid, setData, setSelectedTime);

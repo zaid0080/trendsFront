@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../../global";
-import { VscLoading } from "react-icons/vsc";
+import { HashLoader } from 'react-spinners';
 
 function TopTrends() {
   const [, , data, , selectedTime, , selectedData, setSelectedData,] = useContext(GlobalContext);
@@ -13,7 +13,6 @@ function TopTrends() {
   if (selectedData) {
     return (
       <div id="Trends-container">
-        {/* <h2 className="heading">Top Trends</h2> */}
         <ol className="ol-list">
           {[selectedData].map((trend) =>
             trend.trends.map((t) => {
@@ -25,9 +24,9 @@ function TopTrends() {
     );
   } else {
     return (
-      <div className="loadings">
-        <VscLoading className="loading-icon" />
-      </div>
+      <div className='hash-loader-mobile'>
+                <HashLoader color='#00a2f5' size={35} />
+        </div>
     );
   }
 }

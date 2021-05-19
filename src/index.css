@@ -329,6 +329,11 @@ h1 span::before {
   white-space: pre;
 }
 
+.left-button,
+.right-button {
+  display: none;
+}
+
 /* #time-container>.list-item {
   font-size: .8em;
   display: flex;
@@ -421,6 +426,12 @@ h1 span::before {
 
 .trends-cont {
   display: none;
+}
+
+.hash-loader-mobile {
+  position: absolute;
+  top: 75%;
+  left: 50%;
 }
 
 
@@ -613,6 +624,10 @@ h1 span::before {
   h1 span::before {
     content: "\A";
     white-space: pre;
+  }
+
+  .hash-loader-mobile {
+    display: none;
   }
 
   .showMenu {
