@@ -17,9 +17,7 @@ export function findDuration(date) {
 }
 
 function Time() {
-  const ctx = useContext(GlobalContext);
-  const data = ctx[2];
-  const setSelectedTime = ctx[5];
+  const {data,setSelectedTime} = useContext(GlobalContext);
   useEffect(() => {}, [data]);
 
   return (

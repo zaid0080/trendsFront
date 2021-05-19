@@ -2,7 +2,7 @@
 @media all and (min-width: 768px) {
     .trends-cont {
         display: flex;
-        overflow-x: scroll;
+        overflow-x: auto;
         position: relative;
         margin: 0 0 50px 20px;
     }
@@ -16,6 +16,7 @@
 
     .right-button,
     .left-button {
+        display: block;
         font-size: 2.7em;
         cursor: pointer;
         color: #00a2f5;
@@ -80,10 +81,6 @@
         cursor: pointer;
     }
 
-    .tweet-names:last-child {
-        border-bottom: none;
-    }
-
     .index {
         grid-area: left;
         align-self: center;
@@ -137,10 +134,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 70px;
+        height: 50px;
+        font-size: 1.3em;
     }
 
-    .tweet-btn > .btn {
+    /* .tweet-btn > .btn {
         height: 34px;
         outline: none;
         border: none;
@@ -152,7 +150,7 @@
         box-shadow: 0 8px 6px -6px #000;
         -webkit-box-shadow: 0 8px 6px -6px black;
 	   -moz-box-shadow: 0 8px 6px -6px black;
-    }
+    } */
 
     .tweet-btn > .btn:active {
         background-color: #0b6fb3;

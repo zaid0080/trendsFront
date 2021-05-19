@@ -3,8 +3,8 @@
   "name": "Twitter Trends Visual Tool",
   "icons": [
     {
-      "src": "manifest-icon-192.png",
-      "sizes": "192x192",
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 12x12",
       "type": "image/png",
       "purpose": "maskable any"
     },

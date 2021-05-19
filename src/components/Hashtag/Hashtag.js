@@ -7,14 +7,9 @@ import urlencode from 'urlencode';
 import {GlobalContext} from '../../global'
 import './hashtag.css';
 import MapChart from './MapChart';
-import ReactTooltip from 'react-tooltip'
+import {HashLoader} from 'react-spinners';
 
-// const openNotification = (msg,desc) => {
-//     notification.error({
-//       message: msg,
-//       description: desc,
-//     });
-//   };
+
 
 function parseTag(tag){
     tag = urlencode.decode(tag);
@@ -23,6 +18,8 @@ function parseTag(tag){
     }
     return tag;
 }
+
+
 
 const fetchTrendData = async(tag,setTrendDetail) => {
     try {
@@ -41,11 +38,10 @@ const fetchTrendData = async(tag,setTrendDetail) => {
 const Hashtag = () => {
     let params = useParams();
     let tag = parseTag(params.hashtag);
-    const [mapContent, setMapContent] = useState('');
-    const [woeid] = useContext(GlobalContext);
+    const {woeid} = useContext(GlobalContext);
     const [city, setCity] = useState(woeid);
     
-    const [trendDetail, setTrendDetail] = useState({firstSeen : '', trendingLocations: []});
+    const [trendDetail, setTrendDetail] = useState({trendingLocations: []});
 
     useLayoutEffect(() => {
         setCity(city)
@@ -54,7 +50,7 @@ const Hashtag = () => {
     const countryHandler = (e) => {
         setCity(e.target.value);
     }
-    const filterCity = trendDetail.trendingLocations.filter(d => d.place === city);
+    const filterCity = trendDetail.trendingLocations.filter(d => d.name === city);
 
     useEffect(() =>{
         fetchTrendData(tag,setTrendDetail);
@@ -66,36 +62,18 @@ const Hashtag = () => {
             <Helmet>
                 <title>{tag}</title>
             </Helmet>
-            {/* <h1>TrendName : {tag}</h1>
-            <p>Total trending in {trendDetail.trendingLocations.length} places</p>
-            <div class ="treding">
-                {trendDetail.trendingLocations.map(d => {
-                    return(
-                    <Card title={d.place} style={{ width: 300 }}>
-                        <p>Index : {d.index}</p>
-                        <p>Volume : {d.volume}</p>
-                        <p>Last seen : {d.as_of}</p>
-                    </Card>
-                    )
-                } )}
-            </div> */}
             <div className='hashtag-box'>
                 <div>
-                    <h2 className='hash-line'>Trending at <span className='hash-index'>#{filterCity[0].index}</span> in 
+                    <h2 className='hash-line'>Trending at <span className='hash-index'>#{filterCity[0].trend.index}</span> in 
                         <select className='country-drop' onChange={countryHandler}>
                             {trendDetail.trendingLocations.map(t => {
-                                // console.log(trendDetail.trendingLocations)
-                                if(t.place=== woeid){
+                                if(t.trend.name=== woeid){
                                     return (
-                                        <>
-                                        <option selected={true} >{t.place}</option>
-                                        </>
+                                        <option selected={true} key={t.name}>{t.name}</option>
                                     )
                                 }
                                 return (
-                                    <>
-                                        <option className='select-items' value={t.place}>{t.place}</option>
-                                    </>
+                                        <option className='select-items' value={t.name} key={t.name}>{t.name}</option>
                                 )
                             })}
                         </select>
@@ -104,15 +82,15 @@ const Hashtag = () => {
                     <h1 className='hashtag-name'>{tag}</h1>
                     </div>
                     <div className='details'>
-                        <div><span className='details-1'>{filterCity[0].volume}</span> No. of Tweets</div>
-                        <div><span className='details-1'>#{filterCity[0].index}</span> Highest Rank</div>
+                        <div><span className='details-1'>{filterCity[0].trend.tweet_volume}</span> No. of Tweets</div>
+                        <div><span className='details-1'>#{filterCity[0].trend.index}</span> Highest Rank</div>
                     </div>
                     <div className='tweet-location'>
                         <p>Tweeted in <span>{trendDetail.trendingLocations.length}</span> other locations.</p>
                     </div>
                     <div>
-                        <MapChart setTooltipContent={setMapContent} />
-                        <ReactTooltip>{mapContent}</ReactTooltip>
+                        <MapChart data={trendDetail.trendingLocations}  />
+                        {/* <ReactTooltip>{mapContent}</ReactTooltip> */}
                     </div>
                 </div>
             </div>
@@ -126,6 +104,9 @@ const Hashtag = () => {
             <Helmet>
                 <title>Please Wait</title>
             </Helmet>
+            <div className='hash-loader'>
+                <HashLoader color='#00a2f5' />
+            </div>
             </div>
         )
     }

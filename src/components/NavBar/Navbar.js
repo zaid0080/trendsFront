@@ -35,10 +35,7 @@ function Navbar() {
   const placeHold = searchIcon ? "Search Country..." : " ";
   const iconColor = searchIcon ? "black" : "white";
 
-  const [woeid, setWoeid, ,] = useContext(GlobalContext);
-
-  // const { country } = useParams();
-  // console.log(country);
+  const {woeid, setWoeid} = useContext(GlobalContext);
 
   useOnClickOutside(inputRef, () => {
     if (searchIcon) {
@@ -114,11 +111,35 @@ function Navbar() {
             .sort()
             .map((d) => {
               return (
-                <div className="cities">
+                <div className="cities" key={d}>
                   <h2 className="countriesNames">{d}</h2>
                   <hr />
                   <ul className="citiesNames">
                     {woeidListTree[d].reverse().map((l) => {
+                      if(d !== l.name){
+                        return (
+                          <li
+                            value={l.name}
+                            key={l.woeid}
+                            onClick={(e) => {
+                              const woeidValue = e.target.innerText;
+                              if (woeidValue) {
+                                setWoeid(woeidValue);
+                                setTimeout(() => {
+                                  setCountryInput("");
+                                }, 500);
+                              }
+                            }}
+                          >
+                            <Link className="c-name" 
+                              to={d !== '' ? `/${d}/${l.name}` : `/${l.name}`} 
+                              key={l.woeid}>
+                              {l.name}
+                            </Link>
+                          </li>
+                        );
+                      }
+                      else {                      
                       return (
                         <li
                           value={l.name}
@@ -133,11 +154,12 @@ function Navbar() {
                             }
                           }}
                         >
-                          <Link className="c-name" to={`${l.name}`}>
+                          <Link className="c-name" to={`/${d}`} key={l.woeid.toString()}>
                             {l.name}
                           </Link>
                         </li>
                       );
+                        }
                     })}
                   </ul>
                 </div>
