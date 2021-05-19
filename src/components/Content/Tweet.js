@@ -14,7 +14,7 @@ function changetoK(x) {
 }
 
 function Tweet() {
-  const [, , data] = useContext(GlobalContext);
+  const {data}= useContext(GlobalContext);
   const [open, setOpen] = useState(false);
   const scrollRef = useRef(null);
 
@@ -38,8 +38,7 @@ function Tweet() {
         <div className="trends-cont" ref={scrollRef}>
           {data.map((d, index) => {
             return (
-              <>
-                <div className="card">
+                <div className="card" key={d._id}>
                   <h4 data-time={d._id}>{findDuration(d._id)}</h4>
                   <ol className="tweets">
                     {d.trends.map((t) => {
@@ -48,7 +47,7 @@ function Tweet() {
                           <Link
                             to={`/${country}${city === undefined ? '' : '/'+city}/trend/${t.name.replace(/#/g, "_")}`}
                             className={`tweet-names tweet-names-${t.index} ${open ? `open` : `close-${t.index}`}`}
-                            key={t.index}
+                            key={t.index.toString()}
                           >
                             {" "}
                             {t.name}{" "}
@@ -75,7 +74,6 @@ function Tweet() {
                  <IoMdArrowDropdownCircle  onClick={() => setOpen(!open)}/>
                   </div>
                 </div>
-              </>
             );
           })}
         </div>

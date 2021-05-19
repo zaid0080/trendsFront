@@ -9,12 +9,7 @@ import './hashtag.css';
 import MapChart from './MapChart';
 import {HashLoader} from 'react-spinners';
 
-// const openNotification = (msg,desc) => {
-//     notification.error({
-//       message: msg,
-//       description: desc,
-//     });
-//   };
+
 
 function parseTag(tag){
     tag = urlencode.decode(tag);
@@ -43,7 +38,7 @@ const fetchTrendData = async(tag,setTrendDetail) => {
 const Hashtag = () => {
     let params = useParams();
     let tag = parseTag(params.hashtag);
-    const [woeid] = useContext(GlobalContext);
+    const {woeid} = useContext(GlobalContext);
     const [city, setCity] = useState(woeid);
     
     const [trendDetail, setTrendDetail] = useState({trendingLocations: []});
@@ -87,15 +82,11 @@ const Hashtag = () => {
                             {trendDetail.trendingLocations.map(t => {
                                 if(t.trend.name=== woeid){
                                     return (
-                                        <>
-                                        <option selected={true} >{t.name}</option>
-                                        </>
+                                        <option selected={true} key={t.name}>{t.name}</option>
                                     )
                                 }
                                 return (
-                                    <>
-                                        <option className='select-items' value={t.name}>{t.name}</option>
-                                    </>
+                                        <option className='select-items' value={t.name} key={t.name}>{t.name}</option>
                                 )
                             })}
                         </select>

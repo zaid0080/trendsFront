@@ -9,7 +9,7 @@ export const GlobalProvider =  props => {
     const [selectedData,setSelectedData] = useState();
 
     return (
-        <GlobalContext.Provider value={[woeid,setWoeid,data,setData,selectedTime,setSelectedTime,selectedData,setSelectedData]}>
+        <GlobalContext.Provider value={{woeid,setWoeid,data,setData,selectedTime,setSelectedTime,selectedData,setSelectedData}}>
             {props.children}
          </GlobalContext.Provider>
     )

@@ -3,13 +3,16 @@ import { GlobalContext } from "../../global";
 import { HashLoader } from 'react-spinners';
 
 function TopTrends() {
-  const [, , data, , selectedTime, , selectedData, setSelectedData,] = useContext(GlobalContext);
+  const { data, selectedTime, selectedData, setSelectedData } = useContext(GlobalContext);
   
   useEffect(() => {
+    setSelectedData(undefined);
     const x = data.find((d) => d._id === selectedTime);
     setSelectedData(x);
   },[data, selectedTime, setSelectedData])
   
+  console.log(selectedData);
+
   if (selectedData) {
     return (
       <div id="Trends-container">

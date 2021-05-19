@@ -35,7 +35,7 @@ function Navbar() {
   const placeHold = searchIcon ? "Search Country..." : " ";
   const iconColor = searchIcon ? "black" : "white";
 
-  const [woeid, setWoeid, ,] = useContext(GlobalContext);
+  const {woeid, setWoeid} = useContext(GlobalContext);
 
   useOnClickOutside(inputRef, () => {
     if (searchIcon) {
@@ -111,7 +111,7 @@ function Navbar() {
             .sort()
             .map((d) => {
               return (
-                <div className="cities">
+                <div className="cities" key={d}>
                   <h2 className="countriesNames">{d}</h2>
                   <hr />
                   <ul className="citiesNames">
@@ -131,7 +131,9 @@ function Navbar() {
                               }
                             }}
                           >
-                            <Link className="c-name" to={`/${d}/${l.name}`}>
+                            <Link className="c-name" 
+                              to={d !== '' ? `/${d}/${l.name}` : `/${l.name}`} 
+                              key={l.woeid}>
                               {l.name}
                             </Link>
                           </li>
@@ -152,7 +154,7 @@ function Navbar() {
                             }
                           }}
                         >
-                          <Link className="c-name" to={`/${d}`}>
+                          <Link className="c-name" to={`/${d}`} key={l.woeid.toString()}>
                             {l.name}
                           </Link>
                         </li>
