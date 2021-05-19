@@ -19,7 +19,6 @@ function Tweet() {
   const scrollRef = useRef(null);
 
   const { country, city } = useParams();
-  console.log(country, city)
 
   const scrollLeft = () => {
     scrollRef.current.scrollLeft += 400;
@@ -76,7 +75,6 @@ function Tweet() {
                  <IoMdArrowDropdownCircle  onClick={() => setOpen(!open)}/>
                   </div>
                 </div>
-               
               </>
             );
           })}

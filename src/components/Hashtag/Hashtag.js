@@ -7,6 +7,7 @@ import urlencode from 'urlencode';
 import {GlobalContext} from '../../global'
 import './hashtag.css';
 import MapChart from './MapChart';
+import {HashLoader} from 'react-spinners';
 
 // const openNotification = (msg,desc) => {
 //     notification.error({
@@ -45,7 +46,7 @@ const Hashtag = () => {
     const [woeid] = useContext(GlobalContext);
     const [city, setCity] = useState(woeid);
     
-    const [trendDetail, setTrendDetail] = useState({firstSeen : '', trendingLocations: []});
+    const [trendDetail, setTrendDetail] = useState({trendingLocations: []});
 
     useLayoutEffect(() => {
         setCity(city)
@@ -54,7 +55,7 @@ const Hashtag = () => {
     const countryHandler = (e) => {
         setCity(e.target.value);
     }
-    const filterCity = trendDetail.trendingLocations.filter(d => d.place === city);
+    const filterCity = trendDetail.trendingLocations.filter(d => d.name === city);
 
     useEffect(() =>{
         fetchTrendData(tag,setTrendDetail);
@@ -81,20 +82,19 @@ const Hashtag = () => {
             </div> */}
             <div className='hashtag-box'>
                 <div>
-                    <h2 className='hash-line'>Trending at <span className='hash-index'>#{filterCity[0].index}</span> in 
+                    <h2 className='hash-line'>Trending at <span className='hash-index'>#{filterCity[0].trend.index}</span> in 
                         <select className='country-drop' onChange={countryHandler}>
                             {trendDetail.trendingLocations.map(t => {
-                                // console.log(trendDetail.trendingLocations)
-                                if(t.place=== woeid){
+                                if(t.trend.name=== woeid){
                                     return (
                                         <>
-                                        <option selected={true} >{t.place}</option>
+                                        <option selected={true} >{t.name}</option>
                                         </>
                                     )
                                 }
                                 return (
                                     <>
-                                        <option className='select-items' value={t.place}>{t.place}</option>
+                                        <option className='select-items' value={t.name}>{t.name}</option>
                                     </>
                                 )
                             })}
@@ -104,8 +104,8 @@ const Hashtag = () => {
                     <h1 className='hashtag-name'>{tag}</h1>
                     </div>
                     <div className='details'>
-                        <div><span className='details-1'>{filterCity[0].volume}</span> No. of Tweets</div>
-                        <div><span className='details-1'>#{filterCity[0].index}</span> Highest Rank</div>
+                        <div><span className='details-1'>{filterCity[0].trend.tweet_volume}</span> No. of Tweets</div>
+                        <div><span className='details-1'>#{filterCity[0].trend.index}</span> Highest Rank</div>
                     </div>
                     <div className='tweet-location'>
                         <p>Tweeted in <span>{trendDetail.trendingLocations.length}</span> other locations.</p>
@@ -126,6 +126,9 @@ const Hashtag = () => {
             <Helmet>
                 <title>Please Wait</title>
             </Helmet>
+            <div className='hash-loader'>
+                <HashLoader color='#00a2f5' />
+            </div>
             </div>
         )
     }

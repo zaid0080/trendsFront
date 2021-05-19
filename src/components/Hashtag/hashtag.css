@@ -109,3 +109,10 @@
     font-size: 1.5em;
     text-decoration: underline;
 }
+
+
+.hash-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
