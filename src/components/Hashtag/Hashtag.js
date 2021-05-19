@@ -67,19 +67,6 @@ const Hashtag = () => {
             <Helmet>
                 <title>{tag}</title>
             </Helmet>
-            {/* <h1>TrendName : {tag}</h1>
-            <p>Total trending in {trendDetail.trendingLocations.length} places</p>
-            <div class ="treding">
-                {trendDetail.trendingLocations.map(d => {
-                    return(
-                    <Card title={d.place} style={{ width: 300 }}>
-                        <p>Index : {d.index}</p>
-                        <p>Volume : {d.volume}</p>
-                        <p>Last seen : {d.as_of}</p>
-                    </Card>
-                    )
-                } )}
-            </div> */}
             <div className='hashtag-box'>
                 <div>
                     <h2 className='hash-line'>Trending at <span className='hash-index'>#{filterCity[0].trend.index}</span> in 

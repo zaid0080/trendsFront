@@ -23,24 +23,6 @@ html {
   padding: 0;
 }
 
-#body-container > div.hashtag > div.hashtag-box > div > div:nth-child(5) > div.map-chart > div > div{
-  height: 70vh;
-}
-
-.map-chart {
-  margin-top: 25px;
-}
-
-.jvectormap-zoomin,
-.jvectormap-zoomout {
-  cursor: pointer;
-  font-size: 25px;
-}
-
-.jvectormap-container>svg {
-  height: 500px;
-}
-
 #body-container {
   min-height: 100vh;
   display: flex;
@@ -404,10 +386,9 @@ h1 span::before {
 
 #Trends-container > .ol-list {
   margin: 20px 0;
-  list-style-type: none;
 }
 
-#Trends-container > .ol-list > li {
+#Trends-container > .ol-list > a {
   margin-top: 10px;
   margin-bottom: 10px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), 0 -3px 5px rgba(0, 0, 0, 0.2);
@@ -418,10 +399,14 @@ h1 span::before {
   width: 300px;
   height: 35px;
   border: 0.8px solid #000;
+  text-decoration: none;
+  color: #000;
 }
 
-#Trends-container > .ol-list > li:hover {
+#Trends-container > .ol-list > a:hover {
   transform: scale(1.1);
+  color: #00a2f5;
+  transition: color 0.3s ease;
 }
 
 .trends-cont {
@@ -462,7 +447,6 @@ h1 span::before {
   margin: 0 25px;
 }
 
-
 .logos {
   grid-area: backdown;
   margin-left: 25px;
@@ -470,7 +454,118 @@ h1 span::before {
   justify-self: inherit;
 }
 
-@media all and (min-width: 320px) and (max-width: 425px) {
+
+/* **************************hashtag page***************************************** */
+.hashtag {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  background: #f1f1f1;
+  min-height: 100vh;
+}
+
+.hashtag-box {
+  width: 88%;
+  text-align: center;
+  background: #fff;
+  margin: 40px 0;
+  border-radius: 15px;
+  box-shadow: 5px 15px 15px rgba(0,0,0, 0.1);
+}
+
+.hash-line {
+  margin: 10px 0;
+  font-weight: 400;
+  font-size: 1.2em;
+  letter-spacing: 1px;
+}
+
+.hash-index {
+  font-size: 1.4em;
+}
+
+.hashtag-name{
+  margin: 25px 0;
+  padding: 3px;
+  font-size: 1.9em;
+  letter-spacing: 1.3px;
+}
+
+.top-tweets-box {
+  width: 85%;
+  height: 500px;
+  margin: 50px 0;
+  border-radius: 22px;
+  background-color: #fff;
+  box-shadow: 5px 15px 15px rgba(0,0,0, 0.1);
+}
+
+.country-drop {
+  height: 30px;
+  cursor: pointer;
+  position: relative;
+  top: -6px;
+  margin-left: 12px;
+}
+
+.details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 25px 50px 0 50px;
+}
+
+.details-1 {
+  font-size: 1.7em;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.details-1::after {
+  white-space: pre;
+  content: "\A";
+}
+
+.tweet-location {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 1.2em;
+}
+
+.tweet-location > p > span {
+  font-size: 1.3em;
+  text-decoration: underline;
+}
+
+.hash-loader {
+  position: absolute;
+  top: 50%;
+}
+
+
+/* ***********map chart******** */
+
+.map {
+  height: 500px;
+}
+
+#body-container > div.hashtag > div.hashtag-box > div > div:nth-child(5) > div.map-chart > div > div{
+  height: 70vh;
+}
+
+.jvectormap-zoomin,
+.jvectormap-zoomout {
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.jvectormap-container>svg {
+  height: 400px;
+}
+
+
+@media all and (min-width: 320px) and (max-width: 424px) {
   .nav {
     height: 45px;
   }
@@ -515,8 +610,10 @@ h1 span::before {
     letter-spacing: 5px;
   }
 
-  #Trends-container > .ol-list > li {
-    width: 275px;
+  #Trends-container > .ol-list > a {
+    width: 260px;
+    font-size: 0.9em;
+    height: 40px;
   }
 
   #foots-container {
@@ -539,13 +636,101 @@ h1 span::before {
 
 
   .logos {
-    /* grid-area: backdown; */
-    /* margin-left: 80px; */
-    /* align-self: center; */
-    /* margin-left: 150px; */
-    /* justify-self: inherit; */
     align-self: flex-start;
     margin: 20px 50px ;
+  }
+  
+  .hashtag-box {
+    width: 88%;
+    margin: 40px 0;
+    border-radius: 12px;
+  }
+  
+  .hash-line {
+    margin: 20px 0;
+    font-weight: 400;
+    font-size: 1em;
+    letter-spacing: 0.7px;
+  }
+  
+  .hash-index {
+    font-size: 1.4em;
+  }
+  
+  .hashtag-name{
+    margin: 20px 0;
+    font-size: 1.6em;
+    letter-spacing: 1.1px;
+  }
+  
+  .top-tweets-box {
+    width: 88%;
+    height: 500px;
+    margin: 50px 0;
+    border-radius: 22px;
+    background-color: #fff;
+    box-shadow: 5px 15px 15px rgba(0,0,0, 0.1);
+  }
+  
+  .country-drop {
+    height: 28px;
+    top: -5px;
+    margin-left: 7px;
+  }
+  
+  .details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 22px 30px 0 30px;
+    font-size: 0.9em;
+  }
+  
+  .details-1 {
+    font-size: 1.3em;
+    font-weight: 400;
+    text-decoration: underline;
+  }
+  
+  .tweet-location {
+    margin-top: 35px;
+    font-size: 1.1em;
+  }
+  
+  .tweet-location > p > span {
+    font-size: 1.4em;
+  }
+  
+  .hash-loader {
+    position: absolute;
+    top: 50%;
+  }
+  
+
+  #body-container > div.hashtag > div.hashtag-box > div > div:nth-child(5) > div.map-chart > div > div{
+    height: 70vh;
+  }
+  
+  /* .map-chart {
+    margin-top: -50px;
+  } */
+
+  .map[style] {
+    height: auto !important;
+  }
+  
+  .jvectormap-zoomin,
+  .jvectormap-zoomout {
+    cursor: pointer;
+    font-size: 25px;
+  }
+
+  .jvectormap-container {
+    height: 250px;
+  }
+  
+  .jvectormap-container>svg {
+    height: 350px;
   }
 }
 
@@ -678,6 +863,24 @@ h1 span::before {
     align-self: center;
     margin-left: 150px;
     justify-self: inherit;
+  }
+
+  #body-container > div.hashtag > div.hashtag-box > div > div:nth-child(5) > div.map-chart > div > div{
+    height: 70vh;
+  }
+  
+  .map-chart {
+    margin-top: 25px;
+  }
+  
+  .jvectormap-zoomin,
+  .jvectormap-zoomout {
+    cursor: pointer;
+    font-size: 25px;
+  }
+  
+  .jvectormap-container>svg {
+    height: 500px;
   }
 }
 
