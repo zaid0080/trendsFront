@@ -23,7 +23,7 @@ function parseTag(tag){
 
 const fetchTrendData = async(tag,setTrendDetail) => {
     try {
-        const response = await axios.post('http://trendsend.herokuapp.com/trends/trend-details',{
+        const response = await axios.post('https://trendsend.herokuapp.com/trends/trend-details',{
             trend : tag
         })
         setTrendDetail(response.data.data);
