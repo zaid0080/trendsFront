@@ -24,7 +24,7 @@ function App() {
             <Route path="/:country/:city?/trend/:hashtag">
               <Hashtag/>
             </Route>
-            <Route exact path="/">
+            <Route path="/">
               <Redirect to="/Worldwide"/>
             </Route>
           </Switch>
