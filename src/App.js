@@ -9,8 +9,8 @@ import {lazy, Suspense} from 'react';
 const HashTag = lazy(()=> import ("./components/Hashtag/Hashtag") );
 const AboutUs = lazy(() => import("./components/AboutUs/AboutUs") );
 
-function App() {
 
+function App() {
   return (
     <GlobalProvider>
       <Router>

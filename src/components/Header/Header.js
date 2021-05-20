@@ -5,7 +5,7 @@ function Header() {
     return (
         <div id='header-container'>
             <h1 className='tag-line'>Know<span>What's</span><span>Trending?</span></h1>
-            <img src={Social} alt='Social' className='head-image' />
+            <img src={Social} width='726' height='494' alt='Social' className='head-image' />
         </div>
     )
 }

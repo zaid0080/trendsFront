@@ -19,12 +19,12 @@
         display: block;
         font-size: 2.7em;
         cursor: pointer;
-        color: #00a2f5;
+        color: #017acd;
     }
 
     .right-button:active,
     .left-button:active {
-        color: #0b6fb3;
+        color: #003e80;
     }
     
     div.card {
