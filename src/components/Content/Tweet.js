@@ -36,8 +36,7 @@ function Tweet() {
       <div className="trends-cont" ref={scrollRef}>
         {data.map((d, index) => {
           return (
-            <>
-              <div className="card">
+              <div className="card" key={d._id}>
                 <h4 data-time={d._id}>{findDuration(d._id)}</h4>
                 <ol className="tweets">
                   {d.trends.map((t) => {
@@ -84,7 +83,6 @@ function Tweet() {
                   )}
                 </div>
               </div>
-            </>
           );
         })}
       </div>

@@ -1,5 +1,3 @@
-//import { Content } from 'antd/lib/layout/layout';
-import axios from 'axios';
 import { useEffect, useState, useContext, useLayoutEffect } from 'react';
 import Helmet from 'react-helmet';
 import { useParams } from 'react-router';
@@ -22,14 +20,18 @@ function parseTag(tag){
 
 const fetchTrendData = async(tag,setTrendDetail) => {
     try {
-        const response = await axios.post('https://trendsend.herokuapp.com/trends/trend-details',{
-            trend : tag
+        const response = await fetch('https://trendsend.herokuapp.com/trends/trend-details',{
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method : 'POST',
+            body : JSON.stringify({trend : tag})
         })
-        setTrendDetail(response.data.data);
+        const data = (await response.json()).data
+        setTrendDetail(data);
     } catch (error) {
         if(error.isAxiosError){
-            window.e = error;
-            // openNotification(error.response.statusText,error.response.data.message);
+            console.log(error);
         }
     }
 }

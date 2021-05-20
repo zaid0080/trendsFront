@@ -1,8 +1,7 @@
 import React from "react";
 import { VectorMap } from "react-jvectormap";
 
-
-const { getCode } = require("country-list"); 
+import { getCode } from "country-list"; 
 
 
 const CodeMap = (data, {setTooltipContent}) => {

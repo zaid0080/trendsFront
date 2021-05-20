@@ -4,7 +4,7 @@ import LandingPage from "./components/LandingPage/index";
 import Footer from "./components/Footer/Footer.js";
 import { GlobalProvider } from "./global";
 import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
-import {HashLoader} from 'react-spinners';
+import { HashLoader } from 'react-spinners';
 import {lazy, Suspense} from 'react';
 const HashTag = lazy(()=> import ("./components/Hashtag/Hashtag") );
 const AboutUs = lazy(() => import("./components/AboutUs/AboutUs") );

@@ -14,7 +14,7 @@ export default function Landingpage() {
     console.log(x);
     return (
         <div id = 'landing-page'>
-            <Helmet>
+        <Helmet>
             <title>All Day Trends</title>
         </Helmet>
          <Header />

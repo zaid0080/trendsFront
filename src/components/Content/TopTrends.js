@@ -38,6 +38,7 @@ function TopTrends() {
                       city === undefined ? "" : "/" + city
                     }/trend/${t.name.replace(/#/g, "_")}`}
                     key={t.index}
+                    prefetch
                   >
                     {t.name} <span>{changetoK(t.tweet_volume)}</span>
                   </Link>
