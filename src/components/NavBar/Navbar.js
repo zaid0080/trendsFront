@@ -35,7 +35,7 @@ function Navbar() {
   const placeHold = searchIcon ? "Search Country..." : " ";
   const iconColor = searchIcon ? "black" : "white";
 
-  const {woeid, setWoeid} = useContext(GlobalContext);
+  const { woeid, setWoeid } = useContext(GlobalContext);
 
   useOnClickOutside(inputRef, () => {
     if (searchIcon) {
@@ -84,22 +84,20 @@ function Navbar() {
       <Link to="/aboutus" className="links">
         About
       </Link>
-      <p
-        className="links last-link"
-      >
-        {woeid}
-      </p>
+      <p className="links last-link">{woeid}</p>
       {/* <h3>{woeid}</h3> */}
 
       <div className="search-container">
-        <input
-          ref={inputRef}
-          type="text"
-          value={countryInput}
-          className={searchClass}
-          onChange={handleChange}
-          placeholder={placeHold}
-        />
+          <input
+            id='searchbar'
+            ref={inputRef}
+            type="text"
+            value={countryInput}
+            className={searchClass}
+            onChange={handleChange}
+            placeholder={placeHold}
+          />
+          <label for='searchbar'></label>
         <MdSearch
           id="searchIcon"
           className={iconColor}
@@ -116,7 +114,7 @@ function Navbar() {
                   <hr />
                   <ul className="citiesNames">
                     {woeidListTree[d].reverse().map((l) => {
-                      if(d !== l.name){
+                      if (d !== l.name) {
                         return (
                           <li
                             value={l.name}
@@ -131,35 +129,40 @@ function Navbar() {
                               }
                             }}
                           >
-                            <Link className="c-name" 
-                              to={d !== '' ? `/${d}/${l.name}` : `/${l.name}`} 
-                              key={l.woeid}>
+                            <Link
+                              className="c-name"
+                              to={d !== "" ? `/${d}/${l.name}` : `/${l.name}`}
+                              key={l.woeid}
+                            >
+                              {l.name}
+                            </Link>
+                          </li>
+                        );
+                      } else {
+                        return (
+                          <li
+                            value={l.name}
+                            key={l.woeid}
+                            onClick={(e) => {
+                              const woeidValue = e.target.innerText;
+                              if (woeidValue) {
+                                setWoeid(woeidValue);
+                                setTimeout(() => {
+                                  setCountryInput("");
+                                }, 500);
+                              }
+                            }}
+                          >
+                            <Link
+                              className="c-name"
+                              to={`/${d}`}
+                              key={l.woeid.toString()}
+                            >
                               {l.name}
                             </Link>
                           </li>
                         );
                       }
-                      else {                      
-                      return (
-                        <li
-                          value={l.name}
-                          key={l.woeid}
-                          onClick={(e) => {
-                            const woeidValue = e.target.innerText;
-                            if (woeidValue) {
-                              setWoeid(woeidValue);
-                              setTimeout(() => {
-                                setCountryInput("");
-                              }, 500);
-                            }
-                          }}
-                        >
-                          <Link className="c-name" to={`/${d}`} key={l.woeid.toString()}>
-                            {l.name}
-                          </Link>
-                        </li>
-                      );
-                        }
                     })}
                   </ul>
                 </div>

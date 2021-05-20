@@ -20,7 +20,7 @@ function Footer() {
             </ul>
             </div>
             <div className='logos'>
-                <h4>Follow us</h4> 
+                <h3>Follow us</h3> 
                 <IoLogoTwitter />   
                 <IoLogoFacebook />
             </div>
