@@ -6,7 +6,7 @@ function AboutUs() {
   return (
     <div className='about-page'>
       <h1 className='title'>ABOUT alldaytrends.</h1>
-      <img src={Trends} alt='About' className='about-img' />
+      <img src={Trends} alt='About' className='about-img' width={600} height={300} />
       <p className='tagLines'>
         When you are looking for ways to increase your social media exposure,
         you need to know and keep up with topics that are trending all around
