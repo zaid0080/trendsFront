@@ -10,7 +10,6 @@ import MapChart from './MapChart';
 import {HashLoader} from 'react-spinners';
 
 
-
 function parseTag(tag){
     tag = urlencode.decode(tag);
     if(tag[0] === '_'){
@@ -82,7 +81,7 @@ const Hashtag = () => {
                     <h1 className='hashtag-name'>{tag}</h1>
                     </div>
                     <div className='details'>
-                        <div><span className='details-1'>{filterCity[0].trend.tweet_volume}</span> No. of Tweets</div>
+                        <div><span className='details-1'>{filterCity[0].trend.tweet_volume === 0 ? 'N.A' : filterCity[0].trend.tweet_volume}</span> No. of Tweets</div>
                         <div><span className='details-1'>#{filterCity[0].trend.index}</span> Highest Rank</div>
                     </div>
                     <div className='tweet-location'>
