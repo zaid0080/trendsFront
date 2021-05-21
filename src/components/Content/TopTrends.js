@@ -21,8 +21,6 @@ function TopTrends() {
     setSelectedData(x);
   },[data, selectedTime, setSelectedData])
   
-  console.log(selectedData);
-
   if (selectedData) {
     return (
       <div id="Trends-container">

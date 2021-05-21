@@ -8,6 +8,7 @@ import {GlobalContext} from '../../global'
 import './hashtag.css';
 import MapChart from './MapChart';
 import {HashLoader} from 'react-spinners';
+import Trending from './Trending';
 
 
 function parseTag(tag){
@@ -94,6 +95,7 @@ const Hashtag = () => {
                 </div>
             </div>
             <div className='top-tweets-box'>
+                <Trending />
             </div>
             </div>
         )
@@ -104,7 +106,7 @@ const Hashtag = () => {
                 <title>Please Wait</title>
             </Helmet>
             <div className='hash-loader'>
-                <HashLoader color='#00a2f5' />
+                <HashLoader color='#017acd' />
             </div>
             </div>
         )
