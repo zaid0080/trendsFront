@@ -1,5 +1,3 @@
-//import { Content } from 'antd/lib/layout/layout';
-import axios from 'axios';
 import { useEffect, useState, useContext, useLayoutEffect } from 'react';
 import Helmet from 'react-helmet';
 import { useParams } from 'react-router';
@@ -23,14 +21,18 @@ function parseTag(tag){
 
 const fetchTrendData = async(tag,setTrendDetail) => {
     try {
-        const response = await axios.post('https://trendsend.herokuapp.com/trends/trend-details',{
-            trend : tag
+        const response = await fetch('https://trendsend.herokuapp.com/trends/trend-details',{
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method : 'POST',
+            body : JSON.stringify({trend : tag})
         })
-        setTrendDetail(response.data.data);
+        const data = (await response.json())
+        setTrendDetail(data.data);
     } catch (error) {
         if(error.isAxiosError){
-            window.e = error;
-            // openNotification(error.response.statusText,error.response.data.message);
+            console.log(error);
         }
     }
 }
@@ -38,23 +40,28 @@ const fetchTrendData = async(tag,setTrendDetail) => {
 const Hashtag = () => {
     let params = useParams();
     let tag = parseTag(params.hashtag);
-    const {woeid} = useContext(GlobalContext);
-    const [city, setCity] = useState(woeid);
+    const {city,country} = useContext(GlobalContext);
+    const selectedPlace = city === undefined ? country : city;
+    const [place, setPlace] = useState(selectedPlace);
     
     const [trendDetail, setTrendDetail] = useState({trendingLocations: []});
+    console.log(trendDetail);
 
     useLayoutEffect(() => {
-        setCity(city)
-    },[city])
+        setPlace(place)
+    },[place])
 
+    console.log(place);
+    
     const countryHandler = (e) => {
-        setCity(e.target.value);
+        setPlace(e.target.value);
     }
-    const filterCity = trendDetail.trendingLocations.filter(d => d.name === city);
+    const filterCity = trendDetail.trendingLocations.filter(d => d.name === place);
+    console.log(filterCity);
 
     useEffect(() =>{
         fetchTrendData(tag,setTrendDetail);
-    },[tag, city]);
+    },[tag,place]);
 
     if(trendDetail.trendingLocations.length > 1){
         return (
@@ -64,10 +71,10 @@ const Hashtag = () => {
             </Helmet>
             <div className='hashtag-box'>
                 <div>
-                    <h2 className='hash-line'>Trending at <span className='hash-index'>#{filterCity[0].trend.index}</span> in 
+                    <h2 className='hash-line'>Trending at <span className='hash-index'>#{filterCity[0]?.trend?.index}</span> in 
                         <select className='country-drop' onChange={countryHandler}>
                             {trendDetail.trendingLocations.map(t => {
-                                if(t.trend.name=== woeid){
+                                if(t.trend.name === place){
                                     return (
                                         <option selected={true} key={t.name}>{t.name}</option>
                                     )
@@ -82,8 +89,8 @@ const Hashtag = () => {
                     <h1 className='hashtag-name'>{tag}</h1>
                     </div>
                     <div className='details'>
-                        <div><span className='details-1'>{filterCity[0].trend.tweet_volume === 0 ? 'N.A' : filterCity[0].trend.tweet_volume}</span> No. of Tweets</div>
-                        <div><span className='details-1'>#{filterCity[0].trend.index}</span> Highest Rank</div>
+                        <div><span className='details-1'>{filterCity[0]?.trend?.tweet_volume === 0 ? 'N.A' : filterCity[0]?.trend?.tweet_volume}</span> No. of Tweets</div>
+                        <div><span className='details-1'>#{filterCity[0]?.trend?.index}</span> Highest Rank</div>
                     </div>
                     <div className='tweet-location'>
                         <p>Tweeted in <span>{trendDetail.trendingLocations.length}</span> other locations.</p>

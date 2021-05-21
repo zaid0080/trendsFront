@@ -29,8 +29,7 @@ function TopTrends() {
             trend.trends.map((t) => {
               if (t.tweet_volume > 0) {
                 return (
-                  <>
-                  <li>
+                  <li key={t.index}>
                   <Link
                     to={`/${country}${
                       city === undefined ? "" : "/" + city
@@ -40,12 +39,10 @@ function TopTrends() {
                     {t.name} <span>{changetoK(t.tweet_volume)}</span>
                   </Link>
                   </li>
-                  </>
                 );
               }
               return (
-                <>
-                <li>
+                <li key={t.index}>
                 <Link
                   to={`/${country}${
                     city === undefined ? "" : "/" + city
@@ -56,7 +53,6 @@ function TopTrends() {
                 </Link>
                 </li>
                 
-                </>
               );
             })
           )}
