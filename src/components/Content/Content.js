@@ -9,8 +9,8 @@ const fetchAndSetData = async (woeid, setData, setTime) => {
   try{
     const res = await fetch(`https://trendsend.herokuapp.com/trends/by-place?placeName=${woeid}`);
     const data = await res.json();
+    console.log(data);
     if(data){
-      window.data = data.data;
       setData(data.data);
       setTime(data.data[0]._id);
     }
@@ -20,21 +20,18 @@ const fetchAndSetData = async (woeid, setData, setTime) => {
 };
 
 
-
 function Content() {
-  const {woeid, setWoeid ,setData, setSelectedTime} = useContext(GlobalContext);
+  const {setCity, setCountry ,setData, setSelectedTime} = useContext(GlobalContext);
 
   const { country, city } = useParams();
-  // console.log(country, city)
+
   useEffect(() => {
-    if(city === undefined) {
-      setWoeid(country);
-    }
-    else {
-      setWoeid(city);
-    }
-    fetchAndSetData(woeid, setData, setSelectedTime);
-  }, [woeid, setData, setSelectedTime, setWoeid, country, city]);
+    setCity(city );
+    setCountry(country);
+    const query = city === undefined ? country : city;
+    console.log(query,city,country);
+    fetchAndSetData(query, setData, setSelectedTime);
+  }, [setData, setSelectedTime, setCountry, setCity, country, city]);
 
   return (
     <div id="content">

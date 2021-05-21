@@ -1,7 +1,7 @@
 import "./App.css";
 import Navbar from "./components/NavBar/Navbar.js";
-import LandingPage from "./components/LandingPage/index";
 import Footer from "./components/Footer/Footer.js";
+import LandingPage  from "./components/LandingPage/index";
 import { GlobalProvider } from "./global";
 import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import { HashLoader } from 'react-spinners';

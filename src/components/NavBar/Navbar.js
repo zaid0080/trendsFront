@@ -23,6 +23,7 @@ function createTree(filterCountries) {
 }
 
 function Navbar() {
+  const { country,city } = useContext(GlobalContext);
   const [dropdown, setDropdown] = useState(false);
   const [searchIcon, setSearchIcon] = useState(false);
   const [countryInput, setCountryInput] = useState("");
@@ -34,8 +35,6 @@ function Navbar() {
   const searchClass = searchIcon ? "showSearch" : "noSearch";
   const placeHold = searchIcon ? "Search Country..." : " ";
   const iconColor = searchIcon ? "black" : "white";
-
-  const { woeid, setWoeid } = useContext(GlobalContext);
 
   useOnClickOutside(inputRef, () => {
     if (searchIcon) {
@@ -84,7 +83,7 @@ function Navbar() {
       <Link to="/aboutus" className="links">
         About
       </Link>
-      <p className="links last-link">{woeid}</p>
+      <p className="links last-link">{country + (city === undefined ? '' : ','+ city)}</p>
       {/* <h3>{woeid}</h3> */}
 
       <div className="search-container">
@@ -97,7 +96,7 @@ function Navbar() {
             onChange={handleChange}
             placeholder={placeHold}
           />
-          <label for='searchbar'></label>
+          <label></label>
         <MdSearch
           id="searchIcon"
           className={iconColor}
@@ -119,15 +118,6 @@ function Navbar() {
                           <li
                             value={l.name}
                             key={l.woeid}
-                            onClick={(e) => {
-                              const woeidValue = e.target.innerText;
-                              if (woeidValue) {
-                                setWoeid(woeidValue);
-                                setTimeout(() => {
-                                  setCountryInput("");
-                                }, 500);
-                              }
-                            }}
                           >
                             <Link
                               className="c-name"
@@ -143,20 +133,11 @@ function Navbar() {
                           <li
                             value={l.name}
                             key={l.woeid}
-                            onClick={(e) => {
-                              const woeidValue = e.target.innerText;
-                              if (woeidValue) {
-                                setWoeid(woeidValue);
-                                setTimeout(() => {
-                                  setCountryInput("");
-                                }, 500);
-                              }
-                            }}
                           >
                             <Link
                               className="c-name"
                               to={`/${d}`}
-                              key={l.woeid.toString()}
+                              key={l.woeid}
                             >
                               {l.name}
                             </Link>
