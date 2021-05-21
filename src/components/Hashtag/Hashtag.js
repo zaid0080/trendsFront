@@ -4,9 +4,10 @@ import { useParams } from 'react-router';
 import urlencode from 'urlencode';
 import {GlobalContext} from '../../global'
 import './hashtag.css';
-import MapChart from './MapChart';
+// import MapChart from './MapChart';
 import {HashLoader} from 'react-spinners';
 import Trending from './Trending';
+import GeoChart from './GeoChart';
 
 
 function parseTag(tag){
@@ -45,19 +46,15 @@ const Hashtag = () => {
     const [place, setPlace] = useState(selectedPlace);
     
     const [trendDetail, setTrendDetail] = useState({trendingLocations: []});
-    console.log(trendDetail);
 
     useLayoutEffect(() => {
         setPlace(place)
     },[place])
 
-    console.log(place);
-    
     const countryHandler = (e) => {
         setPlace(e.target.value);
     }
     const filterCity = trendDetail.trendingLocations.filter(d => d.name === place);
-    console.log(filterCity);
 
     useEffect(() =>{
         fetchTrendData(tag,setTrendDetail);
@@ -96,7 +93,8 @@ const Hashtag = () => {
                         <p>Tweeted in <span>{trendDetail.trendingLocations.length}</span> other locations.</p>
                     </div>
                     <div>
-                        <MapChart data={trendDetail.trendingLocations}  />
+                        {/* <MapChart data={trendDetail.trendingLocations}  /> */}
+                        <GeoChart mapData={trendDetail.trendingLocations}/>
                         {/* <ReactTooltip>{mapContent}</ReactTooltip> */}
                     </div>
                 </div>

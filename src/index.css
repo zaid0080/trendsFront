@@ -560,9 +560,21 @@ h1 span::before {
     height: 45px;
   }
 
+  .hidelogo {
+    display: none;
+  }
+
+  .showCountry {
+    display: block;
+  }
+
+  .hideCountry {
+    display: none;
+  }
+
   nav > #logo {
-    transform: translateX(14%);
-    font-size: 21px;
+    /* transform: translateX(25%); */
+    font-size: 15px;
     z-index: 2;
   }
 
@@ -908,6 +920,7 @@ h1 span::before {
 
   .last-link {
     padding-right: 40px;
+    cursor: pointer;
   }
 
   .nav > span {

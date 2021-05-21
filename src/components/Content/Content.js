@@ -5,9 +5,9 @@ import { GlobalContext } from "../../global";
 import { useParams } from 'react-router-dom';
 import Tweet from "./Tweet.js";
 
-const fetchAndSetData = async (woeid, setData, setTime) => {
+const fetchAndSetData = async (place, setData, setTime) => {
   try{
-    const res = await fetch(`https://trendsend.herokuapp.com/trends/by-place?placeName=${woeid}`);
+    const res = await fetch(`https://trendsend.herokuapp.com/trends/by-place?placeName=${place}`);
     const data = await res.json();
     console.log(data);
     if(data){
@@ -29,7 +29,6 @@ function Content() {
     setCity(city );
     setCountry(country);
     const query = city === undefined ? country : city;
-    console.log(query,city,country);
     fetchAndSetData(query, setData, setSelectedTime);
   }, [setData, setSelectedTime, setCountry, setCity, country, city]);
 

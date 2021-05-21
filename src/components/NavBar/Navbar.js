@@ -49,6 +49,11 @@ function Navbar() {
     inputRef.current.focus();
   };
 
+  const countryHandler = () => {
+    setDropdown(!dropdown);
+    setSearchIcon(!searchIcon);
+  }
+
   const menuHandler = () => {
     sideRef.current.showMenu();
   };
@@ -77,13 +82,13 @@ function Navbar() {
         alldaytrends.
       </Link>
       <span></span>
-      <Link to="/" className="links">
+      {/* <Link to="/" className="links">
         Home
       </Link>
       <Link to="/aboutus" className="links">
         About
-      </Link>
-      <p className="links last-link">{country + (city === undefined ? '' : ','+ city)}</p>
+      </Link> */}
+      <p className={`links last-link `} onClick={countryHandler}>{country + (city === undefined ? '' : ','+ city)}</p>
       {/* <h3>{woeid}</h3> */}
 
       <div className="search-container">
