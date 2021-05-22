@@ -5,22 +5,22 @@ import { GlobalContext } from "../../global";
 import { useParams } from 'react-router-dom';
 import Tweet from "./Tweet.js";
 
-const fetchAndSetData = async (place, setData, setTime) => {
+
+export const fetchAndSetData = async (place, setData, setTime) => {
   try{
     const res = await fetch(`https://trendsend.herokuapp.com/trends/by-place?placeName=${place}`);
-    const data = await res.json();
-    console.log(data);
-    if(data){
-      setData(data.data);
-      setTime(data.data[0]._id);
+    const jsonData = await res.json();
+    if(jsonData){
+      setData(jsonData.data);
+      window.sessionStorage.setItem('data',JSON.stringify(jsonData.data))
+      setTime(jsonData.data[0]._id);
     }
   }catch(error){
     console.error(error);
   }
 };
 
-
-function Content() {
+export function Content() {
   const {setCity, setCountry ,setData, setSelectedTime} = useContext(GlobalContext);
 
   const { country, city } = useParams();
@@ -40,5 +40,3 @@ function Content() {
     </div>
   );
 }
-
-export default Content;

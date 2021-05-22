@@ -4,7 +4,6 @@ import { getCode } from "country-list";
 
 function GeoChart(mapData) {
     console.log(mapData)
-
     if(mapData) {
     const countryCode = mapData.mapData.filter((d) => getCode(d.name) !== undefined);
     var toShow = countryCode.map(d => {

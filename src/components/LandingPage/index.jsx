@@ -1,5 +1,5 @@
 import Header from '../Header/Header.js';
-import Content from '../Content/Content.js';
+import {Content} from '../Content/Content.js';
 import Helmet from 'react-helmet';
 
 export default function Landingpage() {

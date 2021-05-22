@@ -4,7 +4,6 @@ import { useParams } from 'react-router';
 import urlencode from 'urlencode';
 import {GlobalContext} from '../../global'
 import './hashtag.css';
-// import MapChart from './MapChart';
 import {HashLoader} from 'react-spinners';
 import Trending from './Trending';
 import GeoChart from './GeoChart';
