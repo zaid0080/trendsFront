@@ -29,7 +29,9 @@ const sideContainer = forwardRef((props, ref) => {
   return (
     <>
       <div className={`sideContainer ${menu ? "showMenu" : "hideMenu"}`}>
-        <ul>
+      
+        <ul className='ul-nav-links'>
+        <p className='side-tag'>adt. alldaytrends</p>
           <li className="nav-links">
             <Link to="/">Home</Link>
           </li>

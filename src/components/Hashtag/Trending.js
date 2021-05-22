@@ -12,16 +12,15 @@ function Trending() {
         sessionData = window.sessionStorage.getItem('data');
     }
     const d = JSON.parse(sessionData);
-    const trendData  = Object.values(d);
-    console.log(trendData[1]);
-    if(trendData){
+    console.log(d[0]);
+    if(d.length){
         return (
-            <div className='trending-container'>
-                <p>Trending Now</p>      
-                <ul>
-                   {trendData[1].trends.map(d => <li key={d.index} >{d.name}</li>)}
+            <>
+                <p className='tt-tag'>Trending Now</p>      
+                <ul className='tt-trends'>
+                   {d[0].trends.map(d => <li key={d.index} >{d.name}</li>)}
                 </ul>      
-            </div>
+            </>
         )
     } else {
         return null
