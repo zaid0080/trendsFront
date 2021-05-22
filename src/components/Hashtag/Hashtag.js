@@ -39,6 +39,7 @@ const fetchTrendData = async (tag, setTrendDetail,setFetchError) => {
         if (response.ok) {
             const data = (await response.json())
             setTrendDetail(data.data);
+            setFetchError(null);
         } else {
             console.log(response);
             throw response;
