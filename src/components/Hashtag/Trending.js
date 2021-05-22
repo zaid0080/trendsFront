@@ -1,14 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { GlobalContext } from "../../global";
 import { fetchAndSetData } from "../Content/Content";
 import { Link } from "react-router-dom";
 
 function Trending() {
   const { city, country, setData, setTime } = useContext(GlobalContext);
+  const [placeError, setPlaceError] = useState(null);
   let sessionData = window.sessionStorage.getItem("data");
   if (sessionData === null) {
     const query = city === undefined ? country : city;
-    fetchAndSetData(query, setData, setTime);
+    fetchAndSetData(query, setData, setTime,setPlaceError);
     sessionData = window.sessionStorage.getItem("data");
   }
   const d = JSON.parse(sessionData);
