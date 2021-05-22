@@ -1827,6 +1827,13 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
+"@types/d3-geo@^1.12.1":
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/@types/d3-geo/-/d3-geo-1.12.1.tgz#bec8692ffee9f60e18483af9008f92d4a8428118"
+  integrity sha512-8+gyGFyMCXIHtnMNKQDT++tZ4XYFXgiP5NK7mcv34aYXA16GQFiBBITjKzxghpO8QNVceOd9rUn1JY92WLNGQw==
+  dependencies:
+    "@types/geojson" "*"
+
 "@types/eslint@^7.2.6":
   version "7.2.10"
   resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-7.2.10.tgz#4b7a9368d46c0f8cd5408c23288a59aa2394d917"
@@ -1844,6 +1851,11 @@
   version "0.0.39"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
   integrity sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==
+
+"@types/geojson@*", "@types/geojson@^7946.0.7":
+  version "7946.0.7"
+  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.7.tgz#c8fa532b60a0042219cdf173ca21a975ef0666ad"
+  integrity sha512-wE2v81i4C4Ol09RtsWFAqg3BUitWbHSpSlIo+bNdsCJijO9sjme+zm+73ZMCa/qMC8UEERxzGbvmr1cffo2SiQ==
 
 "@types/glob@^7.1.1":
   version "7.1.3"
@@ -4066,6 +4078,11 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
+d3-array@1:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-1.2.4.tgz#635ce4d5eea759f6f605863dbcfc30edc737f71f"
+  integrity sha512-KHW6M86R+FUPYGb3R5XiYjXPq7VzwxZ22buHhAEVG5ztoEcZZMLov530mmccaqA1GghZArjQV46fuc8kUqhhHw==
+
 d3-array@>=2.5:
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-2.12.1.tgz#e20b41aafcdffdf5d50928004ececf815a465e81"
@@ -4095,6 +4112,13 @@ d3-drag@2:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/d3-ease/-/d3-ease-2.0.0.tgz#fd1762bfca00dae4bacea504b1d628ff290ac563"
   integrity sha512-68/n9JWarxXkOWMshcT5IcjbB+agblQUaIsbnXmrzejn2O82n3p2A9R2zEB9HIEFWKFwPAEDDN8gR0VdSAyyAQ==
+
+d3-geo@^1.11.9:
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/d3-geo/-/d3-geo-1.12.1.tgz#7fc2ab7414b72e59fbcbd603e80d9adc029b035f"
+  integrity sha512-XG4d1c/UJSEX9NfU02KwBL6BYPj8YKHxgBEw5om2ZnTRSbIcego6dhHwcxuSR3clxh0EpE38os1DVPOmnYtTPg==
+  dependencies:
+    d3-array "1"
 
 d3-geo@^2.0.1:
   version "2.0.1"
@@ -6996,16 +7020,6 @@ jest@26.6.0:
     import-local "^3.0.2"
     jest-cli "^26.6.0"
 
-jquery-mousewheel@^3.1.13:
-  version "3.1.13"
-  resolved "https://registry.yarnpkg.com/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz#06f0335f16e353a695e7206bf50503cb523a6ee5"
-  integrity sha1-BvAzXxbjU6aV5yBr9QUDy1I6buU=
-
-jquery@>=1.7, jquery@^3.4.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
-  integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
-
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -7153,13 +7167,6 @@ jsprim@^1.2.2:
   dependencies:
     array-includes "^3.1.2"
     object.assign "^4.1.2"
-
-jvectormap-next@^3.0.0:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/jvectormap-next/-/jvectormap-next-3.1.1.tgz#f88725f2f2e3cd03b8122960424520b7b32debb5"
-  integrity sha512-Eo9yJLMvfq5gtO736udb8pQnGKNCEB/LQpX8LElgEeEa4EZDABPCReaFqM0QPce9VNI9X+Um/yvhyzoPaASAyQ==
-  dependencies:
-    jquery ">=1.7"
 
 killable@^1.0.1:
   version "1.0.1"
@@ -9240,7 +9247,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -9503,15 +9510,10 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-jvectormap@0.0.16:
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/react-jvectormap/-/react-jvectormap-0.0.16.tgz#694223db7112e94b64dc334bd39d5f6e5b1560f5"
-  integrity sha512-DGmdeWucMfagdmQ/ie50Ef/JBP3Q4VpvjikvigNddnVtPlX0M6j9n4QFu42EZ/+S/UeWlEpsaxDzmC5ky4auLA==
-  dependencies:
-    jquery "^3.4.0"
-    jquery-mousewheel "^3.1.13"
-    jvectormap-next "^3.0.0"
-    prop-types "^15.6.0"
+react-path-tooltip@^1.0.17:
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/react-path-tooltip/-/react-path-tooltip-1.0.17.tgz#2f04042e4c85b4ae56beb4711b8eb87f2c798251"
+  integrity sha512-3zZU6I0kDL5mm0ixSPhrYBGh//AN7s/rQWkJkOJkYgidEADehr7L6qnXWCJzwTGe+Vi5gJpJh3VhLNxpdIVDwA==
 
 react-refresh@^0.8.3:
   version "0.8.3"
@@ -9633,6 +9635,16 @@ react-spinners@^0.10.6:
   integrity sha512-UPLcaMFhFnLWtS1zVDDT14ssW08gnZ44cjPN6GL27dEGboiCvRSthOilZXRDWESp449GB2iI6gjEbxzaMtA+dg==
   dependencies:
     "@emotion/core" "^10.0.35"
+
+react-svg-worldmap@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-svg-worldmap/-/react-svg-worldmap-1.1.0.tgz#1fd56c7c813a8c005f08aaf67a258a45103de6b1"
+  integrity sha512-E8gXIGToOYA4UCibZZwAE5Sf0byrs/tX6aNxpv/h0nauRNWL93EgYKH+xperp5TUyfshCwM/vBoQqvBDlWENoQ==
+  dependencies:
+    "@types/d3-geo" "^1.12.1"
+    "@types/geojson" "^7946.0.7"
+    d3-geo "^1.11.9"
+    react-path-tooltip "^1.0.17"
 
 react-tooltip@^4.2.19:
   version "4.2.19"

@@ -18,6 +18,13 @@ function parseTag(tag){
     return tag;
 }
 
+function changetoK(x) {
+    if (x > 1000) {
+      return Math.floor(x / 1000) + "k";
+    }
+    return x;
+  }
+
 
 
 const fetchTrendData = async(tag,setTrendDetail) => {
@@ -86,7 +93,7 @@ const Hashtag = () => {
                     <h1 className='hashtag-name'>{tag}</h1>
                     </div>
                     <div className='details'>
-                        <div><span className='details-1'>{filterCity[0]?.trend?.tweet_volume === 0 ? 'N.A' : filterCity[0]?.trend?.tweet_volume}</span> No. of Tweets</div>
+                        <div><span className='details-1'>{filterCity[0]?.trend?.tweet_volume === 0 ? 'N.A' : changetoK(filterCity[0]?.trend?.tweet_volume)}</span> No. of Tweets</div>
                         <div><span className='details-1'>#{filterCity[0]?.trend?.index}</span> Highest Rank</div>
                     </div>
                     <div className='tweet-location'>

@@ -9,7 +9,6 @@ const fetchAndSetData = async (place, setData, setTime) => {
   try{
     const res = await fetch(`https://trendsend.herokuapp.com/trends/by-place?placeName=${place}`);
     const data = await res.json();
-    console.log(data);
     if(data){
       setData(data.data);
       setTime(data.data[0]._id);
