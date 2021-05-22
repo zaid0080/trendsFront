@@ -58,12 +58,17 @@ nav > #logo {
   transform: translateX(25%);
   text-decoration: none;
   font-size: 25px;
+  display: none;
   color: #fff;
   /* z-index: 2; */
 }
 
 .links {
   display: none;
+}
+
+.cityMob {
+  margin-right: -10px;
 }
 
 .menu-btn {
@@ -174,10 +179,6 @@ div > .noSearch {
   position: absolute;
   top: 0;
   left: 0;
-  /* display: flex; */
-  flex-direction: column;
-  /* justify-content: space-around; */
-  align-items: center;
   color: #fff;
   list-style-type: none;
   background-color: #017acd;
@@ -205,7 +206,6 @@ div > .noSearch {
   position: relative;
   top: 100px;
   text-align: center;
-  /* left: 20%; */
 }
 
  .ul-nav-links {
@@ -213,17 +213,23 @@ div > .noSearch {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* text-align: center; */
 }
 
 .nav-links {
   position: relative;
   width: 60%;
   padding: 10px;
-  box-sizing: border-box;
   top: 150px;
   list-style-type: none;
   margin: 15px 0;
+}
+
+.home-icon {
+  position: relative;
+  top: 2px;
+  right: 3px;
+  margin-left: 5px;
+  /* padding: 1px; */
 }
 
 .nav-links > a {
@@ -425,6 +431,7 @@ h1 span::before {
   margin-top: 10px;
   margin-bottom: 10px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), 0 -3px 5px rgba(0, 0, 0, 0.2);
+  /* box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px; */
   padding: 12px;
   display: flex;
   justify-content: space-between;
@@ -590,6 +597,16 @@ h1 span::before {
   list-style-type: none;
   padding: 8px;
   cursor: pointer;
+}
+
+.tt-trends > li > a {
+  text-decoration: none;
+  color: #2b2b2b;
+}
+
+.tt-trends > li > a:hover {
+  color: #017acd;
+  transition: color 0.3s ease;
 }
 
 .tt-trends > li:nth-child(odd){
@@ -780,6 +797,10 @@ h1 span::before {
     justify-content: space-between;
     align-items: center;
     letter-spacing: 1.8px;
+  }
+
+  .cityMob {
+    display: none;
   }
 
   nav > #logo {

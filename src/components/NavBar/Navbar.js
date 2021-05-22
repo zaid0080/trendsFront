@@ -89,6 +89,7 @@ function Navbar() {
         About
       </Link> */}
       <p className={`links last-link `} onClick={countryHandler}>{country + (city === undefined ? '' : ','+ city)}</p>
+      <p className='cityMob'>{city === undefined ? country : city}</p>
       {/* <h3>{woeid}</h3> */}
 
       <div className="search-container">
