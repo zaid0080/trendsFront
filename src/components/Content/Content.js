@@ -16,6 +16,9 @@ export const fetchAndSetData = async (place, setData, setTime) => {
       setTime(jsonData.data[0]._id);
     }
   }catch(error){
+    setData([]);
+    window.sessionStorage.setItem('data',JSON.stringify([]));
+    alert("Place doesnt exist");
     console.error(error);
   }
 };

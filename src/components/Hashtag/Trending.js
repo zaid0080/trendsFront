@@ -21,7 +21,7 @@ function Trending() {
           {d[0].trends
             .filter((d, i) => i < 10)
             .map((d) => (
-              <li key={d.index} className={`tweet-names-${d.index}`}>
+              <li key={d.index}>
                 <Link
                   to={`/${country}${
                     city === undefined ? "" : "/" + city
