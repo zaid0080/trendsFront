@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 function Trending() {
   const { city, country, setData, setTime } = useContext(GlobalContext);
   const [placeError, setPlaceError] = useState(null);
+  
   let sessionData = window.sessionStorage.getItem("data");
   if (sessionData === null) {
     const query = city === undefined ? country : city;
