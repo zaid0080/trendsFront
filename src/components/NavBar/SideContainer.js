@@ -6,10 +6,10 @@ import React, {
 } from "react";
 import useOnClickOutside from "../useClickOutside/useOnClickOutside";
 import { Link } from "react-router-dom";
-import { FaHome } from 'react-icons/fa'
-import { AiFillTwitterSquare } from 'react-icons/ai'
-import { TiGroup } from 'react-icons/ti'
-
+import { FaHome } from "react-icons/fa";
+import { AiFillTwitterSquare } from "react-icons/ai";
+import { TiGroup } from "react-icons/ti";
+import ADT from "./adt..png";
 
 const sideContainer = forwardRef((props, ref) => {
   const [menu, setMenu] = useState(false);
@@ -33,21 +33,35 @@ const sideContainer = forwardRef((props, ref) => {
   return (
     <>
       <div className={`sideContainer ${menu ? "showMenu" : "hideMenu"}`}>
-      
-        <ul className='ul-nav-links'>
-        <p className='side-tag'>adt. alldaytrends</p>
+        <ul className="ul-nav-links">
+          <p className="side-tag">
+            <img
+              src={ADT}
+              alt="logo"
+              width="60"
+              height="22"
+              style={{ borderRight: "3px solid #fff", paddingRight: "8px" }}
+            />{" "}
+            alldaytrends.
+          </p>
           <li className="nav-links">
-            <FaHome className='home-icon'/><Link to="/">Home</Link>
+            <FaHome className="home-icon" />
+            <Link to="/">Home</Link>
           </li>
           <li className="nav-links">
-            <TiGroup className='home-icon'/><Link to="/aboutus">About Us</Link>
+            <TiGroup className="home-icon" />
+            <Link to="/aboutus">About Us</Link>
           </li>
           <li className="nav-links">
-            <AiFillTwitterSquare className='home-icon'/>
-            <a href='https://twitter.com/login?lang=en-gb' target="_blank" rel='noreferrer'>
-            Login
+            <AiFillTwitterSquare className="home-icon" />
+            <a
+              href="https://twitter.com/login?lang=en-gb"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Login
             </a>
-            </li>
+          </li>
         </ul>
       </div>
     </>

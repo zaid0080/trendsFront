@@ -5,6 +5,7 @@ import { GlobalContext } from "../../global";
 import SideContainer from "./SideContainer";
 import Hamburger from "./Hamburger";
 import { Link } from "react-router-dom";
+import ADT from './adt..png'
 
 const woeidList = require("../Header/countrys.json");
 
@@ -78,18 +79,15 @@ function Navbar() {
     <nav className="nav">
       <Hamburger clickMe={menuHandler} />
       <SideContainer ref={sideRef} />
+      <Link to="/">
+      <img src={ADT} alt='logo' width='60' height='20' className='imgLogo'/>
+      </Link>
       <Link to="/" id="logo">
         alldaytrends.
       </Link>
       <span></span>
-      {/* <Link to="/" className="links">
-        Home
-      </Link>
-      <Link to="/aboutus" className="links">
-        About
-      </Link> */}
       <p className={`links last-link `} onClick={countryHandler}>{country + (city === undefined ? '' : ','+ city)}</p>
-      <p className='cityMob'>{city === undefined ? country : city}</p>
+      <p className={`cityMob ${searchIcon ? 'hideCountry' : ''}`}>{city === undefined ? country : city}</p>
       {/* <h3>{woeid}</h3> */}
 
       <div className="search-container">
