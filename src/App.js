@@ -6,8 +6,14 @@ import { GlobalProvider } from "./global";
 import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import { HashLoader } from 'react-spinners';
 import {lazy, Suspense} from 'react';
-const HashTag = lazy(()=> import ("./components/Hashtag/Hashtag") );
-const AboutUs = lazy(() => import("./components/AboutUs/AboutUs") );
+
+var HashTagPromise,AboutUsPromise;
+setTimeout(() => {
+  HashTagPromise = import ("./components/Hashtag/Hashtag");
+  AboutUsPromise = import("./components/AboutUs/AboutUs")
+}, 12000);
+const HashTag = lazy(()=> HashTagPromise);
+const AboutUs = lazy(() => AboutUsPromise);
 
 
 function App() {
