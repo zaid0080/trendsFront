@@ -44,7 +44,7 @@ function GeoChart(mapData) {
     <div className="App">
       <WorldMap
         color="red"
-        size="lg"
+        size="md"
         data={toShow}
         tooltipBgColor="#017acd"
         styleFunction={stylingFunction}

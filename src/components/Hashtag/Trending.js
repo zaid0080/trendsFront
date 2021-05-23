@@ -14,6 +14,7 @@ function Trending() {
     sessionData = window.sessionStorage.getItem("data");
   }
   const d = JSON.parse(sessionData);
+  // console.log(d[0]);
   if (d) {
     return (
       <>

@@ -34,15 +34,13 @@ const sideContainer = forwardRef((props, ref) => {
     <>
       <div className={`sideContainer ${menu ? "showMenu" : "hideMenu"}`}>
         <ul className="ul-nav-links">
-          <p className="side-tag">
             <img
               src={ADT}
               alt="logo"
-              width="250"
-              height="50"
-            />{" "}
-            {/* alldaytrends. */}
-          </p>
+              width="224"
+              className='side-tag'
+              height="40"
+            />
           <li className="nav-links">
             <FaHome className="home-icon" />
             <Link to="/">Home</Link>

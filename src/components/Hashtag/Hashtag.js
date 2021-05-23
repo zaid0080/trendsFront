@@ -120,7 +120,7 @@ const Hashtag = () => {
                                 } </select>
                             </h2>
                             <div>
-                                <a className='hashtag-name' href={`https://twitter.com/search?q=${tag}`} target='_blank' rel='noreferrer'>
+                                <a className='hashtag-name' href={`https://twitter.com/search?q=${tag}&src=typed_query`} target='_blank' rel='noreferrer'>
                                     {tag}
                                 </a>
                             </div>

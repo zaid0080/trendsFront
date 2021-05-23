@@ -4,6 +4,8 @@ import TopTrends from "./TopTrends.js";
 import { GlobalContext } from "../../global";
 import { useParams } from 'react-router-dom';
 import Tweet from "./Tweet.js";
+import Header from '../Header/Header.js';
+import Page404 from "../404Page/Page404.js";
 
 
 export const fetchAndSetData = async (place, setData, setTime, setError) => {
@@ -41,11 +43,12 @@ export function Content() {
   if(error === null){
     return (
       <div id="content">
+        <Header />
         <Time />
         <TopTrends />
         <Tweet />
       </div>
     );
   } 
-  return <h1>{error.statusText}</h1>;
+  return <Page404 />
 }

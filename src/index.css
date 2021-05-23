@@ -83,9 +83,9 @@ html {
 
 .tagLines {
   margin: 30px auto;
-  word-spacing: 3.5px;
-  font-size: 25px;
-  line-height: 40px;
+  word-spacing: 2px;
+  font-size: 16px;
+  line-height: 25px;
 }
 
 .about-img {
@@ -248,10 +248,10 @@ div > .noSearch {
 }
 
 .hideMenu {
-  left: -80px;
+  left: -120px;
   height: 110vh;
   width: 0;
-  transition: width 0.5s ease-out;
+  transition: width 0.6s ease-out;
 }
 
 .side-tag {
@@ -490,6 +490,24 @@ h1 span::before {
   left: 50%;
 }
 
+.location_menu_country_list > li {
+  padding: 10px;
+  overflow: hidden;
+  border-bottom: 1px solid #bdbdbd;
+}
+
+
+h5 {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.location_menu_city_list > li {
+  display: inline-block;
+  margin-right: 1rem;
+  line-height: 1.5em;
+}
+
 /* **************************hashtag page***************************************** */
 .hashtag {
   display: flex;
@@ -517,6 +535,7 @@ h1 span::before {
 
 .hash-index {
   font-size: 1.5em;
+  margin: 0 5px;
 }
 
 .hashtag-name{
@@ -565,6 +584,7 @@ h1 span::before {
 
 .tweet-location > p > span {
   font-size: 1.4em;
+  margin: 0 7px;
   text-decoration: underline;
 }
 
@@ -621,19 +641,35 @@ h1 span::before {
   height: 500px !important;
 }
 
-#body-container > div.hashtag > div.hashtag-box > div > div:nth-child(5) > div.map-chart > div > div{
-  height: 60vh;
+/****** 404 Page ***** */
+.container-404 {
+  text-align: center;
 }
 
-.jvectormap-zoomin,
-.jvectormap-zoomout {
-  cursor: pointer;
-  font-size: 25px;
+.header-404 > h1 {
+  font-weight: 400;
+  letter-spacing: 3px;
+  font-size: 2.5em;
 }
 
-.jvectormap-container>svg {
-  height: 400px;
+.header-404 > h1 >span ::before {
+  content: '\A';
+  white-space: pre;
 }
+
+.img-404 {
+  height: 200px;
+  width: 300px;
+  margin-top:20px ;
+}
+
+.tag-404 > h2 {
+  margin-top: 20px;
+  font-size: 1.8em;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+}
+
 
 
 @media all and (min-width: 320px) and (max-width: 424px) {
@@ -971,11 +1007,6 @@ h1 span::before {
     display: none;
   }
 
-  /* #logo > img {
-    width: auto;
-    height: auto;
-  } */
-
   .links {
     text-decoration: none;
     margin: 0 40px;
@@ -1008,6 +1039,11 @@ h1 span::before {
 
   .nav > span {
     flex: 1;
+  }
+
+  .about-img {
+    width: 400px;
+    height: 250px;
   }
 
   div > #searchIcon {
@@ -1158,48 +1194,36 @@ h1 span::before {
     height: 150px;
   }
 
-  /* .foot-tag {
-    grid-area: front;
-    align-self: center;
-    margin-left: 100px ;
-  }
-
-  .foot-linkss{
-    grid-area: back;
-  }
-
-  .foot-linkss > ul {
-    display: flex;
-    list-style-type: none;
-    justify-content: space-between;
-    margin: 5px 150px;
-  } */
-
-
   .logos {
-    grid-area: backdown;
-    /* margin-left: 80px; */
     align-self: center;
     margin-left: 150px;
     justify-self: inherit;
   }
+  .tagLines {
+    margin: 30px auto;
+    word-spacing: 3.5px;
+    font-size: 25px;
+    line-height: 40px;
+  }
+
+  .header-404 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .img-404 {
+    height: 300px;
+    width: 426px;
+  }
+
+  .tag-404 {
+    margin: 50px auto;
+  }
+
 }
 .location_menu_country_list {
   list-style-type: none;
   padding: 12px 24px;
 }
-.location_menu_country_list > li {
-  padding: 10px;
-  overflow: hidden;
-  border-bottom: 1px solid #bdbdbd;
-}
-h5 {
-  text-transform: uppercase;
-  font-size: 0.8rem;
-}
 
-.location_menu_city_list > li {
-  display: inline-block;
-  margin-right: 1rem;
-  line-height: 1.5em;
-}
