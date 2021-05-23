@@ -30,8 +30,8 @@ function Time() {
       >
         {data.map((d, index) => {
           return (
-            <li key={index} data-time={d._id}>
-              {findDuration(d._id)}
+            <li key={index} data-time={d.as_of}>
+              {findDuration(d.as_of)}
             </li>
           );
         })}

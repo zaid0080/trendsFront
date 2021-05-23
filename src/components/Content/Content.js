@@ -8,13 +8,13 @@ import Tweet from "./Tweet.js";
 
 export const fetchAndSetData = async (place, setData, setTime, setError) => {
   try{
-    const res = await fetch(`https://trendsend.herokuapp.com/trends/by-place?placeName=${place}`);
+    const res = await fetch(`https://trendsend.herokuapp.com/apis/trends/by-place?placeName=${place}`);
     if(res.ok){
       const jsonData = await res.json();
       if(jsonData.data){
         setData(jsonData.data );
         window.sessionStorage.setItem('data',JSON.stringify(jsonData.data))
-        setTime(jsonData.data[0]._id);
+        setTime(jsonData.data[0].as_of);
         setError(null)
       }
     } else {

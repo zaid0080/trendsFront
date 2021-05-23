@@ -17,7 +17,7 @@ function TopTrends() {
 
   useEffect(() => {
     setSelectedData(undefined);
-    const x = data.find((d) => d._id === selectedTime);
+    const x = data.find((d) => d.as_of === selectedTime);
     setSelectedData(x);
   },[data, selectedTime, setSelectedData])
   

@@ -36,8 +36,8 @@ function Tweet() {
       <div className="trends-cont" ref={scrollRef}>
         {data.map((d, index) => {
           return (
-              <div className="card" key={d._id}>
-                <h4 data-time={d._id}>{findDuration(d._id)}</h4>
+              <div className="card" key={d.as_of}>
+                <h4 data-time={d.as_of}>{findDuration(d.as_of)}</h4>
                 <ol className="tweets">
                   {d.trends.map((t) => {
                     if (t.tweet_volume > 0) {

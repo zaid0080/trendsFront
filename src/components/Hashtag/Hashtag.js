@@ -27,7 +27,7 @@ function changetoK(x) {
 
 const fetchTrendData = async (tag, setTrendDetail,setFetchError) => {
     try {
-        const response = await fetch('https://trendsend.herokuapp.com/trends/trend-details', {
+        const response = await fetch('https://trendsend.herokuapp.com/apis/trends/trend-details', {
             headers: {
                 'Content-Type': 'application/json'
             },
