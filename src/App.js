@@ -7,11 +7,8 @@ import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-do
 import { HashLoader } from 'react-spinners';
 import {lazy, Suspense} from 'react';
 
-var HashTagPromise,AboutUsPromise;
-setTimeout(() => {
-  HashTagPromise = import ("./components/Hashtag/Hashtag");
-  AboutUsPromise = import("./components/AboutUs/AboutUs")
-}, 12000);
+const HashTagPromise = import ("./components/Hashtag/Hashtag");
+const AboutUsPromise = import("./components/AboutUs/AboutUs")
 const HashTag = lazy(()=> HashTagPromise);
 const AboutUs = lazy(() => AboutUsPromise);
 

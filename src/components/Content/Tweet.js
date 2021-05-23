@@ -50,7 +50,7 @@ function Tweet() {
                           <Link
                             to={`/${country}${
                               city === undefined ? "" : "/" + city
-                            }/trend/${t.name.replace(/#/g, "_")}`}
+                            }/trend/${window.encodeURIComponent(t.name)}`}
                             className={`tweet-names tweet-names-${t.index} ${
                               open ? `open` : `close-${t.index}`
                             }`}
@@ -68,7 +68,7 @@ function Tweet() {
                         <Link
                           to={`/${country}${
                             city === undefined ? "" : "/" + city
-                          }/trend/${t.name.replace(/#/g, "_")}`}
+                          }/trend/${window.encodeURIComponent(t.name)}`}
                           className={`tweet-names tweet-names-${t.index} ${
                             open ? `open` : `close-${t.index}`
                           }`}

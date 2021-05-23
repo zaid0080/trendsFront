@@ -8,7 +8,7 @@ function changetoK(x) {
     return Math.floor(x / 1000) + "k";
   }
   return x;
-}
+} 
 
 function TopTrends() {
   const { data, selectedTime, selectedData, setSelectedData } = useContext(GlobalContext);
@@ -31,9 +31,8 @@ function TopTrends() {
                 return (
                   <li key={t.index}>
                   <Link
-                    to={`/${country}${
-                      city === undefined ? "" : "/" + city
-                    }/trend/${t.name.replace(/#/g, "_")}`}
+                    to={`/${country}${ city === undefined ? "" : "/" + city
+                    }/trend/${window.encodeURIComponent(t.name)}`}
                     key={t.index}
                   >
                     {t.name} <span>{changetoK(t.tweet_volume)}</span>
@@ -46,7 +45,7 @@ function TopTrends() {
                 <Link
                   to={`/${country}${
                     city === undefined ? "" : "/" + city
-                  }/trend/${t.name.replace(/#/g, "_")}`}
+                  }/trend/${window.encodeURIComponent(t.name)}`}
                   key={t.index}
                 >
                   {t.name} 

@@ -27,7 +27,7 @@ function Trending() {
                 <Link
                   to={`/${country}${
                     city === undefined ? "" : "/" + city
-                  }/trend/${d.name.replace(/#/g, "_")}`}
+                  }/trend/${window.encodeURIComponent(d.name)}`}
                 >
                   {d.name}
                 </Link>

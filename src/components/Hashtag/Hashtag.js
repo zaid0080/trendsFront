@@ -1,19 +1,18 @@
 import {useEffect, useState, useContext, useLayoutEffect} from 'react';
 import Helmet from 'react-helmet';
 import {useParams} from 'react-router';
-import urlencode from 'urlencode';
 import {GlobalContext} from '../../global'
 import './hashtag.css';
 import {HashLoader} from 'react-spinners';
 import Trending from './Trending';
 import GeoChart from './GeoChart';
+import Page404 from "../404Page/Page404.js";
 
 
 function parseTag(tag) {
-    tag = urlencode.decode(tag);
-    if (tag[0] === '_') {
-        return tag.replace('_', '#');
-    }
+    console.log(tag)
+    tag = window.decodeURIComponent(tag);
+    console.log(tag)
     return tag;
 }
 
@@ -36,8 +35,10 @@ const fetchTrendData = async (tag, setTrendDetail,setFetchError) => {
                 {trend: tag}
             )
         });
+        console.log(response);
         if (response.ok) {
             const data = (await response.json())
+            console.log(data);
             setTrendDetail(data.data);
             setFetchError(null);
         } else {
@@ -76,7 +77,7 @@ const Hashtag = () => {
     console.log(fetchError);
 
     if (fetchError === null) {
-        if (trendDetail.trendingLocations.length > 1) {
+        if (trendDetail.trendingLocations.length >= 1) {
             return (
                 <div className='hashtag'>
                     <Helmet>
@@ -120,7 +121,7 @@ const Hashtag = () => {
                                 } </select>
                             </h2>
                             <div>
-                                <a className='hashtag-name' href={`https://twitter.com/search?q=${tag}&src=typed_query`} target='_blank' rel='noreferrer'>
+                                <a className='hashtag-name' href={`https://twitter.com/search?q=${window.encodeURIComponent(tag)}&src=typed_query`} target='_blank' rel='noreferrer'>
                                     {tag}
                                 </a>
                             </div>
@@ -168,13 +169,7 @@ const Hashtag = () => {
             )
         }
     } else {
-        return (<>
-            <h1>{fetchError?.statusText}</h1>
-                <div className='top-tweets-box'>
-                        <Trending/>
-                </div>
-            </>
-            )
+          return <Page404 />
     }
 
 }
