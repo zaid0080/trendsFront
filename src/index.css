@@ -36,14 +36,66 @@ html {
 }
 
 #foots-container {
+  display: flex;
+  flex-direction: column;
+  height: 160px;
+  /* justify-content: center; */
+  align-items: center;
+  color: #fff;
   flex-shrink: 0;
+  background-color: #000f34;
 }
 
-/* #foot-container > .foot-links {
-  cursor: pointer;
+.logo-tag {
+  margin: 20px;
+}
+
+.logo-tag > a {
   text-decoration: none;
-  color: #f1f1f1;
-} */
+  color: #fff;
+  font-size: 20px;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links > a {
+  text-decoration: none;
+  color: #fff;
+  margin: 20px;
+}
+
+
+/* ********* About us Page ****** */
+
+.about-page {
+  min-height: 100vh;
+  margin: 50px auto 0 auto;
+  width: 70%;
+  color: #343a40;
+}
+
+.title {
+  margin: 50px 0;
+  font-weight: 400;
+}
+
+.tagLines {
+  margin: 30px auto;
+  word-spacing: 3.5px;
+  font-size: 25px;
+  line-height: 40px;
+}
+
+.about-img {
+  height: 200px;
+  width: 300px;
+}
+
+.imgLogo {
+  transform: translateX(-60%);
+}
 
 .nav {
   display: flex;
@@ -139,7 +191,7 @@ span > #icondrop {
 }
 
 div > #searchIcon {
-  margin-right: 6px;
+  margin-right: -3px;
   margin-top: 3px;
   font-size: 20px;
   cursor: pointer;
@@ -438,42 +490,6 @@ h1 span::before {
   left: 50%;
 }
 
-
-#foots-container {
-  display: grid;
-  align-items: center;
-  grid-template-areas: "front back"
-                        "front backdown";
-  color: #fff;
-  height: 160px;
-  background-color: #343a40;
-}
-
-.foot-tag {
-  grid-area: front;
-  align-self: center;
-  margin-left: 20px ;
-}
-
-.foot-linkss{
-  grid-area: back;
-}
-
-.foot-linkss > ul {
-  display: flex;
-  list-style-type: none;
-  justify-content: space-between;
-  margin: 0 25px;
-}
-
-.logos {
-  grid-area: backdown;
-  margin-left: 25px;
-  align-self: center;
-  justify-self: inherit;
-}
-
-
 /* **************************hashtag page***************************************** */
 .hashtag {
   display: flex;
@@ -505,8 +521,14 @@ h1 span::before {
 
 .hashtag-name{
   margin: 25px 0;
+  text-decoration: none;
+  color: #000;
   font-size: 1.9em;
   letter-spacing: 1.4px;
+}
+
+.hashtag-name:hover {
+  color: #017acd;
 }
 
 .country-drop {
@@ -628,7 +650,7 @@ h1 span::before {
   }
 
   .imgLogo {
-    transform: translateX(30%);
+    transform: translateX(-45%);
   }
 
   .cityMob {
@@ -636,10 +658,8 @@ h1 span::before {
   }
 
   nav > #logo {
-    /* transform: translateX(25%); */
     display: none;
     font-size: 15px;
-    /* z-index: 2; */
   }
 
   .nav-links {
@@ -693,29 +713,9 @@ h1 span::before {
   }
 
   #foots-container {
-    display: flex;
-    color: #fff;
-    flex-direction: column;
     height: 200px;
-    background-color: #343a40;
   }
 
-  .foot-tag {
-    align-self: flex-start;
-    margin: 20px 50px;
-  }
-
-  .foot-linkss > ul > li {
-    margin: 10px 25px;
-    align-self: flex-start;
-  }
-
-
-  .logos {
-    align-self: flex-start;
-    margin: 20px 50px ;
-  }
-  
   .hash-line {
     margin: 20px 0;
     font-size: 1em;
@@ -727,10 +727,6 @@ h1 span::before {
     font-size: 1.6em;
   }
   
-  /* .top-tweets-box {
-    background-color: #fff;
-    box-shadow: 5px 15px 15px rgba(0,0,0, 0.1);
-  } */
   
   .country-drop {
     margin-left: 7px;
@@ -775,7 +771,7 @@ h1 span::before {
   }
 }
 
-@media all and (min-width: 768px) {
+/* @media all and (min-width: 768px) {
   .nav {
     grid-area: navbar;
     color: #fff;
@@ -789,7 +785,13 @@ h1 span::before {
   }
 
   .cityMob {
-    display: none;
+    display: block;
+  }
+
+
+  .about-img {
+    width: 400px;
+    height: 250px;
   }
 
   nav > #logo {
@@ -886,39 +888,18 @@ h1 span::before {
   }
 
   #foots-container {
-    display: grid;
-    align-items: center;
-    grid-template-areas: "front back"
-                          "front backdown";
-    color: #fff;
-    height: 160px;
-    background-color: #343a40;
+    flex-direction: row;
   }
 
-  .foot-tag {
-    grid-area: front;
-    align-self: center;
-    margin-left: 100px ;
+  .footer-links {
+    margin: 60px;
+    font-weight: 300;
+    align-self: flex-start;
+    font-size: 18px;
   }
 
-  .foot-linkss{
-    grid-area: back;
-  }
-
-  .foot-linkss > ul {
-    display: flex;
-    list-style-type: none;
-    justify-content: space-between;
-    margin: 0 150px;
-  }
-
-
-  .logos {
-    grid-area: backdown;
-    /* margin-left: 80px; */
-    align-self: center;
-    margin-left: 150px;
-    justify-self: inherit;
+  .footer-links > a {
+    margin: 0 40px;
   }
 
   #body-container > div.hashtag > div.hashtag-box > div > div:nth-child(5) > div.map-chart > div > div{
@@ -938,14 +919,22 @@ h1 span::before {
   .jvectormap-container>svg {
     height: 500px;
   }
-}
 
-@media all and (min-width: 1024px) {
+  .menu-btn {
+    display: none;
+  }
+} */
+
+@media all and (min-width: 768px) {
   body {
     font-family: "Montserrat", sans-serif;
     height: 100%;
     font-family: "Raleway", sans-serif;
     font-family: "Roboto", sans-serif;
+  }
+
+  .cityMob {
+    display: none;
   }
 
   #body-container {
@@ -956,7 +945,6 @@ h1 span::before {
   }
 
   .nav {
-    grid-area: navbar;
     color: #fff;
     height: 70px;
     border: none;
@@ -973,9 +961,20 @@ h1 span::before {
 
   .nav > #logo {
     font-size: 25px;
+    display: block;
     color: #f1f1f1;
     text-decoration: none;
+    left: 5%;
   }
+
+  .imgLogo {
+    display: none;
+  }
+
+  /* #logo > img {
+    width: auto;
+    height: auto;
+  } */
 
   .links {
     text-decoration: none;
@@ -1003,7 +1002,7 @@ h1 span::before {
   }
 
   .last-link {
-    padding-right: 40px;
+    padding-right: 20px;
     cursor: pointer;
   }
 
@@ -1155,16 +1154,11 @@ h1 span::before {
   }
 
   #foots-container {
-    display: grid;
-    align-items: center;
-    grid-template-areas: "front back"
-                          "front backdown";
     color: #fff;
     height: 150px;
-    background-color: #343a40;
   }
 
-  .foot-tag {
+  /* .foot-tag {
     grid-area: front;
     align-self: center;
     margin-left: 100px ;
@@ -1179,7 +1173,7 @@ h1 span::before {
     list-style-type: none;
     justify-content: space-between;
     margin: 5px 150px;
-  }
+  } */
 
 
   .logos {

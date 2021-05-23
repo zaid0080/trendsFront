@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { AiFillTwitterSquare } from "react-icons/ai";
 import { TiGroup } from "react-icons/ti";
-import ADT from "./adt..png";
+import ADT from "./logoTag.png";
 
 const sideContainer = forwardRef((props, ref) => {
   const [menu, setMenu] = useState(false);
@@ -38,11 +38,10 @@ const sideContainer = forwardRef((props, ref) => {
             <img
               src={ADT}
               alt="logo"
-              width="60"
-              height="22"
-              style={{ borderRight: "3px solid #fff", paddingRight: "8px" }}
+              width="250"
+              height="50"
             />{" "}
-            alldaytrends.
+            {/* alldaytrends. */}
           </p>
           <li className="nav-links">
             <FaHome className="home-icon" />

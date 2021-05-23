@@ -1,4 +1,4 @@
-/* @import '~antd/dist/antd.css'; */
+
 
 @media all and (min-width : 768px) {
     .hashtag {
@@ -41,6 +41,10 @@
         padding: 5px;
         font-size: 3vw;
         letter-spacing: 2px;
+    }
+
+    .hashtag-name:hover {
+        color: #017acd;
     }
     
     .top-tweets-box {

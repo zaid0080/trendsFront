@@ -6,6 +6,7 @@ import SideContainer from "./SideContainer";
 import Hamburger from "./Hamburger";
 import { Link } from "react-router-dom";
 import ADT from './adt..png'
+import logoTag from './logoTag.png'
 
 const woeidList = require("../Header/countrys.json");
 
@@ -80,11 +81,20 @@ function Navbar() {
       <Hamburger clickMe={menuHandler} />
       <SideContainer ref={sideRef} />
       <Link to="/">
-      <img src={ADT} alt='logo' width='60' height='20' className='imgLogo'/>
+      <img src={ADT} alt='logo' width='50' height='20' className='imgLogo'/>
       </Link>
       <Link to="/" id="logo">
-        alldaytrends.
+        {/* alldaytrends. */}
+        <img
+              src={logoTag}
+              alt="logos"
+              width="196"
+              height="35"
+              style={{marginLeft : '35px'}}
+              className='img-logo-tab'
+            />
       </Link>
+
       <span></span>
       <p className={`links last-link `} onClick={countryHandler}>{country + (city === undefined ? '' : ','+ city)}</p>
       <p className={`cityMob ${searchIcon ? 'hideCountry' : ''}`}>{city === undefined ? country : city}</p>
