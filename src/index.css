@@ -55,20 +55,22 @@ html {
 }
 
 nav > #logo {
-  transform: translateX(25%);
   text-decoration: none;
   font-size: 25px;
   display: none;
   color: #fff;
-  /* z-index: 2; */
 }
+
+/* #logo > img {
+  display: block;
+} */
 
 .links {
   display: none;
 }
 
 .cityMob {
-  margin-right: -10px;
+  margin-right: -20px;
 }
 
 .menu-btn {
@@ -205,7 +207,7 @@ div > .noSearch {
   letter-spacing: 1.5px;
   position: relative;
   top: 100px;
-  text-align: center;
+  margin-left: 12px;  
 }
 
  .ul-nav-links {
@@ -222,6 +224,7 @@ div > .noSearch {
   top: 150px;
   list-style-type: none;
   margin: 15px 0;
+  /* text-align: center; */
 }
 
 .home-icon {
@@ -353,23 +356,6 @@ h1 span::before {
   display: none;
 }
 
-/* #time-container>.list-item {
-  font-size: .8em;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  white-space: nowrap;
-  overflow-x: auto;
-  padding: 0 5px;
-}
-
-.list-item>li {
-  list-style-type: none;
-  cursor: pointer;
-  padding: 7px 5px;
-  text-align: center;
-} */
-
 #time-container {
   color: #017acd;
   background-color: #fff;
@@ -397,13 +383,6 @@ h1 span::before {
   border-radius: 10px;
   background-color: #fff;
 }
-
-/* #time-container > .scroll-icon {
-  float: right;
-  margin: 11px;
-  cursor: pointer;
-  font-size: 1.8em;
-} */
 
 .list-item > li {
   list-style-type: none;
@@ -644,26 +623,36 @@ h1 span::before {
     display: none;
   }
 
-  .showCountry {
-    display: block;
-  }
-
   .hideCountry {
     display: none;
   }
 
+  .imgLogo {
+    transform: translateX(30%);
+  }
+
+  .cityMob {
+    margin-right: -5px;
+  }
+
   nav > #logo {
     /* transform: translateX(25%); */
+    display: none;
     font-size: 15px;
-    z-index: 2;
+    /* z-index: 2; */
+  }
+
+  .nav-links {
+    text-align: center;
   }
 
   div > #searchIcon {
     top: 10px;
+    right: 8px;
   }
 
   div > .showSearch {
-    width: 140px;
+    width: 130px;
     height: 27px;
   }
 
@@ -804,7 +793,13 @@ h1 span::before {
   }
 
   nav > #logo {
-    transform: translateX(70%);
+    display: block;
+    position: absolute;
+    left: 40%;
+  }
+
+  .imgLogo {
+    display: none;
   }
 
   div > #searchIcon {
@@ -870,9 +865,14 @@ h1 span::before {
     display: none;
   }
 
+  .showCross {
+    position: absolute;
+  }
+
   .showMenu {
+    position: absolute;
     height: 110vh;
-    width: 35vw;
+    width: 40vw;
     z-index: 1;
     transition: width 0.5s ease-out;
   }
