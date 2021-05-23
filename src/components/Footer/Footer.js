@@ -25,8 +25,6 @@ function Footer() {
                 <IoLogoFacebook />
             </div>
             
-             {/* <Link to="/aboutus" className='foot-links'>About</Link>
-            <Link to="/contactus" className='foot-links'>Contact</Link>   */}
         </div>
     )
 }

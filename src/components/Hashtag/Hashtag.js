@@ -86,7 +86,7 @@ const Hashtag = () => {
                         <div>
                             <h2 className='hash-line'>Trending at
                                 <span className='hash-index'>#{
-                                    filterCity[0] ?. trend ?. index
+                                    filterCity[0]?.trend?.index
                                 }</span>
                                 in
                                 <select className='country-drop'
@@ -127,12 +127,12 @@ const Hashtag = () => {
                                 <div>
                                     <span className='details-1'>
                                         {
-                                        filterCity[0] ?. trend ?. tweet_volume === 0 ? 'N.A' : changetoK(filterCity[0] ?. trend ?. tweet_volume)
+                                        filterCity[0]?.trend?.tweet_volume === 0 ? 'N.A' : changetoK(filterCity[0]?.trend?.tweet_volume)
                                     }</span>
                                     No. of Tweets</div>
                                 <div>
                                     <span className='details-1'>#{
-                                        filterCity[0] ?. trend ?. index
+                                        filterCity[0]?.trend?.index
                                     }</span>
                                     Highest Rank</div>
                             </div>
