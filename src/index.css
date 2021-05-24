@@ -459,19 +459,21 @@ h1 span::before {
 
 
 #Trends-container > .ol-list > li> a {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px 0;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), 0 -3px 5px rgba(0, 0, 0, 0.2);
-  /* box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px; */
   padding: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 300px;
+  width: 320px;
+  overflow: hidden;
+  font-size: 85%;
   height: 35px;
   border: 0.8px solid #000;
   text-decoration: none;
   color: #000;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 #Trends-container > .ol-list > li> a:hover {
@@ -670,8 +672,6 @@ h5 {
   letter-spacing: 1.5px;
 }
 
-
-
 @media all and (min-width: 320px) and (max-width: 424px) {
   .nav {
     height: 45px;
@@ -702,13 +702,18 @@ h5 {
     text-align: center;
   }
 
+  
+#Trends-container > .ol-list > li> a  {
+  width: 300px;
+}
+
   div > #searchIcon {
     top: 10px;
-    right: 8px;
+    right: 16px;
   }
 
   div > .showSearch {
-    width: 130px;
+    width: 150px;
     height: 27px;
   }
 
@@ -806,160 +811,6 @@ h5 {
     height: 350px;
   }
 }
-
-/* @media all and (min-width: 768px) {
-  .nav {
-    grid-area: navbar;
-    color: #fff;
-    height: 60px;
-    border: none;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    letter-spacing: 1.8px;
-  }
-
-  .cityMob {
-    display: block;
-  }
-
-
-  .about-img {
-    width: 400px;
-    height: 250px;
-  }
-
-  nav > #logo {
-    display: block;
-    position: absolute;
-    left: 40%;
-  }
-
-  .imgLogo {
-    display: none;
-  }
-
-  div > #searchIcon {
-    margin-right: 6px;
-    margin-top: 3px;
-    font-size: 20px;
-    cursor: pointer;
-    position: absolute;
-    top: 17px;
-    transition: color 0.5s;
-    right: 10px;
-  }
-
-  div > .showSearch {
-    width: 200px;
-  }
-
-  .ul-list-items {
-    top: 60px;
-    width: 100vw;
-  }
-
-  .list {
-    z-index: 1;
-    transition: width 0.5s ease-out;
-  }
-
-  .nolist {
-    top: 60px;
-    width: 0;
-    transition: width 0.5s ease-out;
-  }
-
-  #time-container {
-    display: none;
-  }
-
-  #Trends-container {
-    display: none;
-  }
-
-  #header-container {
-    margin: 25px 0;
-  }
-
-  img.head-image {
-    height: 175px;
-    width: 175px;
-  }
-
-  .tag-line {
-    font-weight: 400;
-    font-size: 30px;
-    letter-spacing: 6px;
-  }
-
-  h1 span::before {
-    content: "\A";
-    white-space: pre;
-  }
-
-  .hash-loader-mobile {
-    display: none;
-  }
-
-  .showCross {
-    position: absolute;
-  }
-
-  .showMenu {
-    position: absolute;
-    height: 110vh;
-    width: 40vw;
-    z-index: 1;
-    transition: width 0.5s ease-out;
-  }
-  
-  .hideMenu {
-    left: -80px;
-    height: 110vh;
-    width: 0;
-    z-index: 1;
-    transition: width 0.5s ease-out;
-  }
-
-  #foots-container {
-    flex-direction: row;
-  }
-
-  .footer-links {
-    margin: 60px;
-    font-weight: 300;
-    align-self: flex-start;
-    font-size: 18px;
-  }
-
-  .footer-links > a {
-    margin: 0 40px;
-  }
-
-  #body-container > div.hashtag > div.hashtag-box > div > div:nth-child(5) > div.map-chart > div > div{
-    height: 70vh;
-  }
-  
-  .map-chart {
-    margin-top: 25px;
-  }
-  
-  .jvectormap-zoomin,
-  .jvectormap-zoomout {
-    cursor: pointer;
-    font-size: 25px;
-  }
-  
-  .jvectormap-container>svg {
-    height: 500px;
-  }
-
-  .menu-btn {
-    display: none;
-  }
-} */
 
 @media all and (min-width: 768px) {
   body {

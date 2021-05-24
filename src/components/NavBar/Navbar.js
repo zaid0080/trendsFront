@@ -5,8 +5,8 @@ import { GlobalContext } from "../../global";
 import SideContainer from "./SideContainer";
 import Hamburger from "./Hamburger";
 import { Link } from "react-router-dom";
-import ADT from './adt..png'
-import logoTag from './logoTag.png'
+import ADT from "./adt..png";
+import logoTag from "./logoTag.png";
 
 const woeidList = require("../Header/countrys.json");
 
@@ -25,18 +25,13 @@ function createTree(filterCountries) {
 }
 
 function Navbar() {
-  const { country,city } = useContext(GlobalContext);
+  const { country, city } = useContext(GlobalContext);
   const [dropdown, setDropdown] = useState(false);
   const [searchIcon, setSearchIcon] = useState(false);
   const [countryInput, setCountryInput] = useState("");
   const [filterCountries, setFilterCountries] = useState(woeidList);
   const inputRef = useRef(null); //reference for input box
   const sideRef = useRef(null);
-
-  const dropClass = dropdown ? "list" : "nolist";
-  const searchClass = searchIcon ? "showSearch" : "noSearch";
-  const placeHold = searchIcon ? "Search Country..." : " ";
-  const iconColor = searchIcon ? "black" : "white";
 
   useOnClickOutside(inputRef, () => {
     if (searchIcon) {
@@ -54,14 +49,6 @@ function Navbar() {
   const countryHandler = () => {
     setDropdown(!dropdown);
     setSearchIcon(!searchIcon);
-  }
-
-  const menuHandler = () => {
-    sideRef.current.showMenu();
-  };
-
-  const handleChange = (e) => {
-    setCountryInput(e.target.value);
   };
 
   useEffect(() => {
@@ -78,46 +65,49 @@ function Navbar() {
 
   return (
     <nav className="nav">
-      <Hamburger clickMe={menuHandler} />
+      <Hamburger clickMe={() => sideRef.current.showMenu()} />
       <SideContainer ref={sideRef} />
       <Link to="/">
-      <img src={ADT} alt='logo' width='50' height='20' className='imgLogo'/>
+        <img src={ADT} alt="logo" width="50" height="20" className="imgLogo" />
       </Link>
       <Link to="/" id="logo">
-        {/* alldaytrends. */}
         <img
-              src={logoTag}
-              alt="logos"
-              width="196"
-              height="35"
-              style={{marginLeft : '35px'}}
-              className='img-logo-tab'
-            />
+          src={logoTag}
+          alt="logos"
+          width="196"
+          height="35"
+          style={{ marginLeft: "35px" }}
+          className="img-logo-tab"
+        />
       </Link>
 
       <span></span>
-      <p className={`links last-link `} onClick={countryHandler}>{country + (city === undefined ? '' : ','+ city)}</p>
-      <p className={`cityMob ${searchIcon ? 'hideCountry' : ''}`}>{city === undefined ? country : city}</p>
+      <p className={`links last-link `} onClick={countryHandler}>
+        {country + (city === undefined ? "" : "," + city)}
+      </p>
+      <p className={`cityMob ${searchIcon ? "hideCountry" : ""}`}>
+        {city === undefined ? country : city}
+      </p>
       {/* <h3>{woeid}</h3> */}
 
       <div className="search-container">
-          <input
-            id='searchbar'
-            ref={inputRef}
-            type="text"
-            value={countryInput}
-            className={searchClass}
-            onChange={handleChange}
-            placeholder={placeHold}
-          />
-          <label></label>
+        <input
+          id="searchbar"
+          ref={inputRef}
+          type="text"
+          value={countryInput}
+          className={`${searchIcon ? "showSearch" : "noSearch"}`}
+          onChange={(e) => setCountryInput(e.target.value)}
+          placeholder="Search Country..."
+        />
+        <label></label>
         <MdSearch
           id="searchIcon"
-          className={iconColor}
+          className={`${searchIcon ? "black" : "white"}`}
           onClick={searchHandler}
         />
 
-        <ul className={`ul-list-items ${dropClass}`}>
+        <ul className={`ul-list-items ${dropdown ? "list" : "nolist"}`}>
           {Object.keys(woeidListTree)
             .sort()
             .map((d) => {
@@ -129,10 +119,7 @@ function Navbar() {
                     {woeidListTree[d].reverse().map((l) => {
                       if (d !== l.name) {
                         return (
-                          <li
-                            value={l.name}
-                            key={l.woeid}
-                          >
+                          <li value={l.name} key={l.woeid}>
                             <Link
                               className="c-name"
                               to={d !== "" ? `/${d}/${l.name}` : `/${l.name}`}
@@ -144,15 +131,8 @@ function Navbar() {
                         );
                       } else {
                         return (
-                          <li
-                            value={l.name}
-                            key={l.woeid}
-                          >
-                            <Link
-                              className="c-name"
-                              to={`/${d}`}
-                              key={l.woeid}
-                            >
+                          <li value={l.name} key={l.woeid}>
+                            <Link className="c-name" to={`/${d}`} key={l.woeid}>
                               {l.name}
                             </Link>
                           </li>

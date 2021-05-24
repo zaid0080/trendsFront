@@ -1,6 +1,4 @@
 import React from "react";
-// import { IoLogoTwitter, IoLogoFacebook } from "react-icons/io";
-// import { MdCopyright } from "react-icons/md";
 import ADT from "../NavBar/logoTag.png";
 import { Link } from "react-router-dom";
 

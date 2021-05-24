@@ -1,4 +1,3 @@
-import './AboutUs.css';
 import Trends from './Trends.svg';
 import Helmet from 'react-helmet';
 

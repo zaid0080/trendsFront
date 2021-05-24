@@ -7,7 +7,7 @@ import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 import { IoMdArrowDropdownCircle, IoMdArrowDropupCircle } from "react-icons/io";
 
 function changetoK(x) {
-  if (x > 1000) {
+ if (x > 1000) {
     return Math.floor(x / 1000) + "k";
   }
   return x;

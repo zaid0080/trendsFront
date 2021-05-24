@@ -17,8 +17,8 @@ function parseTag(tag) {
 }
 
 function changetoK(x) {
-    if (x > 1000) {
-        return Math.floor(x / 1000) + "k";
+     if (x > 1000) {
+        return Math.floor(x / 1000) + "K";
     }
     return x;
 }
