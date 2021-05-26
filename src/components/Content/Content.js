@@ -3,7 +3,7 @@ import Time from "./Time.js";
 import TopTrends from "./TopTrends.js";
 import { GlobalContext } from "../../global";
 import { useParams } from 'react-router-dom';
-import Tweet from "./Tweet.js";
+import { Tweet } from "./Tweet.js";
 import Header from '../Header/Header.js';
 import Page404 from "../404Page/Page404.js";
 
@@ -29,7 +29,7 @@ export const fetchAndSetData = async (place, setData, setTime, setError) => {
 };
 
 export function Content() {
-  const {data,setCity, setCountry ,setData, setSelectedTime} = useContext(GlobalContext);
+  const {setCity, setCountry ,setData, setSelectedTime} = useContext(GlobalContext);
 
   const { country, city } = useParams();
   const [error,setError] = useState(null);

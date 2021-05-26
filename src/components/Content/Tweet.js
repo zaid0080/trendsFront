@@ -6,14 +6,17 @@ import "./tweet.css";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 import { IoMdArrowDropdownCircle, IoMdArrowDropupCircle } from "react-icons/io";
 
-function changetoK(x) {
- if (x > 1000) {
-    return Math.floor(x / 1000) + "k";
+export function changetoK(x)  {
+  if(x > 1e6) {
+      return Math.floor(x / 1e6) + "M";
+  }
+  else if (x > 1e3) {
+      return Math.floor(x / 1e3) + "K";
   }
   return x;
 }
 
-function Tweet() {
+export function Tweet() {
   const {data,setData}= useContext(GlobalContext);
   const [open, setOpen] = useState(false);
   const scrollRef = useRef(null);
@@ -98,4 +101,3 @@ function Tweet() {
 }
 
   
-export default Tweet;

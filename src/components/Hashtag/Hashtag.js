@@ -7,6 +7,7 @@ import {HashLoader} from 'react-spinners';
 import Trending from './Trending';
 import GeoChart from './GeoChart';
 import Page404 from "../404Page/Page404.js";
+import { changetoK } from '../Content/Tweet';
 
 
 function parseTag(tag) {
@@ -16,12 +17,15 @@ function parseTag(tag) {
     return tag;
 }
 
-function changetoK(x) {
-     if (x > 1000) {
-        return Math.floor(x / 1000) + "K";
-    }
-    return x;
-}
+// function changetoK(x) {
+//     if(x > 1e6) {
+//         return Math.floor(x / 1e6) + "M";
+//     }
+//     else if (x > 1e3) {
+//         return Math.floor(x / 1e3) + "K";
+//     }
+//     return x;
+// }
 
 
 const fetchTrendData = async (tag, setTrendDetail,setFetchError) => {

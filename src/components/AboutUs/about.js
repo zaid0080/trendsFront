@@ -1,15 +1,15 @@
-import Trends from './Trends.svg';
-import Helmet from 'react-helmet';
+// import Trends from './Trends.svg';
+// import Helmet from 'react-helmet';
 
 
 function AboutUs() {
   return (
     <div className='about-page'>
-      <Helmet>
+      {/* <Helmet>
         <title>About Us</title>
-      </Helmet>
+      </Helmet> */}
       <h1 className='title'>ABOUT alldaytrends.</h1>
-      <img src={Trends} rel="preload" alt='About' className='about-img' width={600} height={300} />
+      {/* <img src={Trends} rel="preload" alt='About' className='about-img' width={600} height={300} /> */}
       <p className='tagLines'>
         When you are looking for ways to increase your social media exposure,
         you need to know and keep up with topics that are trending all around
