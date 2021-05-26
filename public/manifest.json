@@ -3,14 +3,20 @@
   "name": "Twitter Trends",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 12x12",
+      "src": "manifest-icon-192.png",
+      "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
       "src": "manifest-icon-512.png",
       "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 12x12",
       "type": "image/png",
       "purpose": "maskable any"
     },
@@ -23,6 +29,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#017acd",
   "background_color": "#ffffff"
 }
