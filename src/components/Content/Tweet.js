@@ -40,7 +40,7 @@ export function Tweet() {
       <>  
       <Helmet>
         <head>
-          <meta name="description" content= {`Find details abput Top trending hashtags in ${country} ${city}. 
+          {/* <meta name="description" content= {`Find details abput Top trending hashtags in ${country} ${city}. 
             Find more information on ${data[0].trends.map((d) => d.name)}`}/>
           <title>{`Top trends in ${country} ${city || ''}are  ${data[0].trends.map((d) => d.name)}`}</title>
           <meta name="title" content={`Top trends in ${country} ${city || ''}are  ${data[0].trends.map((d) => d.name)}`}/>
@@ -61,7 +61,7 @@ export function Tweet() {
             content= {`Find more details about Top trending hashtags in ${country} ${city}. 
             Find more information on ${data[0].trends.map((d) => d.name)}`}/>
           <meta property="twitter:image"
-            content="%PUBLIC_URL%/logo.png"/>
+            content="%PUBLIC_URL%/logo.png"/> */}
         </head>
       </Helmet>
         <div className="scroll-buttons">
