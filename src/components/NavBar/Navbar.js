@@ -119,7 +119,7 @@ function Navbar() {
                     {woeidListTree[d].reverse().map((l) => {
                       if (d !== l.name) {
                         return (
-                          <li value={l.name} key={l.woeid}>
+                          <li value={l.name} key={l.woeid} onClick={() => setTimeout(() => setCountryInput(''), 900) }>
                             <Link
                               className="c-name"
                               to={d !== "" ? `/${d}/${l.name}` : `/${l.name}`}
@@ -131,7 +131,7 @@ function Navbar() {
                         );
                       } else {
                         return (
-                          <li value={l.name} key={l.woeid}>
+                          <li value={l.name} key={l.woeid} onClick={() => setTimeout(() => setCountryInput(''), 900) }>
                             <Link className="c-name" to={`/${d}`} key={l.woeid}>
                               {l.name}
                             </Link>

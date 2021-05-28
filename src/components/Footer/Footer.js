@@ -13,6 +13,7 @@ function Footer() {
       <div className="footer-links">
         <Link to="/">Home</Link>
         <Link to="/aboutus">About</Link>
+        <Link to='/faq'>FAQ</Link>
         <a
           href="https://twitter.com/login?lang=en-gb"
           target="_blank"

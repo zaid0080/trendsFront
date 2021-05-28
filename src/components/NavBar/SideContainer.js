@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { AiFillTwitterSquare } from "react-icons/ai";
 import { TiGroup } from "react-icons/ti";
+import { FaQuestionCircle } from 'react-icons/fa';
 import ADT from "./logoTag.png";
 
 const sideContainer = forwardRef((props, ref) => {
@@ -48,6 +49,10 @@ const sideContainer = forwardRef((props, ref) => {
           <li className="nav-links">
             <TiGroup className="home-icon" />
             <Link to="/aboutus">About Us</Link>
+          </li>
+          <li className="nav-links">
+            <FaQuestionCircle className="home-icon" />
+            <Link to='/faq'>FAQ</Link>
           </li>
           <li className="nav-links">
             <AiFillTwitterSquare className="home-icon" />
