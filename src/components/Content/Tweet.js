@@ -39,30 +39,28 @@ export function Tweet() {
       return (
       <>  
       <Helmet>
-        <head>
-          <meta name="description" content= {`Find details abput Top trending hashtags in ${country} ${city}. 
-            Find more information on ${data[0].trends.map((d) => d.name)}`}/>
-          <title>{`Top trends in ${country} ${city || ''}are  ${data[0].trends.map((d) => d.name)}`}</title>
-          <meta name="title" content={`Top trends in ${country} ${city || ''}are  ${data[0].trends.map((d) => d.name)}`}/>
+          <meta name="description" content= {`Find details about Top trending hashtags in ${country} ${city}. 
+            Find more information on ${data[0].trends.map((d) => d.name).toString().replace(',','')}` }/>
+          <title>{`Top trends in ${country} ${city || ''}are ${data[0].trends.map((d) => d.name).toString().replace(',','')}`}</title>
+          <meta name="title" content={`Top trends in ${country} ${city || ''}are  ${data[0].trends.map((d) => d.name).toString().replace(',','')}`}/>
 
           <meta property="og:type" content="website"/>
           <meta property="og:url" content="https://alldaytrends.com/"/>
-          <meta property="og:title" content={`Top trends in ${country} ${city || ''}are  ${data[0].trends.map((d) => d.name)}`}/>
+          <meta property="og:title" content={`Top trends in ${country} ${city || ''}are ${data[0].trends.map((d) => d.name).toString().replace(',','')}`}/>
           <meta property="og:description"
             content= {`Find details about Top trending hashtags in ${country} ${city}. 
-            Find more information on ${data[0].trends.map((d) => d.name)}`}/>
+            Find more information on ${data[0].trends.map((d) => d.name).toString().replace(',','')}`}/>
           <meta property="og:image"
             content="%PUBLIC_URL%/logo.png"/>
 
           <meta property="twitter:card" content="summary_large_image"/>
           <meta property="twitter:url" content="https://alldaytrends.com/"/>
-          <meta property="twitter:title" content={`Top trends in ${country} ${city || ''}are  ${data[0].trends.map((d) => d.name)}`}/>
+          <meta property="twitter:title" content={`Top trends in ${country} ${city || ''}are ${data[0].trends.map((d) => d.name).toString().replace(',','')}`}/>
           <meta property="twitter:description"
             content= {`Find more details about Top trending hashtags in ${country} ${city}. 
-            Find more information on ${data[0].trends.map((d) => d.name)}`}/>
+            Find more information on ${data[0].trends.map((d) => d.name).toString().replace(',','')}`}/>
           <meta property="twitter:image"
             content="%PUBLIC_URL%/logo.png"/>
-        </head>
       </Helmet>
         <div className="scroll-buttons">
           <FaArrowCircleLeft onClick={scrollRight} className="left-button" />
