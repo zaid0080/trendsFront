@@ -10,7 +10,6 @@ import Page404 from "../404Page/Page404.js";
 import { changetoK } from "../Content/Tweet";
 
 function parseTag(tag) {
-  console.log(tag);
   tag = window.decodeURIComponent(tag);
   console.log(tag);
   return tag;
@@ -76,8 +75,7 @@ const Hashtag = () => {
       return (
         <div className="hashtag">
           <Helmet>
-            <head>
-              {/* <meta
+              <meta
                 name="description"
                 content={`Find details abput Top trending hashtags in ${country} ${city}.`}
               />
@@ -111,8 +109,7 @@ const Hashtag = () => {
                 property="twitter:description"
                 content={`This tweets has the highest rank of ${filterCity[0]?.trend?.index}`}
               />
-              <meta property="twitter:image" content="%PUBLIC_URL%/logo.png" /> */}
-            </head>
+              <meta property="twitter:image" content="%PUBLIC_URL%/logo.png" />
             <title>{tag}</title>
           </Helmet>
           <div className="hashtag-box">
