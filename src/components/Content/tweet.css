@@ -62,7 +62,6 @@
         text-decoration: none;
         border-bottom: 1px solid #ddd;
         white-space: nowrap;
-        color: #000;
         position: relative;
         font-size: 1em;
     }
@@ -76,8 +75,6 @@
 
     .tweet-names:hover {
         background-color: #f1f1f1;
-        color: #00a2f5;
-        transition: color 0.3s ease-out;
         cursor: pointer;
     }
 
@@ -90,6 +87,7 @@
     }
 
     .tweet-names::before {
+        color: #000;
         grid-area: left;
         align-self: center;
         font-size: 0.8em;

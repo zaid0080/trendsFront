@@ -35,6 +35,12 @@ html {
   min-height: 100vh;
 }
 
+.page-title {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.2rem;
+}
+
 #foots-container {
   display: flex;
   flex-direction: column;
@@ -471,9 +477,12 @@ h1 span::before {
   height: 35px;
   border: 0.8px solid #000;
   text-decoration: none;
-  color: #000;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+#Trends-container > .ol-list > li> a > span {
+  color: #000;
 }
 
 #Trends-container > .ol-list > li> a:hover {
@@ -874,6 +883,11 @@ h5 {
 
   #Trends-container {
     display: none;
+  }
+
+  .page-title {
+    margin: 35px 0;
+    font-size: 1.8rem;
   }
 
   .home-icon {

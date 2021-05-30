@@ -40,7 +40,7 @@ function App() {
             </Suspense>
             </Route>
             <Route exact path="/">
-              <Redirect to="/Worldwide"/>
+              <Redirect to="/India"/>
             </Route>
           </Switch>
           <Footer />

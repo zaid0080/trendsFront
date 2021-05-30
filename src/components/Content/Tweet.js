@@ -39,10 +39,10 @@ export function Tweet() {
       return (
       <>  
       <Helmet>
-          <meta name="description" content= {`Find details about Top trending hashtags in ${country} ${city}. 
-            Find more information on ${data[0].trends.map((d) => d.name).toString().replace(',','')}` }/>
-          <title>{`Top trends in ${country} ${city || ''}are ${data[0].trends.map((d) => d.name).toString().replace(',','')}`}</title>
-          <meta name="title" content={`Top trends in ${country} ${city || ''}are  ${data[0].trends.map((d) => d.name).toString().replace(',','')}`}/>
+          <meta name="description" content= {`Find details abput Top trending hashtags in ${country} ${city}. 
+            Find more information on ${data[0].trends.map((d) => d.name)}`}/>
+          <title>{`Top trends in ${country} ${city || ''}are  ${data[0].trends.map((d) => d.name)}`}</title>
+          <meta name="title" content={`Top trends in ${country} ${city || ''}are  ${data[0].trends.map((d) => d.name)}`}/>
 
           <meta property="og:type" content="website"/>
           <meta property="og:url" content="https://alldaytrends.com/"/>
