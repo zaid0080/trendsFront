@@ -8,7 +8,7 @@ export const GlobalProvider =  props => {
     const [data,setData] = useState([]);
     const [selectedTime,setSelectedTime] = useState();
     const [selectedData,setSelectedData] = useState();
-
+    
     return (
         <GlobalContext.Provider value={{country,setCountry,city,setCity,data,setData,selectedTime,setSelectedTime,selectedData,setSelectedData}}>
             {props.children}

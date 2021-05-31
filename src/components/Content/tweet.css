@@ -70,6 +70,7 @@
         font-size: 0.8em;
         font-family: montserrat;
         padding-top: 2px;
+        color: #000;
         grid-area: bottom;
     }
 

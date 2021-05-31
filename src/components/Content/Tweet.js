@@ -87,7 +87,7 @@ export function Tweet() {
                             {" "}
                             {t.name}{" "}
                             <span className="tweet-volume">
-                              {changetoK(t.tweet_volume)}
+                              {changetoK(t.tweet_volume)} tweets
                             </span>{" "}
                           </Link>
                         );

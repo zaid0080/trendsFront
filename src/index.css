@@ -552,13 +552,13 @@ h5 {
 .hashtag-name{
   margin: 25px 0;
   text-decoration: none;
-  color: #000;
   font-size: 1.9em;
+  color: #017acd;
   letter-spacing: 1.4px;
 }
 
 .hashtag-name:hover {
-  color: #017acd;
+  color: #000fdf;
 }
 
 .country-drop {
