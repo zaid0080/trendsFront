@@ -25,6 +25,7 @@ async function fetchPlace(country, setCountry_name, setCountry) {
     method: "GET",
   });
   const data = await resp.json();
+  console.log(data);
   setCountry(data.country_name || "Worldwide");
   setCountry_name(data.country_name || 'Worldwide');
   sessionStorage.setItem("country", data.country_name);
@@ -34,7 +35,9 @@ function App() {
   const {setCountry} = useContext(GlobalContext);
   const [country_name,setCountry_name] = useState(sessionStorage.getItem('country'));
   useEffect(() => {   
-      fetchPlace(country_name, setCountry_name,setCountry);
+      if(sessionStorage.getItem('country') === null){
+        fetchPlace(country_name, setCountry_name,setCountry);
+      }
   }, [setCountry_name, country_name, setCountry]);
 
   return (
@@ -62,8 +65,8 @@ function App() {
           </Route>
           <Route exact path="/">
           <Suspense fallback={<HashLoader color="#00a2f5" />}>
-            <Redirect to={`/${country_name }`} />
-            </Suspense>
+            {country_name !== null ? <Redirect to={`/${country_name }`} /> : <HashLoader color="#00a2f5" />}
+          </Suspense>
           </Route>
         </Switch>
         <Footer />
