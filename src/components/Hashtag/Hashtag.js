@@ -11,7 +11,6 @@ import { changetoK } from "../Content/Tweet";
 
 function parseTag(tag) {
   tag = window.decodeURIComponent(tag);
-  console.log(tag);
   return tag;
 }
 
@@ -67,8 +66,6 @@ const Hashtag = () => {
     fetchTrendData(tag, setTrendDetail, setFetchError);
   }, [tag, place]);
 
-  console.log(fetchError);
-
   if (fetchError === null) {
     if (trendDetail.trendingLocations.length >= 1) {
       return (
@@ -121,22 +118,11 @@ const Hashtag = () => {
                 in
                 <select className="country-drop" onChange={countryHandler}>
                   {trendDetail.trendingLocations.map((t) => {
-                    if (t.trend.name === place) {
                       return (
-                        <option selected={true} key={t.name}>
+                        <option selected={place === t.name} key={t.name}>
                           {t.name}
                         </option>
                       );
-                    }
-                    return (
-                      <option
-                        className="select-items"
-                        value={t.name}
-                        key={t.name}
-                      >
-                        {t.name}
-                      </option>
-                    );
                   })}{" "}
                 </select>
               </h2>

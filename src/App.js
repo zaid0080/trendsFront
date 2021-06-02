@@ -9,7 +9,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import { HashLoader } from "react-spinners";
+import Hashloader from './components/HashLoader/Hashloader'
 import { lazy, Suspense, useState } from "react";
 import Faq from "./components/Faq/Faq";
 import { useEffect, useContext } from "react";
@@ -20,15 +20,18 @@ const HashTag = lazy(() => HashTagPromise);
 const AboutUs = lazy(() => AboutUsPromise);
 
 async function fetchPlace(country, setCountry_name, setCountry) {
-  console.log('hello')
-  const resp = await fetch("https://ipapi.co/json/", {
+  try {
+    const resp = await fetch("https://ipapi.co/json/", {
     method: "GET",
   });
   const data = await resp.json();
-  console.log(data);
-  setCountry(data.country_name || "Worldwide");
-  setCountry_name(data.country_name || 'Worldwide');
+  setCountry(data.country_name);
+  setCountry_name(data.country_name);
   sessionStorage.setItem("country", data.country_name);
+  } catch(error) {
+    setCountry_name('Worldwide')
+    setCountry('Worldwide')
+  }
 }
 
 function App() {
@@ -46,12 +49,12 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/faq">
-            <Suspense fallback={<HashLoader color="#00a2f5" />}>
+            <Suspense fallback={<Hashloader />}>
               <Faq />
             </Suspense>
           </Route>
           <Route exact path="/aboutus">
-            <Suspense fallback={<HashLoader color="#00a2f5" />}>
+            <Suspense fallback={<Hashloader />}>
               <AboutUs />
             </Suspense>
           </Route>
@@ -59,13 +62,13 @@ function App() {
             <LandingPage />
           </Route>
           <Route path="/:country/:city?/trend/:hashtag">
-            <Suspense fallback={<HashLoader color="#00a2f5" />}>
+            <Suspense fallback={<Hashloader  />}>
               <HashTag />
             </Suspense>
           </Route>
           <Route exact path="/">
-          <Suspense fallback={<HashLoader color="#00a2f5" />}>
-            {country_name !== null ? <Redirect to={`/${country_name }`} /> : <HashLoader color="#00a2f5" />}
+          <Suspense fallback={<Hashloader />}>
+            {country_name !== null ? <Redirect to={`/${country_name }`} /> : <Hashloader />}
           </Suspense>
           </Route>
         </Switch>
