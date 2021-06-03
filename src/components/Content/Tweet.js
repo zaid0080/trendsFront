@@ -41,7 +41,6 @@ export function Tweet() {
       <Helmet>
           <meta name="description" content= {`Find details abput Top trending hashtags in ${country} ${city}. 
             Find more information on ${data[0].trends.map((d) => d.name)}`}/>
-          <title>{`Top trends in ${country} ${city || ''}are  ${data[0].trends.map((d) => d.name)}`}</title>
           <meta name="title" content={`Top trends in ${country} ${city || ''}are  ${data[0].trends.map((d) => d.name)}`}/>
 
           <meta property="og:type" content="website"/>
