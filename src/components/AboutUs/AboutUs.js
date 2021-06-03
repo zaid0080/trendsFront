@@ -16,7 +16,7 @@ function AboutUs() {
         the world. All Day Trends is exactly what you need for this.
       </p>
       <p className='tagLines'>
-        All Day Trends is a website where you can find trending topics of
+        All Day Trends is a web-app where you can find trending topics of
         twitter from all over the world. With our website you can search for
         topics that were trending in the last 24 hours.
       </p>
