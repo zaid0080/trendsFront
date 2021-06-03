@@ -44,6 +44,9 @@ function Navbar() {
     setSearchIcon(!searchIcon);
     setDropdown(!dropdown);
     inputRef.current.focus();
+    if(dropdown) {
+      inputRef.current.blur();
+    }
   };
 
   const countryHandler = () => {

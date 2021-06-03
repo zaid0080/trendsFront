@@ -15,7 +15,7 @@
     "react-helmet-async": "^1.0.9",
     "react-icons": "^3.11.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.0",
+    "react-scripts": "^4.0.3",
     "react-spinners": "^0.10.6",
     "react-svg-worldmap": "^1.1.0",
     "source-map-explorer": "^2.5.2",

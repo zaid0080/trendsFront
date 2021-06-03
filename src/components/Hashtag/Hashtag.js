@@ -26,7 +26,6 @@ const fetchTrendData = async (tag, setTrendDetail, setFetchError) => {
         body: JSON.stringify({ trend: tag }),
       }
     );
-    console.log(response);
     if (response.ok) {
       const data = await response.json();
       setTrendDetail(data.data);

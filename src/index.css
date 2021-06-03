@@ -328,7 +328,6 @@ div > .noSearch {
   position: absolute;
   top: 50px;
   z-index: 1;
-  /* right: -50px; */
   transition: width 0.4s ease-in-out;
   width: 0;
 }
