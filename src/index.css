@@ -43,8 +43,7 @@ html {
 #foots-container {
   display: flex;
   flex-direction: column;
-  height: 160px;
-  /* justify-content: center; */
+  height: 170px;
   align-items: center;
   color: #fff;
   flex-shrink: 0;
@@ -62,13 +61,28 @@ html {
 }
 
 .footer-links {
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 .footer-links > a {
   text-decoration: none;
   color: #fff;
   margin: 20px;
+}
+
+.icons-container {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.icons-container a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.icons {
+  /* margin: 15px 10px 15px 10px; */
+  margin: 7px 7px 5px 7px;
 }
 
 
@@ -775,6 +789,10 @@ h5 {
     height: 200px;
   }
 
+  .icons-container {
+    margin-top: 10px;
+  }
+
   .hash-line {
     margin: 20px 0;
     font-size: 1em;
@@ -1066,7 +1084,6 @@ h5 {
 
   #foots-container {
     color: #fff;
-    height: 150px;
   }
 
   .logos {
