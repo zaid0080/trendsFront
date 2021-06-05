@@ -10,7 +10,7 @@ export default function Landingpage() {
     return (
         <div id = 'landing-page'>
         <Helmet>
-            <title>{city === undefined ? country : city + ', ' + country} • Top Twitter Trending Hashtags and Topics Today</title>
+            <title>{city === undefined ? country : city + ', ' + country} • Twitter Trends Now • Top Twitter Trending Hashtags and Topics Today</title>
         </Helmet>
          <Content />
         </div>
