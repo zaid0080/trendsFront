@@ -39,6 +39,7 @@ export function Tweet() {
       return (
       <>  
       <Helmet>
+          <title>Twitter Trending Now • {city === undefined ? country : city + ', ' + country}  Today • Top Viral Hashtags </title>
           <meta name="description" content= {`Latest top twitter trends and hashtags in ${city === undefined ? country : city + ', ' + country}. 
             Currently twitter trends and hashtags today are ${data[0].trends.map((d) => d.name)}`}/>
           <meta name="title" content={`Top trends in ${country} ${city || ''}are  ${data[0].trends.map((d) => d.name)}`}/>
@@ -50,8 +51,8 @@ export function Tweet() {
             Currently twitter trends and hashtags today are ${data[0].trends.map((d) => d.name)}`}/>
           <meta property="og:image"
             content="%PUBLIC_URL%/logo.png"/>
-          <title>Twitter Trending Now • Top Viral Hashtags in {city === undefined ? country : city + ', ' + country} Today</title>
           <meta property="twitter:card" content="summary_large_image"/>
+          <meta name="twitter:site" content="@alldaytrends1" />
           <meta property="twitter:url" content="https://alldaytrends.com/"/>
           <meta property="twitter:title" content={`Top trends in ${country} ${city || ''}are ${data[0].trends.map((d) => d.name).toString().replace(',','')}`}/>
           <meta property="twitter:description"

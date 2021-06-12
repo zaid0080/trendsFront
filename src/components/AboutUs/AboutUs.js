@@ -5,8 +5,18 @@ function AboutUs() {
   return (
     <div className="about-page">
       <Helmet>
-        <title>About Us</title>
-      </Helmet>
+        <title>About alldaytrends.com</title>
+        <meta
+        name="description"
+        content='About alldaytrends.com | Twitter trending hashtag and topics analysis.'
+       />
+       <meta name="twitter:title" content="About alldaytrends.com | Twitter trending hashtag and topics analysis." />
+       <meta name="twitter:card" content="summary" />
+       <meta property="og:site_name" content="alldaytrends" />
+       <meta name="twitter:site" content="@alldaytrends1" />
+       <meta name="theme-color" content="#017acd" />
+       <meta property="og:type" content="website" />
+      </Helmet> 
       <h1 className="title">ABOUT alldaytrends.</h1>
       <img
         src={Trends}

@@ -37,8 +37,9 @@ html {
 .page-title {
   text-align: center;
   margin: 20px 0;
+  letter-spacing: 2px;
   font-size: 1.2rem;
-  font-weight: 400;
+  /* font-weight: 400; */
 }
 
 #foots-container {
@@ -417,7 +418,7 @@ img.head-image {
   letter-spacing: 6px;
 }
 
-span::before {
+.tag-line span::before {
   content: "\A";
   white-space: pre;
 }
@@ -915,7 +916,7 @@ h5 {
 
   .page-title {
     margin: 35px 0;
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .home-icon {
