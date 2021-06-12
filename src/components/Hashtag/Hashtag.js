@@ -72,7 +72,7 @@ const Hashtag = () => {
           <Helmet>
               <meta
                 name="description"
-                content={`Find details abput Top trending hashtags in ${country} ${city}.`}
+                content={`Find details about Top trending hashtags in ${country} ${city}.`}
               />
               <meta
                 name="title"
@@ -81,6 +81,7 @@ const Hashtag = () => {
 
               <meta property="og:type" content="website" />
               <meta property="og:url" content="https://alldaytrends.com/" />
+              <meta property="og:site_name" content="alldaytrends" />\
               <meta
                 property="og:title"
                 content={`This tweet is trending is these locations ${trendDetail.trendingLocations.map(t => t.name)}`}
@@ -105,7 +106,7 @@ const Hashtag = () => {
                 content={`This tweets has the highest rank of ${filterCity[0]?.trend?.index}`}
               />
               <meta property="twitter:image" content="%PUBLIC_URL%/logo.png" />
-            <title>{tag}</title>
+            <title>{tag} • {selectedPlace} • Twitter Trends</title>
           </Helmet>
           <div className="hashtag-box">
             <div>
