@@ -23,7 +23,7 @@ function Footer() {
         <a
           href="https://twitter.com/login?lang=en-gb"
           target="_blank"
-          rel="noreferrer"
+          rel="noreferrer nofollow"
         >
           Login
         </a>
@@ -32,28 +32,28 @@ function Footer() {
         <a
           href="https://www.facebook.com/alldaytrends/"
           target="_blank"
-          rel="noreferrer"
+          rel="noreferrer nofollow"
         >
           <FaFacebookSquare className="icons" />
         </a>
         <a
           href="https://www.instagram.com/alldaytrends1/"
           target="_blank"
-          rel="noreferrer"
+          rel="noreferrer nofollow"
         >
           <FaInstagram className="icons" />
         </a>
         <a
           href="https://twitter.com/alldaytrends1"
           target="_blank"
-          rel="noreferrer"
+          rel="noreferrer nofollow"
         >
           <FaTwitterSquare className="icons" />
         </a>
         <a
           href="https://www.reddit.com/user/alldaytrends"
           target="_blank"
-          rel="noreferrer"
+          rel="noreferrer nofollow"
         >
           <FaRedditSquare className="icons" />
         </a>

@@ -38,6 +38,7 @@ html {
   text-align: center;
   margin: 20px 0;
   font-size: 1.2rem;
+  font-weight: 400;
 }
 
 #foots-container {
@@ -416,7 +417,7 @@ img.head-image {
   letter-spacing: 6px;
 }
 
-h1 span::before {
+span::before {
   content: "\A";
   white-space: pre;
 }
