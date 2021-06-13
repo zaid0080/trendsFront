@@ -125,7 +125,7 @@ function Navbar() {
                           <li value={l.name} key={l.woeid} onClick={() => setTimeout(() => setCountryInput(''), 900) }>
                             <Link
                               className="c-name"
-                              to={(d !== "" ? `/${d}/${l.name}` : `/${l.name}`).replace(/\ /g,'_')}
+                              to={(d !== "" ? `/${d}/${l.name}` : `/${l.name}`).replace(/ /g,'_')}
                               key={l.woeid}
                             >
                               {l.name}
@@ -135,7 +135,7 @@ function Navbar() {
                       } else {
                         return (
                           <li value={l.name} key={l.woeid} onClick={() => setTimeout(() => setCountryInput(''), 900) }>
-                            <Link className="c-name" to={(`/${d}`).replace(/\ /g,'_')} key={l.woeid}>
+                            <Link className="c-name" to={(`/${d}`).replace(/ /g,'_')} key={l.woeid}>
                               {l.name}
                             </Link>
                           </li>
