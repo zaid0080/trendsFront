@@ -37,6 +37,7 @@ export function Content() {
   useEffect(() => {
     setCity(city );
     setCountry(country);
+    sessionStorage.setItem("country", country);
     const query = city === undefined ? country : city;
     fetchAndSetData(query, setData, setSelectedTime,setError)
   }, [setData, setSelectedTime, setCountry, setError ,setCity, country, city]);

@@ -37,14 +37,15 @@ html {
 .page-title {
   text-align: center;
   margin: 20px 0;
+  letter-spacing: 2px;
   font-size: 1.2rem;
+  /* font-weight: 400; */
 }
 
 #foots-container {
   display: flex;
   flex-direction: column;
-  height: 160px;
-  /* justify-content: center; */
+  height: 170px;
   align-items: center;
   color: #fff;
   flex-shrink: 0;
@@ -62,13 +63,28 @@ html {
 }
 
 .footer-links {
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 .footer-links > a {
   text-decoration: none;
   color: #fff;
   margin: 20px;
+}
+
+.icons-container {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.icons-container a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.icons {
+  /* margin: 15px 10px 15px 10px; */
+  margin: 7px 7px 5px 7px;
 }
 
 
@@ -328,7 +344,6 @@ div > .noSearch {
   position: absolute;
   top: 50px;
   z-index: 1;
-  /* right: -50px; */
   transition: width 0.4s ease-in-out;
   width: 0;
 }
@@ -403,7 +418,7 @@ img.head-image {
   letter-spacing: 6px;
 }
 
-h1 span::before {
+.tag-line span::before {
   content: "\A";
   white-space: pre;
 }
@@ -776,6 +791,10 @@ h5 {
     height: 200px;
   }
 
+  .icons-container {
+    margin-top: 10px;
+  }
+
   .hash-line {
     margin: 20px 0;
     font-size: 1em;
@@ -897,7 +916,7 @@ h5 {
 
   .page-title {
     margin: 35px 0;
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .home-icon {
@@ -1067,7 +1086,6 @@ h5 {
 
   #foots-container {
     color: #fff;
-    height: 150px;
   }
 
   .logos {

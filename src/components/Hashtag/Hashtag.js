@@ -26,7 +26,6 @@ const fetchTrendData = async (tag, setTrendDetail, setFetchError) => {
         body: JSON.stringify({ trend: tag }),
       }
     );
-    console.log(response);
     if (response.ok) {
       const data = await response.json();
       setTrendDetail(data.data);
@@ -73,22 +72,23 @@ const Hashtag = () => {
           <Helmet>
               <meta
                 name="description"
-                content={`Find details abput Top trending hashtags in ${country} ${city}.`}
+                content={`Find details about Current Top trending hashtags and Topics on Twitter in ${country} ${city}.`}
               />
               <meta
                 name="title"
-                content={`Tweet Name is ${tag}`}
+                content={`Current Twitter Hashtag Name is ${tag}`}
               />
-
+             <meta name="twitter:site" content="@alldaytrends1" />
               <meta property="og:type" content="website" />
               <meta property="og:url" content="https://alldaytrends.com/" />
+              <meta property="og:site_name" content="alldaytrends" />
               <meta
                 property="og:title"
-                content={`This tweet is trending is these locations ${trendDetail.trendingLocations.map(t => t.name)}`}
+                content={`Current Twitter Hashtag Name is ${tag}`}
               />
               <meta
                 property="og:description"
-                content={`Total Number of tweets are ${filterCity[0]?.trend?.tweet_volume}`}
+                content={`Find details about Top trending hashtags on Twitter in ${country} ${city}.`}
               />
               <meta property="og:image" content="%PUBLIC_URL%/logo.png" />
 
@@ -103,10 +103,10 @@ const Hashtag = () => {
               />
               <meta
                 property="twitter:description"
-                content={`This tweets has the highest rank of ${filterCity[0]?.trend?.index}`}
+                content={`This tweet is trending is these locations ${trendDetail.trendingLocations.map(t => t.name)}`}
               />
               <meta property="twitter:image" content="%PUBLIC_URL%/logo.png" />
-            <title>{tag}</title>
+            <title>{tag} 🕊️ {city === undefined ? country : city + ', ' + country} 🕊️ Twitter Trends</title>
           </Helmet>
           <div className="hashtag-box">
             <div>
@@ -177,9 +177,6 @@ const Hashtag = () => {
     } else {
       return (
         <div className="hashtag">
-          <Helmet>
-            <title>Please Wait</title>
-          </Helmet>
           <div className="hash-loader">
             <HashLoader color="#017acd" />
           </div>

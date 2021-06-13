@@ -59,7 +59,7 @@ const sideContainer = forwardRef((props, ref) => {
             <a
               href="https://twitter.com/login?lang=en-gb"
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer nofollow"
             >
               Login
             </a>

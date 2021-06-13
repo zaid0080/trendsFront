@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 
 function Trending() {
   const { city, country, setData, setTime } = useContext(GlobalContext);
-  const [placeError, setPlaceError] = useState(null);
-  console.log(placeError);
+  const setPlaceError = useState(null)[1];
   
   let sessionData = window.sessionStorage.getItem("data");
   if (sessionData === null) {

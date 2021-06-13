@@ -39,20 +39,20 @@ export function Tweet() {
       return (
       <>  
       <Helmet>
-          <meta name="description" content= {`Find details abput Top trending hashtags in ${country} ${city}. 
-            Find more information on ${data[0].trends.map((d) => d.name)}`}/>
+          <title>Twitter Trends {city === undefined ? country : city + ', ' + country} 🕊️ Top Trending Hashtags 🕊️ Today </title>
+          <meta name="description" content= {`Latest top twitter trends and hashtags in ${city === undefined ? country : city + ', ' + country}. 
+            Currently twitter trends and hashtags today are ${data[0].trends.map((d) => d.name)}`}/>
           <meta name="title" content={`Top trends in ${country} ${city || ''}are  ${data[0].trends.map((d) => d.name)}`}/>
-
           <meta property="og:type" content="website"/>
           <meta property="og:url" content="https://alldaytrends.com/"/>
           <meta property="og:title" content={`Top trends in ${country} ${city || ''}are ${data[0].trends.map((d) => d.name).toString().replace(',','')}`}/>
           <meta property="og:description"
-            content= {`Find details about Top trending hashtags in ${country} ${city}. 
-            Find more information on ${data[0].trends.map((d) => d.name).toString().replace(',','')}`}/>
+            content= {`Latest top twitter trends and hashtags in ${city === undefined ? country : city + ', ' + country}. 
+            Currently twitter trends and hashtags today are ${data[0].trends.map((d) => d.name)}`}/>
           <meta property="og:image"
             content="%PUBLIC_URL%/logo.png"/>
-
           <meta property="twitter:card" content="summary_large_image"/>
+          <meta name="twitter:site" content="@alldaytrends1" />
           <meta property="twitter:url" content="https://alldaytrends.com/"/>
           <meta property="twitter:title" content={`Top trends in ${country} ${city || ''}are ${data[0].trends.map((d) => d.name).toString().replace(',','')}`}/>
           <meta property="twitter:description"
