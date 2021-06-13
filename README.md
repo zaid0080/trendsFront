@@ -21,3 +21,7 @@ npm run start
 ```NPM RUN build
 npm run build
 ```
+
+# Website Link
+
+https://www.alldaytrends.com
