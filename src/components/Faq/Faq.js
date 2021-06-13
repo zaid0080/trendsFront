@@ -5,10 +5,10 @@ function Faq() {
   return (
     <div className='faq'>
       <div className="faq-cont">
-        <h1 className="faq-title">Description</h1>
+        <h1 className="faq-title">Description alldaytrends.</h1>
         <p>
-          A one-stop website to end your search for top Twitter hashtags and
-          trends. Find trends for over 400+ countries and cities. Know what is
+          A one-stop website to end your search for <b>Top Twitter hashtags and
+          trends</b>. Find trends for over 400+ countries and cities. Know what is
           trending without even logging into Twitter. Find hashtag analysis of
           your city, country or any other location all over the world. Your
           popular hashtag search ends here.{" "}
@@ -16,7 +16,7 @@ function Faq() {
         <h2 className="faq-title">FAQ</h2>
         <h3>Why alldaytrends?</h3>
         <p>
-          Since Twitter trends are real-time, it's impossible to view most
+          Since <b>Twitter trends</b> are real-time, it's impossible to view most
           tweeted topics a few hours ago on the Twitter website. An easy
           solution to that is Alldaytrends. You will be able to find Twitter’s
           most popular hashtags that are trending currently as well as hours
@@ -38,14 +38,14 @@ function Faq() {
         </p>
         <h3>Why can I not find data for my country or city at all?</h3>
         <p classname="faq-content">
-          We completely rely on Twitter when retrieving and processing trends.
+          We completely <b>rely on Twitter</b> when retrieving and processing trends.
           We try to collect the data for as many locations as practically
           possible, but for some of them Twitter simply doesn't provide any
           information.
         </p>
         <h3>How do we determine the most tweeted hashtags?</h3>
         <p>
-          We find out the highest tweet volume with the data provided by Twitter
+          We find out the <b>highest tweet volume</b> with the data provided by Twitter
           for every trend at all the times. It represents total number of tweets
           worldwide. We find out the highest number of tweets that Twitter
           provides for every trend every time we check. It represents total
