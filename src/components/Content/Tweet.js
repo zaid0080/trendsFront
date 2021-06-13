@@ -22,7 +22,8 @@ export function Tweet() {
   const [open, setOpen] = useState(false);
   const scrollRef = useRef(null);
 
-  const { country, city } = useParams();
+  const  country =  useParams().country?.replace(/_/g,' ');
+  const city  = useParams().city?.replace(/_/g,' ');
 
   useEffect(()=>{
     setData([])
@@ -39,7 +40,7 @@ export function Tweet() {
       return (
       <>  
       <Helmet>
-          <title>Twitter Trends {city === undefined ? country : city + ', ' + country} 🕊️ Top Trending Hashtags 🕊️ Today </title>
+          <title>Twitter Trends {city === undefined ? country : city + ', ' + country} 🕊️ Top Trending Hashtags 🕊️ Todayaa </title>
           <meta name="description" content= {`Latest top twitter trends and hashtags in ${city === undefined ? country : city + ', ' + country}. 
             Currently twitter trends and hashtags today are ${data[0].trends.map((d) => d.name)}`}/>
           <meta name="title" content={`Top trends in ${country} ${city || ''}are  ${data[0].trends.map((d) => d.name)}`}/>
