@@ -31,11 +31,12 @@ export const fetchAndSetData = async (place, setData, setTime, setError) => {
 export function Content() {
   const {setCity, setCountry ,setData, setSelectedTime} = useContext(GlobalContext);
 
-  const { country, city } = useParams();
+  let country = useParams().country?.replace(/_/g,' ')
+  let city = useParams().city?.replace(/_/g,' ')
   const [error,setError] = useState(null);
 
   useEffect(() => {
-    setCity(city );
+    setCity(city);
     setCountry(country);
     sessionStorage.setItem("country", country);
     const query = city === undefined ? country : city;
