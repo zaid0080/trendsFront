@@ -106,7 +106,7 @@ const Hashtag = () => {
                 content={`This tweet is trending is these locations ${trendDetail.trendingLocations.map(t => t.name)}`}
               />
               <meta property="twitter:image" content="%PUBLIC_URL%/logo.png" />
-            <title>{tag} • {selectedPlace} • Twitter Trends</title>
+            <title>{tag} 🕊️ {city === undefined ? country : city + ', ' + country} 🕊️ Twitter Trends</title>
           </Helmet>
           <div className="hashtag-box">
             <div>
@@ -177,9 +177,6 @@ const Hashtag = () => {
     } else {
       return (
         <div className="hashtag">
-          <Helmet>
-            <title>Please Wait</title>
-          </Helmet>
           <div className="hash-loader">
             <HashLoader color="#017acd" />
           </div>
