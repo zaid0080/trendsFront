@@ -40,7 +40,7 @@ export function Tweet() {
       return (
       <>  
       <Helmet>
-          <title>Twitter Trends {city === undefined ? country : city + ', ' + country} 🕊️ Top Trending Hashtags 🕊️ Todayaa </title>
+          <title>Twitter Trends {city === undefined ? country : city + ', ' + country} 🕊️ Top Trending Hashtags 🕊️ Today </title>
           <meta name="description" content= {`Latest top twitter trends and hashtags in ${city === undefined ? country : city + ', ' + country}. 
             Currently twitter trends and hashtags today are ${data[0].trends.map((d) => d.name)}`}/>
           <meta name="title" content={`Top trends in ${country} ${city || ''}are  ${data[0].trends.map((d) => d.name)}`}/>

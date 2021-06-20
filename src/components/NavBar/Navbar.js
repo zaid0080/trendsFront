@@ -86,7 +86,7 @@ function Navbar() {
 
       <span></span>
       <p className={`links last-link `} onClick={countryHandler}>
-        {country + (city === undefined ? "" : "," + city)}
+        {(city === undefined ? "" : city + ", ") + country}
       </p>
       <p className={`cityMob ${searchIcon ? "hideCountry" : ""}`}>
         {city === undefined ? country : city}
