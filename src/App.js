@@ -13,6 +13,7 @@ import Hashloader from './components/HashLoader/Hashloader'
 import { lazy, Suspense, useState } from "react";
 import Faq from "./components/Faq/Faq";
 import { useEffect, useContext } from "react";
+import Toggler from "./components/Toggler/Toggler";
 
 const HashTagPromise = import("./components/Hashtag/Hashtag");
 const AboutUsPromise = import("./components/AboutUs/AboutUs");
@@ -35,7 +36,7 @@ async function fetchPlace(country, setCountry_name, setCountry) {
 }
 
 function App() {
-  const {setCountry} = useContext(GlobalContext);
+  const {setCountry, darkMode } = useContext(GlobalContext);
   const [country_name,setCountry_name] = useState(sessionStorage.getItem('country'));
   useEffect(() => {   
       if(sessionStorage.getItem('country') === null){
@@ -45,8 +46,9 @@ function App() {
 
   return (
     <Router>
-      <div id="body-container">
+      <div id="body-container" className={darkMode ? 'dark' : ''}>
         <Navbar />
+        <Toggler />
         <Switch>
           <Route exact path="/faq">
             <Suspense fallback={<Hashloader />}>

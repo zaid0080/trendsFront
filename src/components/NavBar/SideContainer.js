@@ -3,6 +3,7 @@ import React, {
   useState,
   useImperativeHandle,
   useRef,
+  useContext,
 } from "react";
 import useOnClickOutside from "../useClickOutside/useOnClickOutside";
 import { Link } from "react-router-dom";
@@ -11,9 +12,11 @@ import { AiFillTwitterSquare } from "react-icons/ai";
 import { TiGroup } from "react-icons/ti";
 import { FaQuestionCircle } from 'react-icons/fa';
 import ADT from "./logoTag.png";
+import { GlobalContext } from "../../global";
 
 const sideContainer = forwardRef((props, ref) => {
   const [menu, setMenu] = useState(false);
+  const {darkMode} = useContext(GlobalContext);
   const Ref3 = useRef(null);
   const showMenu = () => {
     setMenu(!menu);
@@ -33,7 +36,7 @@ const sideContainer = forwardRef((props, ref) => {
 
   return (
     <>
-      <div className={`sideContainer ${menu ? "showMenu" : "hideMenu"}`}>
+      <div className={`sideContainer ${menu ? "showMenu" : "hideMenu"} ${darkMode ? 'dark-nav' : 'light-nav'}`}>
         <ul className="ul-nav-links">
             <img
               src={ADT}

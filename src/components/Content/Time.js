@@ -17,20 +17,20 @@ export function findDuration(date) {
 }
 
 function Time() {
-  const {data,setSelectedTime} = useContext(GlobalContext);
+  const {data,setSelectedTime, darkMode} = useContext(GlobalContext);
   useEffect(() => {}, [data]);
 
   return (
     <div id="time-container">
       <ul
-        className="list-item"
+        className={`list-item ${darkMode ? 'dark-nav' : ''}`}
         onClick={(e) => {
           setSelectedTime(e.target.dataset.time);
         }}
       >
         {data.map((d, index) => {
           return (
-            <li key={index} data-time={d.as_of}>
+            <li key={index} data-time={d.as_of} className={darkMode ? 'link-text' : ''}>
               {findDuration(d.as_of)}
             </li>
           );

@@ -1,0 +1,89 @@
+.toggle-cont{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#toggle {
+    width: 70px;
+    height: 35px;
+    margin: 5px;
+    position: relative;
+    outline: none;
+    background-color: #017acd;
+    -webkit-appearance: none;
+    cursor: pointer;
+    border-radius: 20px;
+    box-shadow: -5px -5px 20px rgba(255,255,255,0.1),
+                5px 5px 10px rgba(0,0,0,0.5),
+                inset -2px -2px 5px rgba(255,255,255,0.1),
+                inset 2px 2px 5px rgba(0,0,0,0.5),
+                0 0 0 2px #f1f1f1;
+    transition: 0.3s;
+}
+
+#toggle:checked {
+    background: #000;
+}
+
+#toggle::before{
+    content: ' ';
+    background-image: url('./sunn.jpg');
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    /* background: linear-gradient(to top, #fff, #555); */
+    box-shadow: 0 0 0 1px #232323;
+    transform: scale(0.98,0.96);
+    transition: 0.2s ease;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#toggle:checked:before{
+    left: 35px;
+    background-image: url('./icon2.png');
+}
+
+/* #toggle::after{
+    content: '';
+    position: absolute;
+    top: calc(50% - 2px);
+    left: 16px;
+    height: 4px;
+    width: 4px;
+    border-radius: 50%;
+    background: #555;
+    transition: 0.3s;
+} */
+
+/* #toggle:checked::after{
+    left: 52px;
+    background: #fff;
+} */
+
+/* .toggle-icon{
+    position: relative;
+} */
+
+/* .light-icon {
+    position: absolute;
+    top: 27%;
+    color: #fff;
+    left: 16px;
+}
+
+.dark-icon{
+    position: absolute;
+    top: 27%;
+    left: 52px;
+    color: #fff;
+} */
+
+/* .hide-icon{
+    display: none;
+} */

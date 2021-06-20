@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import ADT from "../NavBar/logoTag.png";
 import { Link } from "react-router-dom";
 import {
@@ -7,10 +7,12 @@ import {
   FaTwitterSquare,
   FaRedditSquare,
 } from "react-icons/fa";
+import { GlobalContext } from "../../global";
 
 function Footer() {
+  const {darkMode} = useContext(GlobalContext)
   return (
-    <div id="foots-container">
+    <div id="foots-container" className={darkMode ? 'dark-nav' : 'light-foot'}>
       <div className="logo-tag">
         <Link to="/">
           <img src={ADT} alt="Logo" height="35" width="200" />

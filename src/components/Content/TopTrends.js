@@ -11,7 +11,7 @@ function changetoK(x) {
 } 
 
 function TopTrends() {
-  const { data, selectedTime, selectedData, setSelectedData } = useContext(GlobalContext);
+  const { data, selectedTime, selectedData, setSelectedData, darkMode } = useContext(GlobalContext);
 
   const { country, city } = useParams();
 
@@ -24,29 +24,31 @@ function TopTrends() {
   if (selectedData) {
     return (
       <div id="Trends-container">
-        <ol className="ol-list">
+        <ol className={`ol-list`}>
           {[selectedData].map((trend) =>
             trend.trends.map((t) => {
               if (t.tweet_volume > 0) {
                 return (
-                  <li key={t.index}>
+                  <li key={t.index} >
                   <Link
                     to={`/${country}${ city === undefined ? "" : "/" + city
                     }/trend/${window.encodeURIComponent(t.name)}`}
                     key={t.index}
+                    className={`${darkMode ? 'dark-nav link-text' : ''}`}
                   >
-                    {t.name} <span>{changetoK(t.tweet_volume)}</span>
+                    {t.name} <span className={darkMode ? 'dark-text' : 'light-text'}>{changetoK(t.tweet_volume)}</span>
                   </Link>
                   </li>
                 );
               }
               return (
-                <li key={t.index}>
+                <li key={t.index} >
                 <Link
                   to={`/${country}${
                     city === undefined ? "" : "/" + city
                   }/trend/${window.encodeURIComponent(t.name)}`}
                   key={t.index}
+                  className={`${darkMode ? 'dark-nav link-text' : ''}`}
                 >
                   {t.name} 
                 </Link>
