@@ -26,17 +26,39 @@
     .left-button:active {
         color: #003e80;
     }
+
+    .dark-card {
+        background-color: #172037;
+        color: #fff;
+    }
+
+    .light-card {
+        background-color: #fff;
+        box-shadow: rgba(136,165,191,0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+    }
     
+    .dark-tweet {
+        color: #017acd;
+    }
+
+    .dark-tweet::before{
+        color: #fff;
+    }
+
+    .light-tweet::before{
+        color: #000;
+    }
+
+    .dark-tweet span {
+        color: #fff;
+    }
+ 
     div.card {
         display: flex;
         flex-direction: column;
         margin: 40px 20px;
         height: fit-content;
         border-radius: 5px;
-        background-color: #fff;
-        /* width: 250px; */
-        border: 1px solid #eee;
-            box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
     }
     
     div > h4 {
@@ -74,9 +96,13 @@
         grid-area: bottom;
     }
 
-    .tweet-names:hover {
+    .light-tweet:hover {
         background-color: #f1f1f1;
         cursor: pointer;
+    }
+
+    .dark-tweet:hover {
+        background-color: #040a21;
     }
 
     .index {
@@ -88,7 +114,6 @@
     }
 
     .tweet-names::before {
-        color: #000;
         grid-area: left;
         align-self: center;
         font-size: 0.8em;

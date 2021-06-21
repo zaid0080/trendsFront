@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../../global";
 import "./Faq.css";
 
 function Faq() {
+  const {darkMode} = useContext(GlobalContext)
   return (
-    <div className='faq'>
-      <div className="faq-cont">
+    <div className={darkMode ? 'dark' : 'faq'}>
+      <div className={`faq-cont ${darkMode ? 'dark-nav' : 'light-hash'}` }>
         <h1 className="faq-title">Description alldaytrends.</h1>
         <p>
           A one-stop website to end your search for <b>Top Twitter hashtags and

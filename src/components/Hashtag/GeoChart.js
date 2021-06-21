@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import { WorldMap } from "react-svg-worldmap";
 import { getCode } from "country-list";
+import { GlobalContext } from "../../global";
 
 function GeoChart(mapData) {
+  const {darkMode} = useContext(GlobalContext)
   if (mapData) {
     const countryCode = mapData.mapData.filter(
       (d) => getCode(d.name) !== undefined
@@ -28,10 +30,10 @@ function GeoChart(mapData) {
     const opacityLevel = 0.5 + (1.5 * (context.countryValue - context.minValue) / (2*context.maxValue - context.minValue))
     const toret = {
         // fill: context.country === "US" ? "blue" : context.color, 
-        fill: '#017acd',
+        fill: darkMode ? 'yellow' : '#017acd',
         fillOpacity: opacityLevel, 
-        stroke: "black", 
-        strokeWidth: 1,
+        stroke: 'black', 
+        strokeWidth: 0,
         strokeOpacity: 1.5, 
     }
     if(context.countryValue === 1){
@@ -46,6 +48,8 @@ function GeoChart(mapData) {
         color="red"
         size="md"
         data={toShow}
+        backgroundColor={darkMode ? '#172037' : '#fff'}
+        borderColor= {darkMode ? '#fff' : '#000'}
         tooltipBgColor="#017acd"
         styleFunction={stylingFunction}
         tooltipTextFunction={toolTipFuntion}

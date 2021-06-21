@@ -4,7 +4,7 @@ import { fetchAndSetData } from "../Content/Content";
 import { Link } from "react-router-dom";
 
 function Trending() {
-  const { city, country, setData, setTime } = useContext(GlobalContext);
+  const { city, country, setData, setTime, darkMode } = useContext(GlobalContext);
   const setPlaceError = useState(null)[1];
   
   let sessionData = window.sessionStorage.getItem("data");
@@ -22,7 +22,7 @@ function Trending() {
           {d[0].trends
             .filter((d, i) => i < 10)
             .map((d) => (
-              <li key={d.index}>
+              <li key={d.index} className={darkMode ? 'dark-hash' : 'light-list'}>
                 <Link
                   to={`/${country}${
                     city === undefined ? "" : "/" + city

@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 
 export const GlobalContext = createContext();
 
@@ -9,6 +9,15 @@ export const GlobalProvider =  props => {
     const [selectedTime,setSelectedTime] = useState();
     const [selectedData,setSelectedData] = useState();
     const [darkMode, setDarkMode] = useState(false);
+
+    
+    
+    useEffect(() => {
+        const darkOs = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches
+          darkOs ? setDarkMode(true) : setDarkMode(false)
+    }, [])
 
     
     return (

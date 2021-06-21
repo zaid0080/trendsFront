@@ -1,9 +1,12 @@
+import { useContext} from 'react'
 import Trends from "./Trends.svg";
 import Helmet from "react-helmet";
+import { GlobalContext } from "../../global";
 
 function AboutUs() {
+  const {darkMode} = useContext(GlobalContext)
   return (
-    <div className="about-page">
+    <div className="about-page" style= {{color : darkMode ? '#fff' : '#2b2b2b'}}>
       <Helmet>
         <title>About alldaytrends.com</title>
         <meta

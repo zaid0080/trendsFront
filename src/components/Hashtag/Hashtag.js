@@ -43,7 +43,7 @@ const fetchTrendData = async (tag, setTrendDetail, setFetchError) => {
 const Hashtag = () => {
   let params = useParams();
   let tag = parseTag(params.hashtag);
-  const { city, country } = useContext(GlobalContext);
+  const { city, country,darkMode } = useContext(GlobalContext);
   const selectedPlace = city === undefined ? country : city;
   const [fetchError, setFetchError] = useState(null);
   const [place, setPlace] = useState(selectedPlace);
@@ -68,7 +68,7 @@ const Hashtag = () => {
   if (fetchError === null) {
     if (trendDetail.trendingLocations.length >= 1) {
       return (
-        <div className="hashtag">
+        <div className={`hashtag ${darkMode ? 'dark' : 'light-hash'}`}>
           <Helmet>
               <meta
                 name="description"
@@ -108,7 +108,7 @@ const Hashtag = () => {
               <meta property="twitter:image" content="%PUBLIC_URL%/logo.png" />
             <title>{tag} 🕊️ {city === undefined ? country : city + ', ' + country} 🕊️ Twitter Trends</title>
           </Helmet>
-          <div className="hashtag-box">
+          <div className={`hashtag-box ${darkMode ? 'dark-hash' : ''}`}>
             <div>
               <h2 className="hash-line">
                 Trending at
@@ -163,20 +163,18 @@ const Hashtag = () => {
               </div>
               <div>
                 {" "}
-                {/* <MapChart data={trendDetail.trendingLocations}  /> */}
                 <GeoChart mapData={trendDetail.trendingLocations} />{" "}
-                {/* <ReactTooltip>{mapContent}</ReactTooltip> */}{" "}
               </div>
             </div>
           </div>
-          <div className="top-tweets-box">
+          <div className={`top-tweets-box ${darkMode ? 'dark-nav' : 'light-hash'}`}>
             <Trending />
           </div>
         </div>
       );
     } else {
       return (
-        <div className="hashtag">
+        <div className={`hashtag ${darkMode ? 'dark' : 'light-hash'}`}>
           <div className="hash-loader">
             <HashLoader color="#017acd" />
           </div>

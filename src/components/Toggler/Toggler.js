@@ -6,17 +6,11 @@ import './toggler.css'
 
 function Toggler() {
   const {darkMode, setDarkMode} = useContext(GlobalContext);
-
     return (
         <div className='toggle-cont'>
-            <span>{darkMode ? 'Dark Mode' : 'Light Mode'}</span>
             <div className='toggle-icon'>
-                
-                    <input type='checkbox' id='toggle' onClick={() => setDarkMode(!darkMode)}/>
+                    <input type='checkbox' id='toggle' onClick={() => setDarkMode(!darkMode)} checked={darkMode ? true : false} />
                     <label for='toggle' className='toggler'></label>
-                {/* {darkMode ? <IoMdCloudyNight className='dark-icon'/> : <HiOutlineLightBulb className='light-icon' />} */}
-                
-                
             </div>
         </div>
     )

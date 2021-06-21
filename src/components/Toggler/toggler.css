@@ -5,10 +5,12 @@
 }
 
 #toggle {
-    width: 70px;
-    height: 35px;
+    width: 50px;
+    height: 25px;
     margin: 5px;
     position: relative;
+    top: 5px;
+    right: 10px;
     outline: none;
     background-color: #017acd;
     -webkit-appearance: none;
@@ -23,19 +25,18 @@
 }
 
 #toggle:checked {
-    background: #000;
+    background: #172037;
 }
 
 #toggle::before{
     content: ' ';
-    background-image: url('./sunn.jpg');
+    background-image: url('./sun.png');
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 35px;
-    height: 35px;
+    top: 2.5px;
+    left: 2.5px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    /* background: linear-gradient(to top, #fff, #555); */
     box-shadow: 0 0 0 1px #232323;
     transform: scale(0.98,0.96);
     transition: 0.2s ease;
@@ -45,45 +46,6 @@
 }
 
 #toggle:checked:before{
-    left: 35px;
-    background-image: url('./icon2.png');
+    left: 25px;
+    background-image: url('./moon.png');
 }
-
-/* #toggle::after{
-    content: '';
-    position: absolute;
-    top: calc(50% - 2px);
-    left: 16px;
-    height: 4px;
-    width: 4px;
-    border-radius: 50%;
-    background: #555;
-    transition: 0.3s;
-} */
-
-/* #toggle:checked::after{
-    left: 52px;
-    background: #fff;
-} */
-
-/* .toggle-icon{
-    position: relative;
-} */
-
-/* .light-icon {
-    position: absolute;
-    top: 27%;
-    color: #fff;
-    left: 16px;
-}
-
-.dark-icon{
-    position: absolute;
-    top: 27%;
-    left: 52px;
-    color: #fff;
-} */
-
-/* .hide-icon{
-    display: none;
-} */
