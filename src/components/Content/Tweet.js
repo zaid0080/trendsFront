@@ -49,21 +49,19 @@ export function Tweet() {
             content={`Latest top twitter trends and hashtags in ${
               city === undefined ? country : city + ", " + country
             }. 
-            Currently twitter trends and hashtags today are ${data[0].trends.map(
-              (d) => d.name
-            )}`}
+            Currently twitter trends and hashtags today are ${data[0].trends.slice(0,6).map(d => d.name)}`}
           />
           <meta
             name="title"
-            content={`Top trends in ${country} ${
+            content={`Top Twitter trends in ${country} ${
               city || ""
-            }are  ${data[0].trends.map((d) => d.name)}`}
+            }are  ${data[0].trends.slice(0,6).map(d => d.name)}`}
           />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://alldaytrends.com/" />
           <meta
             property="og:title"
-            content={`Top trends in ${country} ${city || ""}are ${data[0].trends
+            content={`Top Twitter trends in ${country} ${city || ""}are ${data[0].trends
               .map((d) => d.name)
               .toString()
               .replace(",", "")}`}
@@ -73,9 +71,7 @@ export function Tweet() {
             content={`Latest top twitter trends and hashtags in ${
               city === undefined ? country : city + ", " + country
             }. 
-            Currently twitter trends and hashtags today are ${data[0].trends.map(
-              (d) => d.name
-            )}`}
+            Currently twitter trends and hashtags today are ${data[0].trends.slice(0,6).map(d => d.name)}`}
           />
           <meta property="og:image" content="%PUBLIC_URL%/logo.png" />
           <meta property="twitter:card" content="summary_large_image" />
@@ -83,15 +79,15 @@ export function Tweet() {
           <meta property="twitter:url" content="https://alldaytrends.com/" />
           <meta
             property="twitter:title"
-            content={`Top trends in ${country} ${city || ""}are ${data[0].trends
+            content={`Top Twitter trends in ${country} ${city || ""}are ${data[0].trends.slice(0, 10)
               .map((d) => d.name)
               .toString()
               .replace(",", "")}`}
           />
           <meta
             property="twitter:description"
-            content={`Find more details about Top trending hashtags in ${country} ${city}. 
-            Find more information on ${data[0].trends
+            content={`Find more details about Top Twitter trending hashtags in ${country} ${city}. 
+            Find more information on ${data[0].trends.slice(0,10)
               .map((d) => d.name)
               .toString()
               .replace(",", "")}`}

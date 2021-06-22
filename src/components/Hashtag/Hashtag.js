@@ -72,11 +72,11 @@ const Hashtag = () => {
           <Helmet>
               <meta
                 name="description"
-                content={`Find details about Current Top trending hashtags and Topics on Twitter in ${country} ${city}.`}
+                content={`Find details about Current Top Twitter trending hashtags and Topics on Twitter in ${country} ${city}.`}
               />
               <meta
                 name="title"
-                content={`Current Twitter Hashtag Name is ${tag}`}
+                content={`Current Twitter Trend and Hashtag Name is ${tag}`}
               />
              <meta name="twitter:site" content="@alldaytrends1" />
               <meta property="og:type" content="website" />
@@ -99,11 +99,11 @@ const Hashtag = () => {
               />
               <meta
                 property="twitter:title"
-                content={`This tweets is trending in ${trendDetail.trendingLocations.length} locations`}
+                content={`Twitter trends ${trendDetail.trendingLocations.length} locations`}
               />
               <meta
                 property="twitter:description"
-                content={`This tweet is trending is these locations ${trendDetail.trendingLocations.map(t => t.name)}`}
+                content={`Twitter trends ${trendDetail.trendingLocations.map(t => t.name)}`}
               />
               <meta property="twitter:image" content="%PUBLIC_URL%/logo.png" />
             <title>{tag} 🕊️ {city === undefined ? country : city + ', ' + country} 🕊️ Twitter Trends</title>

@@ -39,7 +39,7 @@ function Faq() {
           to view topics that were trending a few hours ago on Twitter website.
         </p>
         <h3>Why can I not find data for my country or city at all?</h3>
-        <p classname="faq-content">
+        <p className="faq-content">
           We completely <b>rely on Twitter</b> when retrieving and processing trends.
           We try to collect the data for as many locations as practically
           possible, but for some of them Twitter simply doesn't provide any
