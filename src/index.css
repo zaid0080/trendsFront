@@ -21,6 +21,15 @@ html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+.dark-scroll::-webkit-scrollbar{
+  background-color: #101d40;
+}
+
+.dark-scroll::-webkit-scrollbar-thumb{
+  background-color: #243357;
+}
+
+
 .dark{
   background-color: #040721;
 }
@@ -423,7 +432,6 @@ div > hr {
 }
 
 .list-items {
-  /* margin: 3px 25px; */
   font-size: 0.9em;
   border-bottom: 0.8px solid #fff;
   padding: 8px 8px 4px;
@@ -483,6 +491,10 @@ img.head-image {
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   background-color: #fff;
+}
+
+#time-container > .dark-nav::-webkit-scrollbar-thumb {
+  background-color: #2b3f6b;
 }
 
 .list-item > li {

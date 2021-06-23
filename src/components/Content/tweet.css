@@ -7,6 +7,14 @@
         margin: 0 0 50px 20px;
     }
 
+    .dark-cont::-webkit-scrollbar{
+        background-color: #101d40;
+    }
+
+    .dark-cont::-webkit-scrollbar-thumb{
+        background-color: #243357;
+    }
+
     .scroll-buttons {
         display: flex;
         justify-content: space-between;

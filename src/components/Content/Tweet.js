@@ -86,7 +86,7 @@ export function Tweet() {
           />
           <meta
             property="twitter:description"
-            content={`Find more details about Top Twitter trending hashtags in ${country} ${city}. 
+            content={`Find more details about Top Twitter  trending hashtags in ${country} ${city}. 
             Find more information on ${data[0].trends.slice(0,10)
               .map((d) => d.name)
               .toString()
@@ -98,7 +98,7 @@ export function Tweet() {
           <FaArrowCircleLeft onClick={scrollRight} className="left-button" />
           <FaArrowCircleRight onClick={scrollLeft} className="right-button" />
         </div>
-        <div className="trends-cont" ref={scrollRef}>
+        <div className={`trends-cont ${darkMode ? 'dark-cont' : ''}`} ref={scrollRef}>
           {data.map((d, index) => {
             return (
               <div
