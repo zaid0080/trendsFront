@@ -1,7 +1,7 @@
 import "./App.css";
 import Navbar from "./components/NavBar/Navbar.js";
 import Footer from "./components/Footer/Footer.js";
-import LandingPage from "./components/LandingPage/index";
+import LandingPage from "./Pages/LandingPage/index";
 import { GlobalContext } from "./global";
 import {
   BrowserRouter as Router,
@@ -11,12 +11,12 @@ import {
 } from "react-router-dom";
 import Hashloader from './components/HashLoader/Hashloader'
 import { lazy, Suspense, useState } from "react";
-import Faq from "./components/Faq/Faq";
+import Faq from "./Pages/Faq/Faq";
 import { useEffect, useContext } from "react";
 import Toggler from "./components/Toggler/Toggler";
 
 const HashTagPromise = import("./components/Hashtag/Hashtag");
-const AboutUsPromise = import("./components/AboutUs/AboutUs");
+const AboutUsPromise = import("./Pages/AboutUs/AboutUs");
 const HashTag = lazy(() => HashTagPromise);
 const AboutUs = lazy(() => AboutUsPromise);
 

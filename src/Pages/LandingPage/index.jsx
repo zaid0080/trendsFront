@@ -1,4 +1,4 @@
-import {Content} from '../Content/Content.js';
+import {Content} from '../../components/Content/Content';
 
 
 export default function Landingpage() {
