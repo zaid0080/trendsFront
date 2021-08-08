@@ -3,7 +3,6 @@
 Based on twitter trends and analysis
 
 ### authors
-@rohaanmd
 @zaid0080
 
 
