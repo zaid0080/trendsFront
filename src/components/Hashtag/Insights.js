@@ -10,7 +10,7 @@ function parseTag(tag) {
   return tag;
 }
 
-const Hashtag = (trendDetail) => {
+const Insights = ({trendDetail}) => {
   let params = useParams();
   let tag = parseTag(params.hashtag);
   const { city, country, darkMode } = useContext(GlobalContext);
@@ -20,11 +20,11 @@ const Hashtag = (trendDetail) => {
   useLayoutEffect(() => {
     setPlace(place);
   }, [place]);
-  console.log(trendDetail)
+
   const countryHandler = (e) => {
     setPlace(e.target.value);
   };
-  const filterCity = trendDetail.trendingLocations.filter(
+  const filterCity = trendDetail?.trendingLocations?.filter(
     (d) => d.name === place
   );
   return (
@@ -85,4 +85,4 @@ const Hashtag = (trendDetail) => {
     </div>
   );
 };
-export default Hashtag;
+export default Insights;

@@ -54,6 +54,8 @@ const Hashtag = () => {
     setPlace(place);
   }, [place]);
 
+  console.log(trendDetail)
+
   const countryHandler = (e) => {
     setPlace(e.target.value);
   };

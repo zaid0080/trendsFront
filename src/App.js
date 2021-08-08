@@ -15,7 +15,7 @@ import Faq from "./Pages/Faq/Faq";
 import { useEffect, useContext } from "react";
 import Toggler from "./components/Toggler/Toggler";
 
-const HashTagPromise = import("./components/Hashtag/Hashtag");
+const HashTagPromise = import("./Pages/Hashtag/Hashtag");
 const AboutUsPromise = import("./Pages/AboutUs/AboutUs");
 const HashTag = lazy(() => HashTagPromise);
 const AboutUs = lazy(() => AboutUsPromise);
