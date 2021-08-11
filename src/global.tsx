@@ -1,6 +1,6 @@
 import { useState, createContext } from "react";
 
-export const GlobalContext = createContext();
+export const GlobalContext : any = createContext({});
 
 export const GlobalProvider =  props => {
     const [country,setCountry] = useState('');

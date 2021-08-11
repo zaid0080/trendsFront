@@ -3,4 +3,4 @@ import router from '../App';
 
 getSites(router);
 
-siteMapBuilder(router, 'https://alldaytrends.com', sitemap.txt);
+siteMapBuilder(router, 'https://alldaytrends.com', 'sitemap.txt');

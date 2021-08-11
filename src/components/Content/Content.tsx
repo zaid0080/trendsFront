@@ -1,11 +1,11 @@
 import { useEffect, useContext,useState } from "react";
-import Time from "./Time.js";
-import TopTrends from "./TopTrends.js";
+import Time from "./Time";
+import TopTrends from "./TopTrends";
 import { GlobalContext } from "../../global";
 import { useParams } from 'react-router-dom';
-import { Tweet } from "./Tweet.js";
-import Header from '../Header/Header.js';
-import Page404 from "../404Page/Page404.js";
+import { Tweet } from "./Tweet";
+import Header from '../Header/Header';
+import Page404 from "../404Page/Page404";
 
 
 export const fetchAndSetData = async (place, setData, setTime, setError) => {
@@ -31,8 +31,10 @@ export const fetchAndSetData = async (place, setData, setTime, setError) => {
 export function Content() {
   const {setCity, setCountry ,setData, setSelectedTime} = useContext(GlobalContext);
 
-  let country = useParams().country?.replace(/_/g,' ')
-  let city = useParams().city?.replace(/_/g,' ')
+  const params: any = useParams();
+
+  let country = params.country?.replace(/_/g,' ')
+  let city = params.city?.replace(/_/g,' ')
   const [error,setError] = useState(null);
 
   useEffect(() => {

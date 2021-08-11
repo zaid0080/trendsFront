@@ -1,6 +1,6 @@
 import "./App.css";
-import Navbar from "./components/NavBar/Navbar.js";
-import Footer from "./components/Footer/Footer.js";
+import Navbar from "./components/NavBar/Navbar";
+import Footer from "./components/Footer/Footer";
 import LandingPage from "./Pages/LandingPage/index";
 import { GlobalContext } from "./global";
 import {

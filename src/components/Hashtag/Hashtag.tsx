@@ -6,7 +6,7 @@ import "./hashtag.css";
 import { HashLoader } from "react-spinners";
 import Trending from "./Trending";
 import GeoChart from "./GeoChart";
-import Page404 from "../404Page/Page404.js";
+import Page404 from "../404Page/Page404.jsx";
 import { changetoK } from "../Content/Tweet";
 
 function parseTag(tag) {

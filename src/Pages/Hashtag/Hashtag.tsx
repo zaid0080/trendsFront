@@ -40,7 +40,7 @@ const fetchTrendData = async (tag, setTrendDetail, setFetchError) => {
 };
 
 const Hashtag = () => {
-  let params = useParams();
+  let params :any = useParams();
   let tag = parseTag(params.hashtag);
   const { city, country,darkMode } = useContext(GlobalContext);
   const selectedPlace = city === undefined ? country : city;

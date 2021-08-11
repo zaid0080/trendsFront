@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { GlobalContext } from "../../global";
-import { fetchAndSetData } from "../Content/Content";
+import { fetchAndSetData } from "../Content/Content.tsx";
 import { Link } from "react-router-dom";
 
 function Trending() {
