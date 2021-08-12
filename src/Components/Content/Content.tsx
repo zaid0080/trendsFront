@@ -7,6 +7,11 @@ import { Tweet } from "./Tweet";
 import Header from '../Header/Header';
 import Page404 from "../404Page/Page404";
 
+type RouterParams = {
+  country: string
+  city: string
+}
+
 
 export const fetchAndSetData = async (place, setData, setTime, setError) => {
   try{
@@ -31,7 +36,7 @@ export const fetchAndSetData = async (place, setData, setTime, setError) => {
 export function Content() {
   const {setCity, setCountry ,setData, setSelectedTime} = useContext(GlobalContext);
 
-  const params: any = useParams();
+  const params = useParams<RouterParams>();
 
   let country = params.country?.replace(/_/g,' ')
   let city = params.city?.replace(/_/g,' ')
