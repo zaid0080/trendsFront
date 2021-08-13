@@ -3,5 +3,29 @@ export interface IStore {
     data : Array<Object>
     selectedData: Array<Object>
     selectedTime: string
-    selectedTheme: 'dark' | 'light'
+    darkMode: boolean
 }
+interface IFetchAction {
+    type: 'FETCH_DATA',
+    place: string,
+    payload: JSON //added this... for the returning data from the useeffect hook...
+}
+
+interface IPlaceAction {
+    type: 'SET_PLACE',
+    place: string
+}
+
+interface ITimeAction {
+    type: 'SET_TIME',
+    time: string
+}
+
+interface IThemeAction {
+    type: 'SWITCH_THEME',
+    color: boolean
+}
+
+
+export type Action = IFetchAction | IPlaceAction| ITimeAction | IThemeAction ;
+

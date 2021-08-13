@@ -1,9 +1,9 @@
 import { useEffect, useContext,useState } from "react";
 import Time from "./Time";
-import TopTrends from "./TopTrends";
+import TopTrends from "./TopTrends"
 import { GlobalContext } from "../../global";
 import { useParams } from 'react-router-dom';
-import { Tweet } from "./Tweet";
+import { Tweet } from "./Tweet"; 
 import Header from '../Header/Header';
 import Page404 from "../404Page/Page404";
 
@@ -49,6 +49,7 @@ export function Content() {
     const query = city === undefined ? country : city;
     fetchAndSetData(query, setData, setSelectedTime,setError)
   }, [setData, setSelectedTime, setCountry, setError ,setCity, country, city]);
+
   if(error === null){
     return (
       <div id="content">

@@ -7,6 +7,7 @@ export function findDuration(date) {
   const then = +new Date(date);
   const diff = now - then;
   const min = diff / minseconds;
+  
   if (min > 60) {
     return `${Math.floor(min / 60)} hrs ${Math.floor(min % 60)} mins ago`;
   }
