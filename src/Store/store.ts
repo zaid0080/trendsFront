@@ -7,8 +7,8 @@ export interface IStore {
 }
 interface IFetchAction {
     type: 'FETCH_DATA',
-    place: string,
-    payload: JSON //added this... for the returning data from the useeffect hook...
+    place?: string,
+    payload: Array<Object>
 }
 
 interface IPlaceAction {

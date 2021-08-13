@@ -1,6 +1,6 @@
 import {IStore, Action} from './store'
 import { useEffect, useReducer } from 'react';
-import { fetchAndSetData } from "./reducerFunctions";
+//import { fetchAndSetData } from "./reducerFunctions";
 
 const neverReached = (never: never) => {};
 
@@ -13,7 +13,7 @@ const InitialVal: IStore ={
 }
 
 
-export const reducer = async (state: IStore, action:Action)  => {
+export const reducer =  (state: IStore, action:Action) : IStore  => {
     switch (action.type){
         case 'FETCH_DATA': 
             console.log('This should fetch data depending on the', action.place);
@@ -43,29 +43,28 @@ export const reducer = async (state: IStore, action:Action)  => {
     }
     return state
 }
-function reducerFunction(){
 
-const [state , dispatch] = useReducer<React.Reducer<IStore, Action>>( reducer, InitialVal ) 
 
-useEffect(()=>{
-    async (place: String) => {
-        try{
-          const res = await fetch(`https://trendsend.herokuapp.com/apis/trends/by-place?placeName=${place}`);
-          if(res.ok){
-            const jsonData = await res.json();
-            window.sessionStorage.setItem('data',JSON.stringify(jsonData.data))
-            dispatch({type:'FETCH_DATA', payload:jsonData.data})
-            } else{ 
+function ReducerFunction(){
 
-            throw res;
-          }
-        }catch(error){
-          console.log(error);
-          throw error
-        }
-      }
-}
-,[])
-}
+    const [state , dispatch] = useReducer<React.Reducer<IStore, Action>>( reducer, InitialVal ) 
 
-export default reducerFunction
+    useEffect(()=>{
+        ( async (place: String) => {
+            try{
+              const res = await fetch(`https://trendsend.herokuapp.com/apis/trends/by-place?placeName=${state.place}`);
+              if(res.ok){
+                const jsonData = await res.json();
+                window.sessionStorage.setItem('data',JSON.stringify(jsonData.data))
+                dispatch({type:'FETCH_DATA', payload:jsonData.data})
+                } else{ 
+                throw res;
+              }
+            } catch(error){
+              console.log(error);
+              throw error
+            }
+          } )(state.place) },[state.place]) 
+}                                           
+
+export default ReducerFunction
