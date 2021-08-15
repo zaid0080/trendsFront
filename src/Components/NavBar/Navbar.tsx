@@ -25,7 +25,7 @@ function createTree(filterCountries) {
 }
 
 function Navbar() {
-  const { country, city, darkMode } = useContext(GlobalContext);
+  const { state } = useContext(GlobalContext);
   const [dropdown, setDropdown] = useState(false);
   const [searchIcon, setSearchIcon] = useState(false);
   const [countryInput, setCountryInput] = useState("");
@@ -67,7 +67,7 @@ function Navbar() {
   createTree(filterCountries);
 
   return (
-    <nav className={`nav ${darkMode ? 'dark-nav' : 'light-nav'}`}>
+    <nav className={`nav ${state.darkMode ? 'dark-nav' : 'light-nav'}`}>
       <Hamburger clickMe={() => sideRef.current.showMenu()} />
       <SideContainer ref={sideRef} />
       <Link to="/">
@@ -86,10 +86,10 @@ function Navbar() {
 
       <span></span>
       <p className={`links last-link `} onClick={countryHandler}>
-        {(city === undefined ? "" : city + ", ") + country}
+        {state.place}
       </p>
       <p className={`cityMob ${searchIcon ? "hideCountry" : ""}`}>
-        {city === undefined ? country : city}
+        {state.place}
       </p>
       {/* <h3>{woeid}</h3> */}
 
@@ -110,7 +110,7 @@ function Navbar() {
           onClick={searchHandler}
         />
 
-        <ul className={`ul-list-items ${dropdown ? "list" : "nolist"} ${darkMode ? 'dark-nav' : 'light-nav'}`}>
+        <ul className={`ul-list-items ${dropdown ? "list" : "nolist"} ${state.darkMode ? 'dark-nav' : 'light-nav'}`}>
           {Object.keys(woeidListTree)
             .sort()
             .map((d) => {

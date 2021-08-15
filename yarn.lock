@@ -2591,6 +2591,13 @@
     "@types/history" "*"
     "@types/react" "*"
 
+"@types/react-spinner@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@types/react-spinner/-/react-spinner-0.2.0.tgz#9ff024f7fd4ca77e2035adb41fed25e2774be2f5"
+  integrity sha512-vYsfbP3vnULw1bzocqT5jE26ODr137WRR2appcvO+32d3/wjcEXija7B6R0u6tWBgZo8Sq12O5y1aNPqoToXzg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*":
   version "17.0.17"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.17.tgz#1772d3d5425128e0635a716f49ef57c2955df055"

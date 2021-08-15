@@ -16,17 +16,27 @@ export function changetoK(x) {
   return x;
 }
 
+
+type IRouterParams = {
+  country: string
+  city: string
+}
+
 export function Tweet() {
-  const { data, setData, darkMode } = useContext(GlobalContext);
+  const { state, dispatch } = useContext(GlobalContext);
   const [open, setOpen] = useState(false);
   const scrollRef = useRef(null);
 
-  const country = useParams().country?.replace(/_/g, " ");
-  const city = useParams().city?.replace(/_/g, " ");
+  const params = useParams<IRouterParams>();
+  const country = params.country?.replace(/_/g, " ");
+  const city = params.city?.replace(/_/g, " ");
 
   useEffect(() => {
-    setData([]);
-  }, [country, setData]);
+    dispatch({
+      type: "SET_DATA",
+      data : []
+    })
+  }, [country]);
 
   const scrollLeft = () => {
     scrollRef.current.scrollLeft += 400;
@@ -35,7 +45,7 @@ export function Tweet() {
     scrollRef.current.scrollLeft -= 400;
   };
 
-  if (data.length) {
+  if (state.data.length) {
     return (
       <>
         <Helmet>
@@ -49,19 +59,19 @@ export function Tweet() {
             content={`Latest top twitter trends and hashtags in ${
               city === undefined ? country : city + ", " + country
             }. 
-            Currently twitter trends and hashtags today are ${data[0].trends.slice(0,6).map(d => d.name)}`}
+            Currently twitter trends and hashtags today are ${state.data[0].trends.slice(0,6).map(d => d.name)}`} // ANCHOR state.data
           />
           <meta
             name="title"
             content={`Top Twitter trends in ${country} ${
               city || ""
-            }are  ${data[0].trends.slice(0,6).map(d => d.name)}`}
+            }are  ${state.data[0].trends.slice(0,6).map(d => d.name)}`} // ANCHOR state.data
           />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://alldaytrends.com/" />
           <meta
             property="og:title"
-            content={`Top Twitter trends in ${country} ${city || ""}are ${data[0].trends
+            content={`Top Twitter trends in ${country} ${city || ""}are ${state.data[0].trends      // ANCHOR state.data
               .map((d) => d.name)
               .toString()
               .replace(",", "")}`}
@@ -71,7 +81,7 @@ export function Tweet() {
             content={`Latest top twitter trends and hashtags in ${
               city === undefined ? country : city + ", " + country
             }. 
-            Currently twitter trends and hashtags today are ${data[0].trends.slice(0,6).map(d => d.name)}`}
+            Currently twitter trends and hashtags today are ${state.data[0].trends.slice(0,6).map(d => d.name)}`} // ANCHOR state.data
           />
           <meta property="og:image" content="%PUBLIC_URL%/logo.png" />
           <meta property="twitter:card" content="summary_large_image" />
@@ -79,7 +89,7 @@ export function Tweet() {
           <meta property="twitter:url" content="https://alldaytrends.com/" />
           <meta
             property="twitter:title"
-            content={`Top Twitter trends in ${country} ${city || ""}are ${data[0].trends.slice(0, 10)
+            content={`Top Twitter trends in ${country} ${city || ""}are ${state.data[0].trends.slice(0, 10) // ANCHOR state.data
               .map((d) => d.name)
               .toString()
               .replace(",", "")}`}
@@ -87,7 +97,7 @@ export function Tweet() {
           <meta
             property="twitter:description"
             content={`Find more details about Top Twitter  trending hashtags in ${country} ${city}. 
-            Find more information on ${data[0].trends.slice(0,10)
+            Find more information on ${state.data[0].trends.slice(0,10)   // ANCHOR state.data
               .map((d) => d.name)
               .toString()
               .replace(",", "")}`}
@@ -98,11 +108,11 @@ export function Tweet() {
           <FaArrowCircleLeft onClick={scrollRight} className="left-button" />
           <FaArrowCircleRight onClick={scrollLeft} className="right-button" />
         </div>
-        <div className={`trends-cont ${darkMode ? 'dark-cont' : ''}`} ref={scrollRef}>
-          {data.map((d, index) => {
+        <div className={`trends-cont ${state.darkMode ? 'dark-cont' : ''}`} ref={scrollRef}>  // ANCHOR state.data
+          {state.data.map((d, index) => {       // ANCHOR state.data
             return (
               <div
-                className={`card ${darkMode ? "dark-card" : "light-card"}`}
+                className={`card ${state.darkMode ? "dark-card" : "light-card"}`}     // ANCHOR state.data
                 key={d.as_of}
               >
                 <h4 data-time={d.as_of}>{findDuration(d.as_of)}</h4>
@@ -114,7 +124,7 @@ export function Tweet() {
                           to={`/${country}${
                             city === undefined ? "" : "/" + city
                           }/trend/${window.encodeURIComponent(t.name)}`}
-                          className={`tweet-names ${darkMode ? "dark-tweet" : "light-tweet"} tweet-names-${t.index} ${
+                          className={`tweet-names ${state.darkMode ? "dark-tweet" : "light-tweet"} tweet-names-${t.index} ${      // ANCHOR state.data
                             open
                               ? `open`
                               : `close-${t.index}`
@@ -134,7 +144,7 @@ export function Tweet() {
                         to={`/${country}${
                           city === undefined ? "" : "/" + city
                         }/trend/${window.encodeURIComponent(t.name)}`}
-                        className={`tweet-names ${darkMode ? "dark-tweet" : "light-tweet"} tweet-names-${t.index} ${
+                        className={`tweet-names ${state.darkMode ? "dark-tweet" : "light-tweet"} tweet-names-${t.index} ${        // ANCHOR state.data
                           open
                             ? `open`
                             : `close-${t.index}`

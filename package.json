@@ -54,6 +54,7 @@
     "@types/node": "^16.6.1",
     "@types/react-dom": "^17.0.9",
     "@types/react-router-dom": "^5.1.8",
+    "@types/react-spinner": "^0.2.0",
     "chalk": "^4.1.1",
     "html-webpack-plugin": "^5.3.1",
     "preload-webpack-plugin": "^2.3.0",

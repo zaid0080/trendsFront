@@ -16,7 +16,7 @@ import { GlobalContext } from "../../global";
 
 const sideContainer = forwardRef((props, ref) => {
   const [menu, setMenu] = useState(false);
-  const {darkMode} = useContext(GlobalContext);
+  const {state} = useContext(GlobalContext);
   const Ref3 = useRef(null);
   const showMenu = () => {
     setMenu(!menu);
@@ -36,7 +36,7 @@ const sideContainer = forwardRef((props, ref) => {
 
   return (
     <>
-      <div className={`sideContainer ${menu ? "showMenu" : "hideMenu"} ${darkMode ? 'dark-nav' : 'light-nav'}`}>
+      <div className={`sideContainer ${menu ? "showMenu" : "hideMenu"} ${state.darkMode ? 'dark-nav' : 'light-nav'}`}>
         <ul className="ul-nav-links">
             <img
               src={ADT}

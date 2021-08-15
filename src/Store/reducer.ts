@@ -1,10 +1,10 @@
-import {IStore, Action} from './store'
+import {IStore, Action} from './actions'
 import { useEffect, useReducer } from 'react';
 //import { fetchAndSetData } from "./reducerFunctions";
 
 const neverReached = (never: never) => {};
 
-const InitialVal: IStore ={
+export const InitialVal: IStore ={
     place: "",
     data : [{}],
     selectedData: [{}],
@@ -38,33 +38,18 @@ export const reducer =  (state: IStore, action:Action) : IStore  => {
                 ...state,
                 darkMode : !action.color
             }
+        case 'SET_SELECTED_DATA':
+            return{
+                ...state,
+                selectedData: action.data
+            }
+        case 'SET_DATA':
+            return{
+                ...state,
+                selectedData: action.data
+            }
         default: 
             neverReached(action)
     }
     return state
 }
-
-
-function ReducerFunction(){
-
-    const [state , dispatch] = useReducer<React.Reducer<IStore, Action>>( reducer, InitialVal ) 
-
-    useEffect(()=>{
-        ( async (place: String) => {
-            try{
-              const res = await fetch(`https://trendsend.herokuapp.com/apis/trends/by-place?placeName=${state.place}`);
-              if(res.ok){
-                const jsonData = await res.json();
-                window.sessionStorage.setItem('data',JSON.stringify(jsonData.data))
-                dispatch({type:'FETCH_DATA', payload:jsonData.data})
-                } else{ 
-                throw res;
-              }
-            } catch(error){
-              console.log(error);
-              throw error
-            }
-          } )(state.place) },[state.place]) 
-}                                           
-
-export default ReducerFunction

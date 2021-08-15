@@ -1,13 +1,13 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-function Index({tag, country, city ,trendDetail}) {
+function Index({tag, place ,trendDetail}) {
     
     return (
         <Helmet>
               <meta
                 name="description"
-                content={`Find details about Current Top Twitter trending hashtags and Topics on Twitter in ${country} ${city}.`}
+                content={`Find details about Current Top Twitter trending hashtags and Topics on Twitter in ${place}.`}
               />
               <meta
                 name="title"
@@ -23,7 +23,7 @@ function Index({tag, country, city ,trendDetail}) {
               />
               <meta
                 property="og:description"
-                content={`Find details about Top trending hashtags on Twitter in ${country} ${city}.`}
+                content={`Find details about Top trending hashtags on Twitter in ${place}.`}
               />
               <meta property="og:image" content="%PUBLIC_URL%/logo.png" />
 
@@ -41,7 +41,7 @@ function Index({tag, country, city ,trendDetail}) {
                 content={`Twitter trends ${trendDetail.trendingLocations.map(t => t.name)}`}
               />
               <meta property="twitter:image" content="%PUBLIC_URL%/logo.png" />
-            <title>{tag} 🕊️ {city === undefined ? country : city + ', ' + country} 🕊️ Twitter Trends</title>
+            <title>{tag} 🕊️ {place} 🕊️ Twitter Trends</title>
           </Helmet>
     )
 }

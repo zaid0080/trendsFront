@@ -10,22 +10,30 @@ function changetoK(x) {
   return x;
 } 
 
-function TopTrends() {
-  const { data, selectedTime, selectedData, setSelectedData, darkMode } = useContext(GlobalContext);
+type IRouterParams = {
+  country: string,
+  city: string
+}
 
-  const { country, city } = useParams();
+function TopTrends() {
+
+  const { state, dispatch } = useContext(GlobalContext);
+
+  const { country, city } = useParams<IRouterParams>();
 
   useEffect(() => {
-    setSelectedData(undefined);
-    const x = data.find((d) => d.as_of === selectedTime);
-    setSelectedData(x);
-  },[data, selectedTime, setSelectedData])
+    const x = state.data.find((d) => d.as_of === state.selectedTime);
+    dispatch({
+      type: "SET_SELECTED_DATA",
+      data : x
+    })
+  },[state.selectedTime])
   
-  if (selectedData) {
+  if (state.selectedData) {
     return (
       <div id="Trends-container">
         <ol className={`ol-list`}>
-          {[selectedData].map((trend) =>
+          {[state.selectedData].map((trend:any) =>                      // ANCHOR Remove this any 
             trend.trends.map((t) => {
               if (t.tweet_volume > 0) {
                 return (
@@ -34,9 +42,9 @@ function TopTrends() {
                     to={`/${country}${ city === undefined ? "" : "/" + city
                     }/trend/${window.encodeURIComponent(t.name)}`}
                     key={t.index}
-                    className={`${darkMode ? 'dark-nav link-text' : ''}`}
+                    className={`${state.darkMode ? 'dark-nav link-text' : ''}`}
                   >
-                    {t.name} <span className={darkMode ? 'dark-text' : 'light-text'}>{changetoK(t.tweet_volume)}</span>
+                    {t.name} <span className={state.darkMode ? 'dark-text' : 'light-text'}>{changetoK(t.tweet_volume)}</span>
                   </Link>
                   </li>
                 );
@@ -48,7 +56,7 @@ function TopTrends() {
                     city === undefined ? "" : "/" + city
                   }/trend/${window.encodeURIComponent(t.name)}`}
                   key={t.index}
-                  className={`${darkMode ? 'dark-nav link-text' : ''}`}
+                  className={`${state.darkMode ? 'dark-nav link-text' : ''}`}
                 >
                   {t.name} 
                 </Link>

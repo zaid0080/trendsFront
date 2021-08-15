@@ -34,7 +34,7 @@ export const fetchAndSetData = async (place, setData, setTime, setError) => {
 };
 
 export function Content() {
-  const {setCity, setCountry ,setData, setSelectedTime} = useContext(GlobalContext);
+  const ctx = useContext(GlobalContext);
 
   const params = useParams<RouterParams>();
 
@@ -43,12 +43,13 @@ export function Content() {
   const [error,setError] = useState(null);
 
   useEffect(() => {
-    setCity(city);
-    setCountry(country);
+    ctx.dispatch({
+      type: "SET_PLACE",
+      place : `${country},${city}`
+    })
     sessionStorage.setItem("country", country);
     const query = city === undefined ? country : city;
-    fetchAndSetData(query, setData, setSelectedTime,setError)
-  }, [setData, setSelectedTime, setCountry, setError ,setCity, country, city]);
+  }, []);
 
   if(error === null){
     return (

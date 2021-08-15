@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../../global";
 
 export function findDuration(date) {
@@ -18,20 +18,24 @@ export function findDuration(date) {
 }
 
 function Time() {
-  const {data,setSelectedTime, darkMode} = useContext(GlobalContext);
-  useEffect(() => {}, [data]);
+  const ctx = useContext(GlobalContext);
+  useEffect(() => {}, [ctx.state.selectedTime]);
 
   return (
     <div id="time-container">
       <ul
-        className={`list-item ${darkMode ? 'dark-nav' : ''}`}
+        className={`list-item ${ctx.state.darkMode ? 'dark-nav' : ''}`}
         onClick={(e) => {
-          setSelectedTime(e.target.dataset.time);
+          if(e.target instanceof HTMLUListElement)
+          ctx.dispatch({
+            type : "SET_TIME",
+            time : e.target.dataset.time
+          })
         }}
       >
-        {data.map((d, index) => {
+        {ctx.state.data.map((d, index) => {
           return (
-            <li key={index} data-time={d.as_of} className={darkMode ? 'link-text' : ''}>
+            <li key={index} data-time={d.as_of} className={ctx.state.darkMode ? 'link-text' : ''}>
               {findDuration(d.as_of)}
             </li>
           );

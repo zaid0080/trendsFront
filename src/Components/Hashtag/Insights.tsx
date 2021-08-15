@@ -5,16 +5,20 @@ import "./hashtag.css";
 import GeoChart from "./GeoChart";
 import { changetoK } from "../Content/Tweet";
 
+type IRouterParams = {
+  hashtag: string
+}
+
 function parseTag(tag) {
   tag = window.decodeURIComponent(tag);
   return tag;
 }
 
 const Insights = ({trendDetail}) => {
-  let params = useParams();
+  let params = useParams<IRouterParams>();
   let tag = parseTag(params.hashtag);
-  const { city, country, darkMode } = useContext(GlobalContext);
-  const selectedPlace = city === undefined ? country : city;
+  const { state } = useContext(GlobalContext);
+  const selectedPlace = state.place;
   const [place, setPlace] = useState(selectedPlace);
 
   useLayoutEffect(() => {
@@ -28,7 +32,7 @@ const Insights = ({trendDetail}) => {
     (d) => d.name === place
   );
   return (
-    <div className={`hashtag-box ${darkMode ? "dark-hash" : ""}`}>
+    <div className={`hashtag-box ${state.darkMode ? "dark-hash" : ""}`}>
       <div>
         <h2 className="hash-line">
           Trending at

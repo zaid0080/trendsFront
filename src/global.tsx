@@ -1,20 +1,42 @@
-import { useState, createContext } from "react";
+import { useReducer, useEffect, createContext, Dispatch } from "react";
+import { reducer, InitialVal } from "./Store/reducer";
+import { Action, IStore } from "./Store/actions";
 
-export const GlobalContext  = createContext({});
+interface IContext{
+    state : IStore,
+    dispatch: (action: Action) => void
+}
 
-export const GlobalProvider =  props => {
-    const [country,setCountry] = useState('');
-    const [city,setCity] = useState();
-    const [data,setData] = useState([]);
-    const [selectedTime,setSelectedTime] = useState();
-    const [selectedData,setSelectedData] = useState();
-    const [darkMode, setDarkMode] = useState(
-        window.matchMedia('(prefers-color-scheme: dark)').matches ? true : false
-    );
-    
+export const GlobalContext = createContext<IContext | undefined>(undefined);
+
+interface Prop {
+    children: React.ReactNode
+}
+
+export const GlobalProvider = (props: Prop) => {
+    let [state, dispatch] = useReducer(reducer, InitialVal)
+
+    useEffect(() => {
+        (async (place: String) => {
+            try {
+                const res = await fetch(`https://trendsend.herokuapp.com/apis/trends/by-place?placeName=${place}`);
+                if (res.ok) {
+                    const jsonData = await res.json();
+                    window.sessionStorage.setItem('data', JSON.stringify(jsonData.data))
+                    dispatch({ type: 'FETCH_DATA', payload: jsonData.data })
+                } else {
+                    throw res;
+                }
+            } catch (error) {
+                console.log(error);
+                throw error
+            }
+        })(state.place)
+    }, [state.place])
+
     return (
-        <GlobalContext.Provider value={{country,setCountry,city,setCity,data,setData,selectedTime,setSelectedTime,selectedData,setSelectedData,darkMode,setDarkMode}}>
+        <GlobalContext.Provider value={{ state, dispatch }}>
             {props.children}
-         </GlobalContext.Provider>
+        </GlobalContext.Provider>
     )
 }

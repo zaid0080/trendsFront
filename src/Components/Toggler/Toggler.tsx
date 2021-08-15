@@ -3,20 +3,25 @@ import { GlobalContext } from "../../global";
 import './toggler.css'
 
 function Toggler() {
-  const {darkMode, setDarkMode} = useContext(GlobalContext);
+  const { state, dispatch } = useContext(GlobalContext);
 
   useEffect(() => {
-    document.body.classList.add(darkMode ? 'dark-scroll' : 'light-scroll')
-    document.body.classList.remove(!darkMode ? 'dark-scroll' : 'light-scroll')
-  },[darkMode])
-  
-    return (
-        <div className='toggle-cont'>
-            <div className='toggle-icon'>
-                    <input type='checkbox' id='toggle' onClick={() => setDarkMode(!darkMode)} defaultChecked={darkMode ? true : false} />
-            </div>
-        </div>
-    )
+    document.body.classList.add(state.darkMode ? 'dark-scroll' : 'light-scroll')
+    document.body.classList.remove(!state.darkMode ? 'dark-scroll' : 'light-scroll')
+  }, [state.darkMode])
+
+  return (
+    <div className='toggle-cont'>
+      <div className='toggle-icon'>
+        <input type='checkbox' id='toggle' onClick={() => 
+          dispatch({
+            type: "SWITCH_THEME",
+            color : ! state.darkMode
+          })
+        } defaultChecked={state.darkMode} />
+      </div>
+    </div>
+  )
 }
 
 export default Toggler

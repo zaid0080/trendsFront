@@ -9,6 +9,10 @@ import GeoChart from "./GeoChart";
 import Page404 from "../404Page/Page404.jsx";
 import { changetoK } from "../Content/Tweet";
 
+type IRouterParams = {
+  hashtag: string
+}
+
 function parseTag(tag) {
   tag = window.decodeURIComponent(tag);
   return tag;
@@ -41,10 +45,10 @@ const fetchTrendData = async (tag, setTrendDetail, setFetchError) => {
 };
 
 const Hashtag = () => {
-  let params = useParams();
+  let params = useParams<IRouterParams>();
   let tag = parseTag(params.hashtag);
-  const { city, country,darkMode } = useContext(GlobalContext);
-  const selectedPlace = city === undefined ? country : city;
+  const { state } = useContext(GlobalContext);
+  const selectedPlace = state.place
   const [fetchError, setFetchError] = useState(null);
   const [place, setPlace] = useState(selectedPlace);
 
@@ -70,11 +74,11 @@ const Hashtag = () => {
   if (fetchError === null) {
     if (trendDetail.trendingLocations.length >= 1) {
       return (
-        <div className={`hashtag ${darkMode ? 'dark' : 'light-hash'}`}>
+        <div className={`hashtag ${state.darkMode ? 'dark' : 'light-hash'}`}>
           <Helmet>
               <meta
                 name="description"
-                content={`Find details about Current Top Twitter trending hashtags and Topics on Twitter in ${country} ${city}.`}
+                content={`Find details about Current Top Twitter trending hashtags and Topics on Twitter in ${state.place}`}
               />
               <meta
                 name="title"
@@ -90,7 +94,7 @@ const Hashtag = () => {
               />
               <meta
                 property="og:description"
-                content={`Find details about Top trending hashtags on Twitter in ${country} ${city}.`}
+                content={`Find details about Top trending hashtags on Twitter in ${state.place}.`}
               />
               <meta property="og:image" content="%PUBLIC_URL%/logo.png" />
 
@@ -108,9 +112,9 @@ const Hashtag = () => {
                 content={`Twitter trends ${trendDetail.trendingLocations.map(t => t.name)}`}
               />
               <meta property="twitter:image" content="%PUBLIC_URL%/logo.png" />
-            <title>{tag} 🕊️ {city === undefined ? country : city + ', ' + country} 🕊️ Twitter Trends</title>
+            <title>{tag} 🕊️ {state.place} 🕊️ Twitter Trends</title>
           </Helmet>
-          <div className={`hashtag-box ${darkMode ? 'dark-hash' : ''}`}>
+          <div className={`hashtag-box ${state.darkMode ? 'dark-hash' : ''}`}>
             <div>
               <h2 className="hash-line">
                 Trending at
@@ -169,14 +173,14 @@ const Hashtag = () => {
               </div>
             </div>
           </div>
-          <div className={`top-tweets-box ${darkMode ? 'dark-nav' : 'light-hash'}`}>
+          <div className={`top-tweets-box ${state.darkMode ? 'dark-nav' : 'light-hash'}`}>
             <Trending />
           </div>
         </div>
       );
     } else {
       return (
-        <div className={`hashtag ${darkMode ? 'dark' : 'light-hash'}`}>
+        <div className={`hashtag ${state.darkMode ? 'dark' : 'light-hash'}`}>
           <div className="hash-loader">
             <HashLoader color="#017acd" />
           </div>

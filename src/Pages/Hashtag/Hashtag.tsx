@@ -3,10 +3,14 @@ import { useParams } from "react-router";
 import { GlobalContext } from "../../global";
 import "./hashtag.css";
 import { HashLoader } from "react-spinners";
-import Trending from "../../components/Hashtag/Trending";
-import Insights from '../../components/Hashtag/Insights'
-import Page404 from "../../components/404Page/Page404";
-import SEO from "../../components/SEO"
+import Trending from "../../Components/Hashtag/Trending";
+import Insights from '../../Components/Hashtag/Insights'
+import Page404 from "../../Components/404Page/Page404";
+import SEO from "../../Components/SEO"
+
+type IRouterParams = {
+  hashtag: string
+}
 
 function parseTag(tag) {
   tag = window.decodeURIComponent(tag);
@@ -40,10 +44,10 @@ const fetchTrendData = async (tag, setTrendDetail, setFetchError) => {
 };
 
 const Hashtag = () => {
-  let params  = useParams();
+  let params  = useParams<IRouterParams>();
   let tag = parseTag(params.hashtag);
-  const { city, country,darkMode } = useContext(GlobalContext);
-  const selectedPlace = city === undefined ? country : city;
+  const { state } = useContext(GlobalContext);
+  const selectedPlace = state.place.split(',').pop()
   const [fetchError, setFetchError] = useState(null);
   const [place, setPlace] = useState(selectedPlace);
 
@@ -60,17 +64,17 @@ const Hashtag = () => {
   if (fetchError === null) {
     if (trendDetail.trendingLocations.length > 0) {
       return (
-        <div className={`hashtag ${darkMode ? 'dark' : 'light-hash'}`}>
-          <SEO { ...{tag , country , city, trendDetail } }  />
+        <div className={`hashtag ${state.darkMode ? 'dark' : 'light-hash'}`}>
+          <SEO { ...{ tag , place : state.place, trendDetail } }  />
           <Insights trendDetail = {trendDetail} />
-          <div className={`top-tweets-box ${darkMode ? 'dark-nav' : 'light-hash'}`}>
+          <div className={`top-tweets-box ${state.darkMode ? 'dark-nav' : 'light-hash'}`}>
             <Trending />
           </div>
         </div>
       );
     } else {
       return (
-        <div className={`hashtag ${darkMode ? 'dark' : 'light-hash'}`}>
+        <div className={`hashtag ${state.darkMode ? 'dark' : 'light-hash'}`}>
           <div className="hash-loader">
             <HashLoader color="#017acd" />
           </div>

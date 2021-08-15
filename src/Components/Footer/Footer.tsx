@@ -10,9 +10,9 @@ import {
 import { GlobalContext } from "../../global";
 
 function Footer() {
-  const {darkMode} = useContext(GlobalContext)
+  const {state} = useContext(GlobalContext)
   return (
-    <div id="foots-container" className={darkMode ? 'dark-nav' : 'light-foot'}>
+    <div id="foots-container" className={state.darkMode ? 'dark-nav' : 'light-foot'}>
       <div className="logo-tag">
         <Link to="/">
           <img src={ADT} alt="Logo" height="35" width="200" />

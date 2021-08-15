@@ -1,6 +1,6 @@
 import "./App.css";
-import Navbar from "./components/NavBar/Navbar";
-import Footer from "./components/Footer/Footer";
+import Navbar from "./Components/NavBar/Navbar";
+import Footer from "./Components/Footer/Footer";
 import LandingPage from "./Pages/LandingPage/index";
 import { GlobalContext } from "./global";
 import {
@@ -9,44 +9,38 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import Hashloader from './components/HashLoader/Hashloader'
+import Hashloader from './Components/HashLoader/Hashloader'
 import { lazy, Suspense, useState } from "react";
 import Faq from "./Pages/Faq/Faq";
 import { useEffect, useContext } from "react";
-import Toggler from "./components/Toggler/Toggler";
+import Toggler from "./Components/Toggler/Toggler";
+import { GetUserLocation } from "./utils/userUtils";
 
 const HashTagPromise = import("./Pages/Hashtag/Hashtag");
 const AboutUsPromise = import("./Pages/AboutUs/AboutUs");
 const HashTag = lazy(() => HashTagPromise);
 const AboutUs = lazy(() => AboutUsPromise);
 
-async function fetchPlace(country, setCountry_name, setCountry) {
-  try {
-    const resp = await fetch("https://ipapi.co/json/", {
-    method: "GET",
-  });
-  const data = await resp.json();
-  setCountry(data.country_name);
-  setCountry_name(data.country_name);
-  sessionStorage.setItem("country", data.country_name);
-  } catch(error) {
-    setCountry_name('Worldwide')
-    setCountry('Worldwide')
-  }
-}
 
 function App() {
-  const {setCountry, darkMode } = useContext(GlobalContext);
-  const [country_name,setCountry_name] = useState(sessionStorage.getItem('country'));
-  useEffect(() => {   
+  const {state,dispatch} = useContext(GlobalContext);
+
+  useEffect( () => {   
       if(sessionStorage.getItem('country') === null){
-        fetchPlace(country_name, setCountry_name,setCountry);
+        (async () => {
+          const place = await GetUserLocation();
+          console.log(place)
+          dispatch({
+            type: "SET_PLACE",
+            place: place
+          })
+        })()
       }
-  }, [setCountry_name, country_name, setCountry]);
+  }, []);
 
   return (
     <Router>
-      <div id="body-container" className={darkMode ? 'dark' : ''}>
+      <div id="body-container" className={state.darkMode ? 'dark' : ''}>
         <Navbar />
         <Toggler />
         <Switch>
@@ -70,7 +64,7 @@ function App() {
           </Route>
           <Route exact path="/">
           <Suspense fallback={<Hashloader />}>
-            {country_name !== null ? <Redirect to={`/${country_name }`} /> : <Hashloader />}
+            {state.place  ? <Redirect to={`/${state.place }`} /> : <Hashloader />}
           </Suspense>
           </Route>
         </Switch>

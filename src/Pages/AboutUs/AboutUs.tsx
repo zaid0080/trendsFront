@@ -4,11 +4,11 @@ import Helmet from "react-helmet";
 import { GlobalContext } from "../../global";
 
 function AboutUs() {
-  const { darkMode } = useContext(GlobalContext);
+  const { state } = useContext(GlobalContext);
   return (
     <div
       className="about-page"
-      style={{ color: darkMode ? "#fff" : "#2b2b2b" }}
+      style={{ color: state.darkMode ? "#fff" : "#2b2b2b" }}
     >
       <Helmet>
         <title>About alldaytrends.com</title>
@@ -29,7 +29,6 @@ function AboutUs() {
       <h1 className="title">ABOUT alldaytrends.</h1>
       <img
         src={Trends}
-        rel="preload"
         alt="About"
         className="about-img"
         width={600}

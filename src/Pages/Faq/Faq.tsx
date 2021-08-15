@@ -3,10 +3,10 @@ import { GlobalContext } from "../../global";
 import "./Faq.css";
 
 function Faq() {
-  const {darkMode} = useContext(GlobalContext)
+  const {state} = useContext(GlobalContext)
   return (
-    <div className={darkMode ? 'dark' : 'faq'}>
-      <div className={`faq-cont ${darkMode ? 'dark-nav' : 'light-hash'}` }>
+    <div className={state.darkMode ? 'dark' : 'faq'}>
+      <div className={`faq-cont ${state.darkMode ? 'dark-nav' : 'light-hash'}` }>
         <h1 className="faq-title">Description alldaytrends.</h1>
         <p>
           A one-stop website to end your search for <b>Top Twitter hashtags and
