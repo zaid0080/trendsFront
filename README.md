@@ -3,7 +3,6 @@
 Based on twitter trends and analysis
 
 ### authors
-@rohaanmd
 @zaid0080
 @ibnjunaid
 
@@ -23,5 +22,4 @@ npm run build
 ```
 
 # Website Link
-
 https://www.alldaytrends.com
