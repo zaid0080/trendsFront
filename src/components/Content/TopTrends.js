@@ -1,27 +1,70 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../../global";
-import { VscLoading } from "react-icons/vsc";
+import { HashLoader } from "react-spinners";
+import { Link, useParams } from "react-router-dom";
+
+function changetoK(x) {
+  if (x > 1000) {
+    return Math.floor(x / 1000) + "k";
+  }
+  return x;
+} 
 
 function TopTrends() {
-  const [, , , , , , selectedData, ,] = useContext(GlobalContext);
-  console.log(selectedData);
+  const { data, selectedTime, selectedData, setSelectedData, darkMode } = useContext(GlobalContext);
+
+  const { country, city } = useParams();
+
+  useEffect(() => {
+    setSelectedData(undefined);
+    const x = data.find((d) => d.as_of === selectedTime);
+    setSelectedData(x);
+  },[data, selectedTime, setSelectedData])
+  
   if (selectedData) {
     return (
       <div id="Trends-container">
-        {/* <h2 className="heading">Top Trends</h2> */}
-        <ol className="ol-list">
+        <ol className={`ol-list`}>
           {[selectedData].map((trend) =>
             trend.trends.map((t) => {
-              return <li key={t.index}>{t.name} <span>{t.tweet_volume}</span></li>;
+              if (t.tweet_volume > 0) {
+                return (
+                  <li key={t.index} >
+                  <Link
+                    to={`/${country}${ city === undefined ? "" : "/" + city
+                    }/trend/${window.encodeURIComponent(t.name)}`}
+                    key={t.index}
+                    className={`${darkMode ? 'dark-nav link-text' : ''}`}
+                  >
+                    {t.name} <span className={darkMode ? 'dark-text' : 'light-text'}>{changetoK(t.tweet_volume)}</span>
+                  </Link>
+                  </li>
+                );
+              }
+              return (
+                <li key={t.index} >
+                <Link
+                  to={`/${country}${
+                    city === undefined ? "" : "/" + city
+                  }/trend/${window.encodeURIComponent(t.name)}`}
+                  key={t.index}
+                  className={`${darkMode ? 'dark-nav link-text' : ''}`}
+                >
+                  {t.name} 
+                </Link>
+                </li>
+                
+              );
             })
           )}
+        
         </ol>
       </div>
     );
   } else {
     return (
-      <div className="loadings">
-        <VscLoading className="loading-icon" />
+      <div className="hash-loader-mobile">
+        <HashLoader color="#00a2f5" size={35} />
       </div>
     );
   }

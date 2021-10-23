@@ -1,0 +1,51 @@
+.toggle-cont{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#toggle {
+    width: 50px;
+    height: 25px;
+    margin: 5px;
+    position: relative;
+    top: 5px;
+    right: 10px;
+    outline: none;
+    background-color: #017acd;
+    -webkit-appearance: none;
+    cursor: pointer;
+    border-radius: 20px;
+    box-shadow: -5px -5px 20px rgba(255,255,255,0.1),
+                5px 5px 10px rgba(0,0,0,0.5),
+                inset -2px -2px 5px rgba(255,255,255,0.1),
+                inset 2px 2px 5px rgba(0,0,0,0.5),
+                0 0 0 2px #f1f1f1;
+    transition: 0.3s;
+}
+
+#toggle:checked {
+    background: #172037;
+}
+
+#toggle::before{
+    content: ' ';
+    background-image: url('./sun.png');
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px #232323;
+    transform: scale(0.98,0.96);
+    transition: 0.2s ease;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#toggle:checked:before{
+    left: 25px;
+    background-image: url('./moon.png');
+}

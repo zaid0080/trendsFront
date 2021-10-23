@@ -1,179 +1,153 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import { IoMdArrowDropright } from "react-icons/io";
 import { MdSearch } from "react-icons/md";
-//import { BiSearchAlt } from "react-icons/bi";
-//import useOnClickOutside from "../useClickOutside/useOnClickOutside";
+import useOnClickOutside from "../useClickOutside/useOnClickOutside";
 import { GlobalContext } from "../../global";
 import SideContainer from "./SideContainer";
 import Hamburger from "./Hamburger";
+import { Link } from "react-router-dom";
+import ADT from "./adt..png";
+import logoTag from "./logoTag.png";
 
 const woeidList = require("../Header/countrys.json");
 
+let woeidListTree = {};
 
-const woeidListTree = {};
-
-woeidList.forEach((d)=>{
-  if(woeidListTree[d.country] === undefined){
-    woeidListTree[d.country] = [];
-  }else {
-      if(d.placeType.name === 'Town'){
-        woeidListTree[d.country].push(d);
-      }
-  }
-})
-
-window.t = woeidListTree;
+function createTree(filterCountries) {
+  woeidListTree = {};
+  filterCountries.forEach((d) => {
+    if (woeidListTree[d.country] === undefined) {
+      woeidListTree[d.country] = [];
+      woeidListTree[d.country].push(d);
+    } else {
+      woeidListTree[d.country].push(d);
+    }
+  });
+}
 
 function Navbar() {
+  const { country, city, darkMode } = useContext(GlobalContext);
   const [dropdown, setDropdown] = useState(false);
-  const [icon, setIcon] = useState(false);
   const [searchIcon, setSearchIcon] = useState(false);
   const [countryInput, setCountryInput] = useState("");
-  const [filterCountries, setFilterCountries] = useState({});
-  const [countryName, setCountryName] = useState("Worldwide");
-  // const [filterCities, setFilterCities] = useState([]);
+  const [filterCountries, setFilterCountries] = useState(woeidList);
   const inputRef = useRef(null); //reference for input box
-  const dropRef = useRef(null); //reference for onclick outside
   const sideRef = useRef(null);
-  const inputBoxRef = useRef(null);
 
-  const dropClass = dropdown ? "list" : "nolist";
-  const iconClass = icon ? "rotateicon" : "norotate";
-  const searchClass = searchIcon ? "showSearch" : "noSearch";
-  const placeHold = searchIcon ? "Search Country..." : " ";
-  const iconColor = searchIcon ? "black" : "white";
-
-  const [, setWoeid, ,] = useContext(GlobalContext);
-
-  // let arr =  woeidList.filter( d => d.placeType.name === "Country" && d.parentid === 1)
-  // console.log(arr)
-
-  //using a custom hook to capture the click outside the component using useRef
-  // useOnClickOutside(dropRef, () => {
-  //   if (dropdown) {
-  //     setDropdown(false);
-  //     setIcon(false);
-  //   }
-  // });
-
-  // useOnClickOutside(inputRef, () => {
-  //   if (searchIcon) {
-  //     setSearchIcon(false);
-  //   }
-  // });
-
-  const clickHandler = () => {
-    setDropdown(!dropdown);
-    setIcon(!icon);
-    //inputRef.current.focus();
-  };
+  useOnClickOutside(inputRef, () => {
+    if (searchIcon) {
+      setSearchIcon(false);
+      setDropdown(false);
+    }
+  });
 
   const searchHandler = () => {
     setSearchIcon(!searchIcon);
     setDropdown(!dropdown);
-    inputBoxRef.current.focus();
+    inputRef.current.focus();
+    if(dropdown) {
+      inputRef.current.blur();
+    }
   };
 
-  const menuHandler = () => {
-    sideRef.current.showMenu();
-    console.log("it's working");
-  };
-
-  const listItemHandler = (e) => {
-    setCountryName(e.target.innerText);
+  const countryHandler = () => {
     setDropdown(!dropdown);
-    // console.log(countryName);
+    setSearchIcon(!searchIcon);
   };
 
   useEffect(() => {
-    setFilterCountries( woeidListTree );
+    setFilterCountries(
+      woeidList
+        .filter((d) =>
+          d.name.toLowerCase().includes(countryInput.toLowerCase())
+        )
+        .sort()
+    );
   }, [countryInput]);
 
+  createTree(filterCountries);
+
   return (
-    <nav className="nav">
-      <Hamburger clickMe={menuHandler} />
+    <nav className={`nav ${darkMode ? 'dark-nav' : 'light-nav'}`}>
+      <Hamburger clickMe={() => sideRef.current.showMenu()} />
       <SideContainer ref={sideRef} />
-      <h1 id="logo">alldaytrends</h1>
+      <Link to="/">
+        <img src={ADT} alt="logo" width="50" height="20" className="imgLogo" />
+      </Link>
+      <Link to="/" id="logo">
+        <img
+          src={logoTag}
+          alt="logos"
+          width="196"
+          height="35"
+          style={{ marginLeft: "35px" }}
+          className="img-logo-tab"
+        />
+      </Link>
+
       <span></span>
-      <h3 className='links'>Login</h3>
-      <h3 className='links'>About Us</h3>
-      <h3 className='links'>Contact Us</h3>
-      <h1 onClick={clickHandler} className="country">
-        <span className="countryName">
-          {" "}
-          {countryName}
-          <IoMdArrowDropright id="icondrop" className={iconClass} />
-        </span>
-      </h1>
+      <p className={`links last-link `} onClick={countryHandler}>
+        {(city === undefined ? "" : city + ", ") + country}
+      </p>
+      <p className={`cityMob ${searchIcon ? "hideCountry" : ""}`}>
+        {city === undefined ? country : city}
+      </p>
+      {/* <h3>{woeid}</h3> */}
+
       <div className="search-container">
         <input
-          ref={inputBoxRef}
+          id="searchbar"
+          ref={inputRef}
           type="text"
-          className={searchClass}
-          onChange = {(e) => setCountryInput(e.target.value)}
-          placeholder={placeHold}
+          value={countryInput}
+          className={`${searchIcon ? "showSearch" : "noSearch"}`}
+          onChange={(e) => setCountryInput(e.target.value)}
+          placeholder="Search Country..."
         />
+        <label></label>
         <MdSearch
           id="searchIcon"
-          className={iconColor}
+          className={`${searchIcon ? "black" : "white"}`}
           onClick={searchHandler}
         />
-      </div>
 
-      <ul
-        className={`ul-list-items ${dropClass}`}
-        onClick={(e) => {
-          console.log(e.target.value)
-          const woeidValue = e.target.value;
-          if(woeidValue){
-            setWoeid(woeidValue);
-          }
-          setIcon(false);
-        }}
-        ref={dropRef}
-      >
-        {/* <div className="searchContainer">
-          <BiSearchAlt className="searchIcon" />
-          <input
-            ref={inputRef}
-            type="text"
-            value={countryInput}
-            onChange={(e) => setCountryInput(e.target.value)}
-            className="searchBox"
-            placeholder="Search Country..."
-          />
-        </div> */}
-        {
-          //console.log(Object.keys(woeidListTree))
-          Object.keys(woeidListTree).sort().map((d) =>{
-            return (
-              <div className="cities">
-              <h2 className='countriesNames'>{d}</h2>
-              {/* <span></span> */}
-              <hr />
-              <ul className = "citiesNames">
-              {
-                woeidListTree[d].map((l) => {
-                  return <li>{l.name}</li>
-                })
-              }
-              </ul>
-              </div>
-            )
-          })
-        }
-      </ul>
-      {/* <div className="searchContainer">
-          <BiSearchAlt className="searchIcon" />
-          <input
-            ref={inputRef}
-            type="text"
-            value={countryInput}
-            onChange={(e) => setCountryInput(e.target.value)}
-            className="searchBox"
-            placeholder="Search Country..."
-          />
-        </div> */}
+        <ul className={`ul-list-items ${dropdown ? "list" : "nolist"} ${darkMode ? 'dark-nav' : 'light-nav'}`}>
+          {Object.keys(woeidListTree)
+            .sort()
+            .map((d) => {
+              return (
+                <div className="cities" key={d}>
+                  <h2 className="countriesNames">{d}</h2>
+                  <hr />
+                  <ul className="citiesNames">
+                    {woeidListTree[d].reverse().map((l) => {
+                      if (d !== l.name) {
+                        return (
+                          <li value={l.name} key={l.woeid} onClick={() => setTimeout(() => setCountryInput(''), 900) }>
+                            <Link
+                              className="c-name"
+                              to={(d !== "" ? `/${d}/${l.name}` : `/${l.name}`).replace(/ /g,'_')}
+                              key={l.woeid}
+                            >
+                              {l.name}
+                            </Link>
+                          </li>
+                        );
+                      } else {
+                        return (
+                          <li value={l.name} key={l.woeid} onClick={() => setTimeout(() => setCountryInput(''), 900) }>
+                            <Link className="c-name" to={(`/${d}`).replace(/ /g,'_')} key={l.woeid}>
+                              {l.name}
+                            </Link>
+                          </li>
+                        );
+                      }
+                    })}
+                  </ul>
+                </div>
+              );
+            })}
+        </ul>
+      </div>
     </nav>
   );
 }

@@ -4,7 +4,7 @@ Based on twitter trends and analysis
 
 ### authors
 @zaid0080
-
+@ibnjunaid
 
 # Install packages
 ```NPM I
